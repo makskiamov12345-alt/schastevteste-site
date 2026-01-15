@@ -246,6 +246,15 @@
             margin-bottom: -20px;
             position: relative;
             z-index: 1;
+            /* Добавили плавность трансформации */
+            transition: transform 0.5s ease;
+        }
+
+        /* Зум картинки только на экранах, где есть мышка (ПК, Ноутбуки) */
+        @media (min-width: 992px) {
+            .pizza-item:hover .card-img {
+                transform: scale(1.1); /* Увеличение на 10% */
+            }
         }
 
         .card-body-preview {
