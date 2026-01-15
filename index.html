@@ -1547,9 +1547,10 @@
         const typingIndicator = document.getElementById('typingIndicator');
         const chatWindow = document.getElementById('chatWindow');
         
-        // --- DATA ---
+        // --- GLOBAL STATE ---
         let orderState = {
             step: 0,
+            cart: [], // Here we store the list of items
             data: {}
         };
 
@@ -1609,6 +1610,7 @@
 
             // Order Logic
             if (orderState.step === 1) {
+                // If user types manually instead of clicking buttons
                 orderState.data.pizza = input;
                 orderState.step = 2;
                 return `Оки-доки! <b>${input}</b>. А какой размер? (25 см / 30 см)`;
@@ -1631,7 +1633,19 @@
             if (orderState.step === 5) {
                 orderState.data.phone = input;
                 orderState.step = 0; // Reset
-                return "Заказ принят! 🎉 Курьер уже бежит!";
+                
+                // Summarize total cart for final confirmation
+                let summary = "Заказ принят! 🎉<br><b>Состав:</b><br>";
+                let total = 0;
+                orderState.cart.forEach(item => {
+                    summary += `- ${item.name} (${item.qty} шт) - ${item.itemTotal}₽<br>`;
+                    total += item.itemTotal;
+                });
+                summary += `<br><b>ИТОГО: ${total} ₽</b><br>Курьер уже бежит! 🏎️`;
+                
+                // Clear cart after order
+                orderState.cart = [];
+                return summary;
             }
             
             return "Я пока учусь, но если выберешь пиццу в меню, я мигом оформлю! 👇";
@@ -1650,21 +1664,30 @@
         sendBtn.addEventListener('click', handleUserSend);
         chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleUserSend(); });
 
-        // --- ADD TO CART FUNCTION ---
+        // --- ADD TO CART FUNCTION (UPDATED FOR GRAND TOTAL) ---
         function addToCart(btn, name, size) {
             const qtySpan = btn.parentElement.querySelector('.qty-val');
             const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
 
-            // 1. Находим цену товара в карточке
-            // Ищем родительскую карточку
+            // 1. Get Price
             const card = btn.closest('.pizza-item'); 
-            // Внутри карточки ищем ценник
             const priceText = card.querySelector('.price-tag').innerText; 
-            // Убираем символ "₽" и пробелы, превращаем в число (например "490")
             const price = parseInt(priceText.replace(/\D/g, ''));
             
-            // 2. Считаем сумму
-            const sum = price * qty;
+            // 2. Calculate Item Total
+            const itemTotal = price * qty;
+
+            // 3. Add to Global Cart List
+            orderState.cart.push({
+                name: name,
+                size: size,
+                price: price,
+                qty: qty,
+                itemTotal: itemTotal
+            });
+
+            // 4. Calculate GRAND TOTAL (Sum of all items in cart)
+            const grandTotal = orderState.cart.reduce((sum, item) => sum + item.itemTotal, 0);
 
             if (!chatWindow.classList.contains('active')) {
                 toggleChat();
@@ -1672,23 +1695,22 @@
 
             const msg = `Хочу ${name}, размер ${size}, ${qty} шт.`;
             
-            // IMMEDIATE MESSAGE
+            // IMMEDIATE USER MESSAGE
             addMessage(msg, 'user');
             
-            // Сохраняем данные заказа
-            orderState.data.pizza = name;
-            orderState.data.size = size;
-            orderState.data.quantity = qty;
-            orderState.step = 4; // Skip to address
+            // Move state to Address input if needed, or keep adding
+            orderState.step = 4; 
 
             showTyping(true);
             setTimeout(() => {
                 showTyping(false);
-                // 3. Выводим сообщение с суммой
+                // 5. Display Message with ITEM Total AND GRAND Total
                 addMessage(`Записал! ✍️<br>
                             🍕 <b>${name}</b> (${size})<br>
-                            🧮 ${qty} шт. х ${price} ₽ = <b>${sum} ₽</b><br><br>
-                            Напиши адрес доставки, пожалуйста:`, 'bot');
+                            🧮 ${qty} шт. х ${price} ₽ = ${itemTotal} ₽<br>
+                            ----------------------<br>
+                            💰 <b>Общая сумма заказа: ${grandTotal} ₽</b><br><br>
+                            Напиши адрес доставки, если это всё:`, 'bot');
             }, 800);
         }
     </script>
