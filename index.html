@@ -1,8 +1,6 @@
-1147
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>СчастьеВТесте — Семейная пиццерия</title>
     <!-- Подключение шрифтов: Nunito (мягкий) и Pacifico (рукописный) -->
@@ -1240,7 +1238,37 @@
                 </details>
             </article>
 
-            <!-- SNACKS -->
+            <!-- 1248
+            -->
+
+                        <!-- SETS -->
+                        <div class="menu-category-title"><span>🎁 Выгодные Сеты</span></div>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/set1.jpg" class="card-img" alt="Семейный сет">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Семейный</span>
+                                <span class="price-tag">1290 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">3 пиццы</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="btn-order-item" onclick="addToCart(this, 'Семейный сет', 'Стандарт')">Buy!</button>
+                    </div>
+                </details>
+            </article>            
             <div class="menu-category-title"><span>🍟 Похрустеть</span></div>
 
             <article class="pizza-item">
