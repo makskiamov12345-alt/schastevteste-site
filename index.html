@@ -1646,14 +1646,27 @@
             const qtySpan = btn.parentElement.querySelector('.qty-val');
             const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
 
+            // 1. Находим цену товара в карточке
+            // Ищем родительскую карточку
+            const card = btn.closest('.pizza-item'); 
+            // Внутри карточки ищем ценник
+            const priceText = card.querySelector('.price-tag').innerText; 
+            // Убираем символ "₽" и пробелы, превращаем в число (например "490")
+            const price = parseInt(priceText.replace(/\D/g, ''));
+            
+            // 2. Считаем сумму
+            const sum = price * qty;
+
             if (!chatWindow.classList.contains('active')) {
                 toggleChat();
             }
 
             const msg = `Хочу ${name}, размер ${size}, ${qty} шт.`;
             
-            // IMMEDIATE MESSAGE (NO DELAY)
+            // IMMEDIATE MESSAGE
             addMessage(msg, 'user');
+            
+            // Сохраняем данные заказа
             orderState.data.pizza = name;
             orderState.data.size = size;
             orderState.data.quantity = qty;
@@ -1662,7 +1675,11 @@
             showTyping(true);
             setTimeout(() => {
                 showTyping(false);
-                addMessage(`Отличный выбор: <b>${name}</b>! 😋 Уже записал. <br>Напиши адрес доставки, пожалуйста:`, 'bot');
+                // 3. Выводим сообщение с суммой
+                addMessage(`Записал! ✍️<br>
+                            🍕 <b>${name}</b> (${size})<br>
+                            🧮 ${qty} шт. х ${price} ₽ = <b>${sum} ₽</b><br><br>
+                            Напиши адрес доставки, пожалуйста:`, 'bot');
             }, 800);
         }
     </script>
