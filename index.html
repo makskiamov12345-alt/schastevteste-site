@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
     
     <style>
-        /* --- WARM & COZY VARIABLES --- */
+        /* --- VARIABLES --- */
         :root {
             --primary: #FF5252;
             --primary-hover: #FF7675;     
@@ -22,7 +22,6 @@
             --font-hand: 'Pacifico', cursive;
             
             --shadow-cozy: 0 8px 20px rgba(255, 82, 82, 0.08);
-            --shadow-float: 0 15px 30px rgba(255, 165, 2, 0.15);
             --radius: 24px;
         }
 
@@ -91,9 +90,7 @@
             width: auto;
             transition: transform 0.3s;
         }
-        .logo-container:hover .logo-img {
-            animation: heartbeat 1.5s infinite;
-        }
+        .logo-container:hover .logo-img { animation: heartbeat 1.5s infinite; }
 
         .logo-text {
             font-family: var(--font-hand);
@@ -235,7 +232,6 @@
         }
         .pizza-item:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow-float);
             border-color: var(--accent);
         }
 
@@ -362,6 +358,7 @@
         .btn-order-item:hover {
             background: var(--primary);
             box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
+            transform: scale(1.05);
         }
 
         /* --- HOW TO ORDER --- */
@@ -410,7 +407,7 @@
             box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
         }
 
-        /* --- FLOATING CHAT WIDGET (NEW!) --- */
+        /* --- FLOATING CHAT WIDGET --- */
         .chat-widget-container {
             position: fixed;
             bottom: 30px;
@@ -422,7 +419,6 @@
             font-family: var(--font-main);
         }
 
-        /* Кнопка открытия чата */
         .chat-toggle-btn {
             width: 70px;
             height: 70px;
@@ -438,11 +434,8 @@
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 4px solid white;
         }
-        .chat-toggle-btn:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
+        .chat-toggle-btn:hover { transform: scale(1.1) rotate(5deg); }
 
-        /* Окно чата */
         .chat-window {
             width: 350px;
             height: 500px;
@@ -450,16 +443,14 @@
             border-radius: 30px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.2);
             margin-bottom: 20px;
-            display: none; /* Скрыто по умолчанию */
+            display: none;
             flex-direction: column;
             overflow: hidden;
             border: 4px solid var(--accent);
             animation: slideInUp 0.4s ease;
         }
         
-        .chat-window.active {
-            display: flex;
-        }
+        .chat-window.active { display: flex; }
 
         .chat-header {
             background: var(--accent);
@@ -487,10 +478,8 @@
             padding: 20px;
             overflow-y: auto;
             background-color: #FAFAFA;
-            /* Узор */
             background-image: radial-gradient(#FF5252 1px, transparent 1px);
             background-size: 20px 20px;
-            background-opacity: 0.1;
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -562,7 +551,6 @@
             display: none;
         }
 
-        /* Mobile adjustments for chat */
         @media (max-width: 480px) {
             .chat-window {
                 width: 90vw;
@@ -572,11 +560,7 @@
                 right: 5vw;
                 left: 5vw;
             }
-            .chat-toggle-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 30px;
-            }
+            .chat-toggle-btn { width: 60px; height: 60px; font-size: 30px; }
         }
 
         /* --- FOOTER --- */
@@ -587,7 +571,6 @@
             text-align: center;
             border-top: 8px solid var(--primary);
         }
-        
         .footer-logo-text { font-family: var(--font-hand); font-size: 2rem; color: var(--accent); }
 
     </style>
@@ -596,8 +579,7 @@
 
     <header>
         <a href="#" class="logo-container">
-            <img src="logo.png" alt="СчастьеВТесте" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.fontSize='40px';this.nextElementSibling.innerText='🍕'">
-            <span style="display:none;"></span>
+            <img src="logo.png" alt="СчастьеВТесте" class="logo-img">
             <div class="logo-text">Счастье<br><span style="color:var(--primary); font-size:1.3rem;">ВТесте</span></div>
         </a>
         <div class="header-right">
@@ -624,7 +606,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/margarita.jpg" class="card-img" alt="Маргарита" onerror="this.src='https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&auto=format&fit=crop'">
+                       <img src="images/margarita.jpg" class="card-img" alt="Маргарита">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Маргарита</span>
@@ -651,7 +633,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/vitamin.jpg" class="card-img" alt="Витамин" onerror="this.src='https://images.unsplash.com/photo-1571407970349-bc16f6343378?w=500'">
+                        <img src="images/vitamin.jpg" class="card-img" alt="Витамин">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Витамин</span>
@@ -678,7 +660,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/vetchina grib.jpg" class="card-img" alt="Грибная" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'">
+                        <img src="images/vetchina grib.jpg" class="card-img" alt="Грибная">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Грибная</span>
@@ -705,7 +687,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/i3pizz.jpg" class="card-img" alt="i3Пицц" onerror="this.src='https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500'">
+                        <img src="images/i3pizz.jpg" class="card-img" alt="i3Пицц">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>i3Пицц</span>
@@ -732,7 +714,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/fray chiken.jpg" class="card-img" alt="Фрай-чикен" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'">
+                        <img src="images/fray chiken.jpg" class="card-img" alt="Фрай-чикен">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Фрай-чикен</span>
@@ -759,7 +741,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/ogma.jpg" class="card-img" alt="Огма" onerror="this.src='https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=500'">
+                        <img src="images/ogma.jpg" class="card-img" alt="Огма">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Огма</span>
@@ -786,7 +768,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/vetchina grib.jpg" class="card-img" alt="Ветчина-грибы" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'">
+                        <img src="images/vetchina grib.jpg" class="card-img" alt="Ветчина-грибы">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Ветчина-грибы</span>
@@ -813,7 +795,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/bbq.jpg" class="card-img" alt="BBQ" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'">
+                        <img src="images/bbq.jpg" class="card-img" alt="BBQ">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>BBQ</span>
@@ -840,7 +822,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/peperony.jpg" class="card-img" alt="Пеперони" onerror="this.src='https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500'">
+                        <img src="images/peperony.jpg" class="card-img" alt="Пеперони">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Пеперони</span>
@@ -867,7 +849,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/mysnay kapella.jpg" class="card-img" alt="Мясная капелла" onerror="this.src='https://images.unsplash.com/photo-1593560708920-6316e4e6d0d9?w=500'">
+                        <img src="images/mysnay kapella.jpg" class="card-img" alt="Мясная капелла">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Мясная капелла</span>
@@ -894,7 +876,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/big pig.jpg" class="card-img" alt="Big-Pig" onerror="this.src='https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?w=500'">
+                        <img src="images/big pig.jpg" class="card-img" alt="Big-Pig">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Big-Pig</span>
@@ -921,7 +903,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/aliot.jpg" class="card-img" alt="Алиот" onerror="this.src='https://images.unsplash.com/photo-1593246049226-ded77bf90326?w=500'">
+                        <img src="images/aliot.jpg" class="card-img" alt="Алиот">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Алиот</span>
@@ -948,7 +930,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/karbonara.jpg" class="card-img" alt="Карбонара" onerror="this.src='https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=500'">
+                        <img src="images/karbonara.jpg" class="card-img" alt="Карбонара">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Карбонара</span>
@@ -975,7 +957,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/kravc.jpg" class="card-img" alt="Кравц" onerror="this.src='https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=500'">
+                        <img src="images/kravc.jpg" class="card-img" alt="Кравц">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Кравц</span>
@@ -1002,7 +984,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/neapolitanskay.jpg" class="card-img" alt="Неаполитанская" onerror="this.src='https://images.unsplash.com/photo-1598023696416-0193a0bcd302?w=500'">
+                        <img src="images/neapolitanskay.jpg" class="card-img" alt="Неаполитанская">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Неаполитанская</span>
@@ -1029,7 +1011,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/syrny rae.jpg" class="card-img" alt="Сырный рай" onerror="this.src='https://images.unsplash.com/photo-1573821663912-569905455b1c?w=500'">
+                        <img src="images/syrny rae.jpg" class="card-img" alt="Сырный рай">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Сырный рай</span>
@@ -1056,7 +1038,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/cezar.jpg" class="card-img" alt="Пицца Цезарь" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'">
+                        <img src="images/cezar.jpg" class="card-img" alt="Пицца Цезарь">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Пицца Цезарь</span>
@@ -1083,7 +1065,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/dary mora.jpg" class="card-img" alt="Дары моря" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'">
+                        <img src="images/dary mora.jpg" class="card-img" alt="Дары моря">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Дары моря</span>
@@ -1110,7 +1092,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/c ananacom.jpg" class="card-img" alt="Пицца с ананасами" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'">
+                        <img src="images/c ananacom.jpg" class="card-img" alt="Пицца с ананасами">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>С ананасами</span>
@@ -1249,7 +1231,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/grib.jpg" class="card-img" alt="Грибной суп" onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500'">
+                        <img src="images/grib.jpg" class="card-img" alt="Грибной суп">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Грибной крем-суп</span>
@@ -1275,7 +1257,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/tikva.jpg" class="card-img" alt="Тыквенный суп" onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500'">
+                        <img src="images/tikva.jpg" class="card-img" alt="Тыквенный суп">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Тыквенный крем-суп</span>
@@ -1301,7 +1283,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/brokkoli.jpg" class="card-img" alt="Брокколи суп" onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500'">
+                        <img src="images/brokkoli.jpg" class="card-img" alt="Брокколи суп">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Крем-суп из брокколи</span>
@@ -1329,7 +1311,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/fri.jpg" class="card-img" alt="Картофель Фри" onerror="this.src='https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=500'">
+                        <img src="images/fri.jpg" class="card-img" alt="Картофель Фри">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Картофель Фри</span>
@@ -1355,7 +1337,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/adaxo.jpg" class="card-img" alt="Дольки Айдахо" onerror="this.src='https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=500'">
+                        <img src="images/adaxo.jpg" class="card-img" alt="Дольки Айдахо">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Дольки Айдахо</span>
@@ -1381,7 +1363,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/krily bbq.jpg" class="card-img" alt="Крылья BBQ" onerror="this.src='https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=500'">
+                        <img src="images/krily bbq.jpg" class="card-img" alt="Крылья BBQ">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Крылья BBQ</span>
@@ -1407,7 +1389,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/naggetsy.jpg" class="card-img" alt="Наггетсы" onerror="this.src='https://images.unsplash.com/photo-1562967914-608f82629710?w=500'">
+                        <img src="images/naggetsy.jpg" class="card-img" alt="Наггетсы">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Наггетсы</span>
@@ -1433,7 +1415,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/cheese.jpg" class="card-img" alt="Хот-чиз" onerror="this.src='https://images.unsplash.com/photo-1562967914-608f82629710?w=500'">
+                        <img src="images/cheese.jpg" class="card-img" alt="Хот-чиз">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Хот-чиз</span>
@@ -1461,7 +1443,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/set1.jpg" class="card-img" alt="Семейный сет" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'">
+                        <img src="images/set1.jpg" class="card-img" alt="Семейный сет">
                         <div class="card-body-preview">
                             <div class="card-title">
                                 <span>Семейный</span>
@@ -1538,7 +1520,7 @@
 
     <footer>
         <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
-            <span style="font-size:30px; margin-right: 10px;">🍕</span>
+            <img src="logo.png" alt="СчастьеВТесте" class="logo-img" style="height: 50px;">
             <div class="footer-logo-text">СчастьеВТесте</div>
         </div>
         <div class="footer-info">
@@ -1670,19 +1652,18 @@
 
             const msg = `Хочу ${name}, размер ${size}, ${qty} шт.`;
             
-            setTimeout(() => {
-                addMessage(msg, 'user');
-                orderState.data.pizza = name;
-                orderState.data.size = size;
-                orderState.data.quantity = qty;
-                orderState.step = 4; // Skip to address
+            // IMMEDIATE MESSAGE (NO DELAY)
+            addMessage(msg, 'user');
+            orderState.data.pizza = name;
+            orderState.data.size = size;
+            orderState.data.quantity = qty;
+            orderState.step = 4; // Skip to address
 
-                showTyping(true);
-                setTimeout(() => {
-                    showTyping(false);
-                    addMessage(`Отличный выбор: <b>${name}</b>! 😋 Уже записал. <br>Напиши адрес доставки, пожалуйста:`, 'bot');
-                }, 800);
-            }, 300);
+            showTyping(true);
+            setTimeout(() => {
+                showTyping(false);
+                addMessage(`Отличный выбор: <b>${name}</b>! 😋 Уже записал. <br>Напиши адрес доставки, пожалуйста:`, 'bot');
+            }, 800);
         }
     </script>
 </body>
