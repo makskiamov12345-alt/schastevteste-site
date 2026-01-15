@@ -368,6 +368,16 @@
             box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
             transform: scale(1.05);
         }
+        
+        /* Style for "Remove" state of button */
+        .btn-order-item.is-remove {
+            background: #e0e0e0;
+            color: #666;
+        }
+        .btn-order-item.is-remove:hover {
+            background: #d4d4d4;
+            color: #333;
+        }
 
         /* --- HOW TO ORDER --- */
         #steps { 
@@ -1587,8 +1597,22 @@
             const valSpan = wrapper.querySelector('.qty-val');
             let val = parseInt(valSpan.innerText);
             val += change;
-            if (val < 1) val = 1;
+            
+            // Allow going down to 0
+            if (val < 0) val = 0; 
             valSpan.innerText = val;
+
+            // Update Add Button Text
+            const container = btn.closest('.details-content');
+            const orderBtn = container.querySelector('.btn-order-item');
+            
+            if (val === 0) {
+                orderBtn.innerText = "Убрать";
+                orderBtn.classList.add('is-remove');
+            } else {
+                orderBtn.innerText = "Буду!";
+                orderBtn.classList.remove('is-remove');
+            }
         }
 
         // --- FAKE AI ---
@@ -1643,6 +1667,10 @@
 
         // --- HELPER TO GENERATE RECEIPT ---
         function generateCartMessage() {
+            if (orderState.cart.length === 0) {
+                return "Корзина пуста 🗑️. Выбери что-нибудь вкусненькое!";
+            }
+
             let total = 0;
             let listHtml = "";
             
@@ -1664,6 +1692,30 @@
             const qtySpan = btn.parentElement.querySelector('.qty-val');
             const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
 
+            if (!chatWindow.classList.contains('active')) {
+                toggleChat();
+            }
+
+            // --- REMOVE LOGIC ---
+            if (qty === 0) {
+                // Find and remove item
+                const index = orderState.cart.findIndex(item => item.name === name);
+                if (index > -1) {
+                    orderState.cart.splice(index, 1); // Remove item from array
+                    addMessage(`Убрал <b>${name}</b> из заказа.`, 'user');
+                    
+                    showTyping(true);
+                    setTimeout(() => {
+                        showTyping(false);
+                        addMessage(generateCartMessage(), 'bot');
+                    }, 600);
+                } else {
+                    addMessage("Этого и так нет в корзине! 😅", 'bot');
+                }
+                return;
+            }
+
+            // --- ADD/UPDATE LOGIC ---
             // 1. Get Price
             const card = btn.closest('.pizza-item'); 
             const priceText = card.querySelector('.price-tag').innerText; 
@@ -1686,10 +1738,6 @@
                     qty: qty,
                     itemTotal: itemTotal
                 });
-            }
-
-            if (!chatWindow.classList.contains('active')) {
-                toggleChat();
             }
 
             // User message logic
