@@ -1,3 +1,4 @@
+1147
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -1244,6 +1245,35 @@
 
             <article class="pizza-item">
                 <details>
+
+                                <!-- SETS -->
+                                <div class="menu-category-title"><span>🎁 Выгодные Сеты</span></div>
+
+                                <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/set1.jpg" class="card-img" alt="Семейный сет">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Семейный</span>                    </span>
+                                <span class="price-tag">1290 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">3 пиццы</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="btn-order-item" onclick="addToCart(this, 'Семейный сет', 'Стандарт')">Buy!</button>
+                    </div>
+                </details>
+            </article>
                     <summary class="card-header">
                         <img src="images/fri.jpg" class="card-img" alt="Картофель Фри">
                         <div class="card-body-preview">
