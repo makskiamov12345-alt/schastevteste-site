@@ -261,4 +261,1429 @@
         }
 
         .card-title {
-            font
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            line-height: 1.2;
+        }
+
+        .price-tag {
+            font-size: 0.9rem;
+            color: white;
+            background: var(--text-light);
+            padding: 4px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .expand-hint {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 10px;
+            display: inline-block;
+            border-bottom: 2px dotted var(--primary);
+        }
+
+        .details-content {
+            padding: 0 20px 25px;
+            overflow: hidden; 
+        }
+        details[open] .details-content {
+            animation: slideInUp 0.3s ease-out;
+        }
+
+        .ingredients {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* CONTROLS */
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #FFF9E5;
+            margin: 0 -20px -25px;
+            padding: 15px 20px;
+            border-top: 2px dashed #FFE082;
+            gap: 5px;
+        }
+
+        .card-weight {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .qty-control {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 50px;
+            padding: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-right: 5px;
+        }
+        
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #FFF4D9;
+            color: var(--text-main);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .qty-btn:hover { background: var(--accent); color: white; }
+        .qty-val { width: 25px; text-align: center; font-weight: 700; font-size: 1rem; }
+
+        .btn-order-item {
+            background: var(--text-main);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-order-item:hover {
+            background: var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
+        }
+
+        /* --- HOW TO ORDER --- */
+        #steps { 
+            background: white; 
+            margin-top: 80px; 
+            padding: 80px 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFD166' fill-opacity='0.2' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .step-card {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-color);
+            border-radius: 30px;
+            box-shadow: 0 10px 0 rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .step-card:hover { transform: translateY(-10px); }
+
+        .step-num {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-family: var(--font-hand);
+            margin: 0 auto 20px;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
+        }
+
+        /* --- FLOATING CHAT WIDGET (NEW!) --- */
+        .chat-widget-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            font-family: var(--font-main);
+        }
+
+        /* Кнопка открытия чата */
+        .chat-toggle-btn {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(255, 82, 82, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 4px solid white;
+        }
+        .chat-toggle-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Окно чата */
+        .chat-window {
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            display: none; /* Скрыто по умолчанию */
+            flex-direction: column;
+            overflow: hidden;
+            border: 4px solid var(--accent);
+            animation: slideInUp 0.4s ease;
+        }
+        
+        .chat-window.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background: var(--accent);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-main);
+        }
+
+        .bot-avatar {
+            font-size: 24px;
+            background: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #FAFAFA;
+            /* Узор */
+            background-image: radial-gradient(#FF5252 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-opacity: 0.1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .msg-bot {
+            background: white;
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .msg-user {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 2px 10px rgba(255, 82, 82, 0.2);
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            background: white;
+            border-top: 2px solid #f0f0f0;
+            display: flex;
+            gap: 10px;
+        }
+
+        #chatInput {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 25px;
+            border: 2px solid #eee;
+            outline: none;
+            font-family: inherit;
+        }
+        #chatInput:focus { border-color: var(--accent); }
+
+        #sendBtn {
+            background: var(--accent);
+            color: var(--text-main);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        #sendBtn:hover { transform: scale(1.1); background: #FFDD85; }
+
+        .typing-indicator {
+            font-size: 0.8rem;
+            color: #999;
+            margin: 0 20px 5px;
+            font-style: italic;
+            display: none;
+        }
+
+        /* Mobile adjustments for chat */
+        @media (max-width: 480px) {
+            .chat-window {
+                width: 90vw;
+                height: 60vh;
+                position: fixed;
+                bottom: 100px;
+                right: 5vw;
+                left: 5vw;
+            }
+            .chat-toggle-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #333;
+            color: #f1f1f1;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 8px solid var(--primary);
+        }
+        
+        .footer-logo-text { font-family: var(--font-hand); font-size: 2rem; color: var(--accent); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-container">
+            <img src="logo.png" alt="СчастьеВТесте" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.fontSize='40px';this.nextElementSibling.innerText='🍕'">
+            <span style="display:none;"></span>
+            <div class="logo-text">Счастье<br><span style="color:var(--primary); font-size:1.3rem;">ВТесте</span></div>
+        </a>
+        <div class="header-right">
+            <a href="tel:+79990000000" class="phone-link">📞 +7 (999) 000-00-00</a>
+            <button class="btn-chat-small" onclick="toggleChat()">👋 Спросить Тестяшку</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div style="position: relative; z-index: 2;">
+            <h1>Как у итальянской мамы,<br>только никуда не надо ехать!</h1>
+            <div class="subtitle">❤️ Сделано с любовью и хрустящей корочкой</div>
+            <br>
+            <button class="btn-main" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Хочу кушать!</button>
+        </div>
+    </section>
+
+    <section id="menu">
+        <h2 class="section-title">Наши вкусняшки</h2>
+        <div class="menu-container">
+
+            <div class="menu-category-title"><span>🍕 Горячая Пицца</span></div>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                       <img src="images/margarita.jpg" class="card-img" alt="Маргарита" onerror="this.src='https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&auto=format&fit=crop'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Маргарита</span>
+                                <span class="price-tag">490 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Классика! Сочный томатный соус, много моцареллы и щепотка любви (базилик).</p>
+                        <div class="price-row">
+                            <span class="card-weight">600г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Маргарита', '600 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/vitamin.jpg" class="card-img" alt="Витамин" onerror="this.src='https://images.unsplash.com/photo-1571407970349-bc16f6343378?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Витамин</span>
+                                <span class="price-tag">560 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Овощной взрыв: томаты, грибочки, перчик, лук и маслины. Полезно и вкусно!</p>
+                        <div class="price-row">
+                            <span class="card-weight">720г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Витамин', '720 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/vetchina grib.jpg" class="card-img" alt="Грибная" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Грибная</span>
+                                <span class="price-tag">620 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Для любителей "тихой охоты". Свежие шампиньоны, домашний соус и сыррр.</p>
+                        <div class="price-row">
+                            <span class="card-weight">700г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Грибная', '700 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/i3pizz.jpg" class="card-img" alt="i3Пицц" onerror="this.src='https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>i3Пицц</span>
+                                <span class="price-tag">650 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Сытно! Фарш, охотничьи колбаски и соленые огурчики. Мужской выбор.</p>
+                        <div class="price-row">
+                            <span class="card-weight">700г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'i3Пицц', '700 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/fray chiken.jpg" class="card-img" alt="Фрай-чикен" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Фрай-чикен</span>
+                                <span class="price-tag">670 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Копченая курочка, грибы и томаты. Просто пальчики оближешь!</p>
+                        <div class="price-row">
+                            <span class="card-weight">720г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Фрай-чикен', '720 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/ogma.jpg" class="card-img" alt="Огма" onerror="this.src='https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Огма</span>
+                                <span class="price-tag">690 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Изысканно: секретный соус, прошутто и благородный пармезан.</p>
+                        <div class="price-row">
+                            <span class="card-weight">650г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Огма', '650 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/vetchina grib.jpg" class="card-img" alt="Ветчина-грибы" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Ветчина-грибы</span>
+                                <span class="price-tag">650 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Старая добрая классика. Ветчина, грибы и маслинки.</p>
+                        <div class="price-row">
+                            <span class="card-weight">700г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Ветчина-грибы', '700 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/bbq.jpg" class="card-img" alt="BBQ" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>BBQ</span>
+                                <span class="price-tag">650 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">С дымком! Копченая курица, грудинка и много соуса барбекю.</p>
+                        <div class="price-row">
+                            <span class="card-weight">720г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'BBQ', '720 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/peperony.jpg" class="card-img" alt="Пеперони" onerror="this.src='https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Пеперони</span>
+                                <span class="price-tag">690 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Остренько! Пеперони и халапеньо согреют в любую погоду.</p>
+                        <div class="price-row">
+                            <span class="card-weight">730г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Пеперони', '730 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/mysnay kapella.jpg" class="card-img" alt="Мясная капелла" onerror="this.src='https://images.unsplash.com/photo-1593560708920-6316e4e6d0d9?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Мясная капелла</span>
+                                <span class="price-tag">690 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Много мяса не бывает! Ветчина, сервелат, грудинка. Ух!</p>
+                        <div class="price-row">
+                            <span class="card-weight">790г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Мясная капелла', '790 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/big pig.jpg" class="card-img" alt="Big-Pig" onerror="this.src='https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Big-Pig</span>
+                                <span class="price-tag">690 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Для большого аппетита. Грудинка, грибы и острый соус.</p>
+                        <div class="price-row">
+                            <span class="card-weight">750г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Big-Pig', '750 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/aliot.jpg" class="card-img" alt="Алиот" onerror="this.src='https://images.unsplash.com/photo-1593246049226-ded77bf90326?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Алиот</span>
+                                <span class="price-tag">680 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Нежный сливочный соус и пряные охотничьи колбаски.</p>
+                        <div class="price-row">
+                            <span class="card-weight">710г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Алиот', '710 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/karbonara.jpg" class="card-img" alt="Карбонара" onerror="this.src='https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Карбонара</span>
+                                <span class="price-tag">680 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Как паста, только пицца! Грудинка, яйцо и пармезан.</p>
+                        <div class="price-row">
+                            <span class="card-weight">680г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Карбонара', '680 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/kravc.jpg" class="card-img" alt="Кравц" onerror="this.src='https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Кравц</span>
+                                <span class="price-tag">720 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Богатый состав: сервелат, курица, грибы и овощи на сливочной основе.</p>
+                        <div class="price-row">
+                            <span class="card-weight">800г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Кравц', '800 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/neapolitanskay.jpg" class="card-img" alt="Неаполитанская" onerror="this.src='https://images.unsplash.com/photo-1598023696416-0193a0bcd302?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Неаполитанская</span>
+                                <span class="price-tag">720 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Вкус Италии. Курица, ветчина и соленые огурчики для пикантности.</p>
+                        <div class="price-row">
+                            <span class="card-weight">800г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Неаполитанская', '800 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/syrny rae.jpg" class="card-img" alt="Сырный рай" onerror="this.src='https://images.unsplash.com/photo-1573821663912-569905455b1c?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Сырный рай</span>
+                                <span class="price-tag">750 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">4 сыра: моцарелла, фета, чеддер и дор блю. Мечта!</p>
+                        <div class="price-row">
+                            <span class="card-weight">700г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Сырный рай', '700 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/cezar.jpg" class="card-img" alt="Пицца Цезарь" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Пицца Цезарь</span>
+                                <span class="price-tag">750 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Любимый салат теперь на тесте. Соус цезарь в комплекте.</p>
+                        <div class="price-row">
+                            <span class="card-weight">770г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Пицца Цезарь', '770 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/dary mora.jpg" class="card-img" alt="Дары моря" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Дары моря</span>
+                                <span class="price-tag">850 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Роскошно. Креветки, лосось и устричный соус.</p>
+                        <div class="price-row">
+                            <span class="card-weight">740г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Дары моря', '740 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/c ananacom.jpg" class="card-img" alt="Пицца с ананасами" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>С ананасами</span>
+                                <span class="price-tag">850 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Спорно? Нет, вкусно! Креветки и сладкий ананас.</p>
+                        <div class="price-row">
+                            <span class="card-weight">650г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Пицца с ананасами', '650 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="https://images.unsplash.com/photo-1555072956-7758afb20e8f?q=80&w=500&auto=format&fit=crop" class="card-img" alt="Синяя груша">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Синяя груша</span>
+                                <span class="price-tag">800 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Гурманам посвящается: сладкая груша и терпкая горгонзола.</p>
+                        <div class="price-row">
+                            <span class="card-weight">680г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Синяя груша', '680 гр')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+             <div class="menu-category-title"><span>🥗 Свежие Салаты</span></div>
+
+             <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?q=80&w=500&auto=format&fit=crop" class="card-img" alt="Цезарь с курицей">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Цезарь с курицей</span>
+                                <span class="price-tag">450 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Хрустящие листья, курочка и фирменная заправка.</p>
+                        <div class="price-row">
+                            <span class="card-weight">250г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Цезарь с курицей', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=500&auto=format&fit=crop" class="card-img" alt="Цезарь с креветками">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Цезарь с креветкой</span>
+                                <span class="price-tag">550 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Морская версия любимого салата.</p>
+                        <div class="price-row">
+                            <span class="card-weight">250г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Цезарь с креветками', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="https://images.unsplash.com/photo-1543826173-70651703c5a4?q=80&w=500&auto=format&fit=crop" class="card-img" alt="Дикая утка">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Дикая утка</span>
+                                <span class="price-tag">600 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Необычно! Утиная грудка с апельсиновым соусом.</p>
+                        <div class="price-row">
+                            <span class="card-weight">250г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Дикая утка', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <div class="menu-category-title"><span>🍵 Домашние Супы</span></div>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/grib.jpg" class="card-img" alt="Грибной суп" onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Грибной крем-суп</span>
+                                <span class="price-tag">310 ₽</span>
+                            </div>
+                            <span class="expand-hint">Вкусненько ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">300мл</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Грибной крем-суп', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/tikva.jpg" class="card-img" alt="Тыквенный суп" onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Тыквенный крем-суп</span>
+                                <span class="price-tag">310 ₽</span>
+                            </div>
+                            <span class="expand-hint">Вкусненько ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">300мл</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Тыквенный крем-суп', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/brokkoli.jpg" class="card-img" alt="Брокколи суп" onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Крем-суп из брокколи</span>
+                                <span class="price-tag">310 ₽</span>
+                            </div>
+                            <span class="expand-hint">Вкусненько ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">300мл</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Крем-суп из брокколи', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+      
+            <div class="menu-category-title"><span>🍟 Похрустеть</span></div>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/fri.jpg" class="card-img" alt="Картофель Фри" onerror="this.src='https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Картофель Фри</span>
+                                <span class="price-tag">240 ₽</span>
+                            </div>
+                            <span class="expand-hint">Вкусненько ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">150г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Картофель Фри', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/adaxo.jpg" class="card-img" alt="Дольки Айдахо" onerror="this.src='https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Дольки Айдахо</span>
+                                <span class="price-tag">250 ₽</span>
+                            </div>
+                            <span class="expand-hint">Вкусненько ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">150г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Дольки Айдахо', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/krily bbq.jpg" class="card-img" alt="Крылья BBQ" onerror="this.src='https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Крылья BBQ</span>
+                                <span class="price-tag">320 ₽</span>
+                            </div>
+                            <span class="expand-hint">Вкусненько ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">250г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Крылья BBQ', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/naggetsy.jpg" class="card-img" alt="Наггетсы" onerror="this.src='https://images.unsplash.com/photo-1562967914-608f82629710?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Наггетсы</span>
+                                <span class="price-tag">290 ₽</span>
+                            </div>
+                            <span class="expand-hint">Вкусненько ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">6 шт</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Наггетсы', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/cheese.jpg" class="card-img" alt="Хот-чиз" onerror="this.src='https://images.unsplash.com/photo-1562967914-608f82629710?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Хот-чиз</span>
+                                <span class="price-tag">290 ₽</span>
+                            </div>
+                            <span class="expand-hint">Вкусненько ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">6 шт</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Хот-чиз', 'Стандарт')">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+
+            <div class="menu-category-title"><span>🎁 Выгодные Сеты</span></div>
+
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/set1.jpg" class="card-img" alt="Семейный сет" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Семейный</span>
+                                <span class="price-tag">1290 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">3 пиццы на выбор по супер цене!</p>
+                        <div class="price-row">
+                            <span class="card-weight">~2кг</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Семейный сет', 'Стандарт')">Buy!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>     
+
+        </div>
+    </section>
+
+    <section id="steps">
+        <h2 class="section-title">Всё просто!</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <h3>Выбирай</h3>
+                <p>Ткни пальчиком в то, что нравится, или спроси совет у меня!</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <h3>Оформляй</h3>
+                <p>Пару слов Тестяшке, и заказ уже летит на кухню.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <h3>Наслаждайся</h3>
+                <p>Дзынь-дзынь! Горячая коробочка уже у твоей двери.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="chat-widget-container">
+        
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="bot-avatar">👨‍🍳</div>
+                <div>
+                    <strong style="display:block; font-size: 1.1rem; font-family: var(--font-hand);">Тестяшка</strong>
+                    <div style="font-size: 0.8rem; opacity: 0.8;">Онлайн • Жду заказ</div>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chatBody">
+                </div>
+            
+            <div class="typing-indicator" id="typingIndicator">Тестяшка печатает... 🥣</div>
+
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Хочу пиццу..." autocomplete="off">
+                <button id="sendBtn">➤</button>
+            </div>
+        </div>
+
+        <div class="chat-toggle-btn" onclick="toggleChat()">
+            🤖
+        </div>
+    </div>
+
+    <footer>
+        <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
+            <span style="font-size:30px; margin-right: 10px;">🍕</span>
+            <div class="footer-logo-text">СчастьеВТесте</div>
+        </div>
+        <div class="footer-info">
+            <p>📍 г. Москва, ул. Вкусная, д. 1</p>
+            <p>📞 +7 (999) 000-00-00</p>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.6;">© 2023 Made with Love ❤️</p>
+    </footer>
+
+    <script>
+        // --- CHAT VARIABLES ---
+        const chatBody = document.getElementById('chatBody');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const chatWindow = document.getElementById('chatWindow');
+        
+        // --- DATA ---
+        let orderState = {
+            step: 0,
+            data: {}
+        };
+
+        // --- FUNCTIONS ---
+
+        // Toggle Floating Chat
+        function toggleChat() {
+            const isActive = chatWindow.classList.contains('active');
+            if (isActive) {
+                chatWindow.classList.remove('active');
+            } else {
+                chatWindow.classList.add('active');
+                setTimeout(() => chatInput.focus(), 300);
+                if(chatBody.children.length === 0) {
+                     addMessage("👋 Бон джорно! Я <b>Тестяшка</b>. 👨‍🍳 Хочешь пиццы? Нажми 'Буду!' в меню или напиши мне.", 'bot');
+                     orderState.step = 1; 
+                }
+            }
+        }
+
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.classList.add('message');
+            div.classList.add(sender === 'bot' ? 'msg-bot' : 'msg-user');
+            div.innerHTML = text;
+            chatBody.appendChild(div);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function showTyping(show) {
+            typingIndicator.style.display = show ? 'block' : 'none';
+        }
+
+        function updateQty(btn, change) {
+            const wrapper = btn.closest('.qty-control');
+            const valSpan = wrapper.querySelector('.qty-val');
+            let val = parseInt(valSpan.innerText);
+            val += change;
+            if (val < 1) val = 1;
+            valSpan.innerText = val;
+        }
+
+        // --- FAKE AI ---
+        async function askDigitalChef(userMessage) {
+            showTyping(true);
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const response = generateBotResponse(userMessage);
+                    showTyping(false);
+                    resolve(response);
+                }, 1000);
+            });
+        }
+
+        function generateBotResponse(input) {
+            const lowerInput = input.toLowerCase();
+
+            // Order Logic
+            if (orderState.step === 1) {
+                orderState.data.pizza = input;
+                orderState.step = 2;
+                return `Оки-доки! <b>${input}</b>. А какой размер? (25 см / 30 см)`;
+            }
+            if (orderState.step === 2) {
+                orderState.data.size = input;
+                orderState.step = 3;
+                return "Понял! Сколько штук?";
+            }
+            if (orderState.step === 3) {
+                orderState.data.quantity = input;
+                orderState.step = 4;
+                return "Куда повезем? (Адрес)";
+            }
+            if (orderState.step === 4) {
+                orderState.data.address = input;
+                orderState.step = 5;
+                return "Телефон для связи?";
+            }
+            if (orderState.step === 5) {
+                orderState.data.phone = input;
+                orderState.step = 0; // Reset
+                return "Заказ принят! 🎉 Курьер уже бежит!";
+            }
+            
+            return "Я пока учусь, но если выберешь пиццу в меню, я мигом оформлю! 👇";
+        }
+
+        // --- HANDLERS ---
+        async function handleUserSend() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+            addMessage(text, 'user');
+            chatInput.value = '';
+            const reply = await askDigitalChef(text);
+            addMessage(reply, 'bot');
+        }
+
+        sendBtn.addEventListener('click', handleUserSend);
+        chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleUserSend(); });
+
+        // --- ADD TO CART FUNCTION ---
+        function addToCart(btn, name, size) {
+            const qtySpan = btn.parentElement.querySelector('.qty-val');
+            const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
+
+            if (!chatWindow.classList.contains('active')) {
+                toggleChat();
+            }
+
+            const msg = `Хочу ${name}, размер ${size}, ${qty} шт.`;
+            
+            setTimeout(() => {
+                addMessage(msg, 'user');
+                orderState.data.pizza = name;
+                orderState.data.size = size;
+                orderState.data.quantity = qty;
+                orderState.step = 4; // Skip to address
+
+                showTyping(true);
+                setTimeout(() => {
+                    showTyping(false);
+                    addMessage(`Отличный выбор: <b>${name}</b>! 😋 Уже записал. <br>Напиши адрес доставки, пожалуйста:`, 'bot');
+                }, 800);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
