@@ -1555,25 +1555,26 @@
             let qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
             if (isNaN(qty) || qty < 1) qty = 1;
 
-            // Собираем все выбранные допы
-            const checkboxes = container.querySelectorAll('input[type="checkbox"]:checked');
-            const extras = [];
+            // Проверяем сырный бортик
+            const cheeseCheck = container.querySelector('input[type="checkbox"]');
+            if (cheeseCheck && cheeseCheck.checked && cheeseCheck.nextSibling && cheeseCheck.nextSibling.textContent.includes('Сырный')) {
+                finalName += " (🧀)";
+                finalPrice += 150;
+            }
             
-            checkboxes.forEach(cb => {
-                const label = cb.closest('label');
-                if (label) {
-                    const text = label.textContent.trim();
-                    // Извлекаем название и цену из текста типа "🧀 Сырный бортик (+150₽)"
-                    const match = text.match(/([^(]+)\s*\(\+(\d+)/);
-                    if (match) {
-                        const extraName = match[1].trim();
-                        const extraPrice = parseInt(match[2]);
-                        extras.push({ name: extraName, price: extraPrice });
-                        finalName += " (" + extraName.split(' ')[0] + ")";
-                        finalPrice += extraPrice;
-                    }
-                }
-            });
+            // Проверяем двойную начинку
+            const doubleCheck = container.querySelectorAll('input[type="checkbox"]')[1];
+            if (doubleCheck && doubleCheck.checked) {
+                finalName += " (🍕)";
+                finalPrice += 200;
+            }
+            
+            // Проверяем острый соус
+            const spicyCheck = container.querySelectorAll('input[type="checkbox"]')[2];
+            if (spicyCheck && spicyCheck.checked) {
+                finalName += " (🌶️)";
+                finalPrice += 50;
+            }
 
             const existing = cart.find(i => i.name === finalName);
             if (existing) {
