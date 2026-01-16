@@ -310,6 +310,32 @@
             font-style: italic;
         }
 
+        /* EXTRA OPTION STYLES */
+        .extra-option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fdfdfd;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .extra-option-label:hover {
+            background: #FFF9E5;
+            border-color: var(--accent);
+        }
+        .extra-option-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
         /* CONTROLS */
         .price-row {
             display: flex;
@@ -369,7 +395,7 @@
             transform: scale(1.05);
         }
         
-        /* Style for "Remove" state of button */
+        /* Remove state style */
         .btn-order-item.is-remove {
             background: #e0e0e0;
             color: #666;
@@ -635,6 +661,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Классика! Сочный томатный соус, много моцареллы и щепотка любви (базилик).</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">600г</span>
                             <div class="qty-control">
@@ -662,6 +694,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Овощной взрыв: томаты, грибочки, перчик, лук и маслины. Полезно и вкусно!</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">720г</span>
                             <div class="qty-control">
@@ -689,6 +727,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Для любителей "тихой охоты". Свежие шампиньоны, домашний соус и сыррр.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">700г</span>
                             <div class="qty-control">
@@ -716,6 +760,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Сытно! Фарш, охотничьи колбаски и соленые огурчики. Мужской выбор.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">700г</span>
                             <div class="qty-control">
@@ -743,6 +793,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Копченая курочка, грибы и томаты. Просто пальчики оближешь!</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">720г</span>
                             <div class="qty-control">
@@ -770,6 +826,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Изысканно: секретный соус, прошутто и благородный пармезан.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">650г</span>
                             <div class="qty-control">
@@ -797,6 +859,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Старая добрая классика. Ветчина, грибы и маслинки.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">700г</span>
                             <div class="qty-control">
@@ -824,6 +892,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">С дымком! Копченая курица, грудинка и много соуса барбекю.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">720г</span>
                             <div class="qty-control">
@@ -851,6 +925,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Остренько! Пеперони и халапеньо согреют в любую погоду.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">730г</span>
                             <div class="qty-control">
@@ -878,6 +958,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Много мяса не бывает! Ветчина, сервелат, грудинка. Ух!</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">790г</span>
                             <div class="qty-control">
@@ -905,6 +991,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Для большого аппетита. Грудинка, грибы и острый соус.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">750г</span>
                             <div class="qty-control">
@@ -932,6 +1024,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Нежный сливочный соус и пряные охотничьи колбаски.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">710г</span>
                             <div class="qty-control">
@@ -959,6 +1057,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Как паста, только пицца! Грудинка, яйцо и пармезан.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">680г</span>
                             <div class="qty-control">
@@ -986,6 +1090,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Богатый состав: сервелат, курица, грибы и овощи на сливочной основе.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">800г</span>
                             <div class="qty-control">
@@ -1013,6 +1123,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Вкус Италии. Курица, ветчина и соленые огурчики для пикантности.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">800г</span>
                             <div class="qty-control">
@@ -1040,6 +1156,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">4 сыра: моцарелла, фета, чеддер и дор блю. Мечта!</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">700г</span>
                             <div class="qty-control">
@@ -1067,6 +1189,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Любимый салат теперь на тесте. Соус цезарь в комплекте.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">770г</span>
                             <div class="qty-control">
@@ -1094,6 +1222,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Роскошно. Креветки, лосось и устричный соус.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">740г</span>
                             <div class="qty-control">
@@ -1121,6 +1255,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Спорно? Нет, вкусно! Креветки и сладкий ананас.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">650г</span>
                             <div class="qty-control">
@@ -1148,6 +1288,12 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Гурманам посвящается: сладкая груша и терпкая горгонзола.</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check">
+                            🧀 Сырный бортик (+150₽)
+                        </label>
+
                         <div class="price-row">
                             <span class="card-weight">680г</span>
                             <div class="qty-control">
@@ -1556,10 +1702,13 @@
         const typingIndicator = document.getElementById('typingIndicator');
         const chatWindow = document.getElementById('chatWindow');
         
+        // --- WEBHOOK (MAKE.COM) ---
+        const MAKE_WEBHOOK_URL = 'https://hook.make.com/ВАШ_ДЛИННЫЙ_КОД_СЮДА'; 
+
         // --- GLOBAL STATE ---
         let orderState = {
             step: 0,
-            cart: [], // Stores current items
+            cart: [],
             data: {}
         };
 
@@ -1573,7 +1722,7 @@
                 chatWindow.classList.add('active');
                 setTimeout(() => chatInput.focus(), 300);
                 if(chatBody.children.length === 0) {
-                     addMessage("👋 Бон джорно! Я <b>Тестяшка</b>. 👨‍🍳 Хочешь пиццы? Нажми 'Буду!' в меню или напиши мне.", 'bot');
+                     addMessage("👋 Бон джорно! Я <b>Тестяшка</b>. 👨‍🍳 Хочешь пиццы? Нажми 'Буду!' в меню.", 'bot');
                      orderState.step = 1; 
                 }
             }
@@ -1597,12 +1746,9 @@
             const valSpan = wrapper.querySelector('.qty-val');
             let val = parseInt(valSpan.innerText);
             val += change;
-            
-            // Allow going down to 0
-            if (val < 0) val = 0; 
+            if (val < 0) val = 0; // Разрешаем 0 для удаления
             valSpan.innerText = val;
 
-            // Update Add Button Text
             const container = btn.closest('.details-content');
             const orderBtn = container.querySelector('.btn-order-item');
             
@@ -1615,9 +1761,63 @@
             }
         }
 
-        // --- FAKE AI ---
+        // --- SEND TO MAKE ---
+        async function sendOrderToMake() {
+            const payload = {
+                customer: {
+                    address: orderState.data.address,
+                    phone: orderState.data.phone
+                },
+                cart: orderState.cart,
+                totalPrice: orderState.cart.reduce((sum, item) => sum + item.itemTotal, 0),
+                date: new Date().toLocaleString("ru-RU")
+            };
+
+            try {
+                if (MAKE_WEBHOOK_URL.includes('ВАШ_ДЛИННЫЙ_КОД')) {
+                    console.log("Тестовый режим (Webhook не настроен):", payload);
+                    return true; 
+                }
+
+                const response = await fetch(MAKE_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) return true;
+                else return false;
+
+            } catch (error) {
+                console.error("Ошибка отправки:", error);
+                return false;
+            }
+        }
+
+        // --- BOT LOGIC ---
         async function askDigitalChef(userMessage) {
             showTyping(true);
+            
+            if (orderState.step === 5) {
+                orderState.data.phone = userMessage; 
+                const success = await sendOrderToMake();
+                
+                showTyping(false);
+                
+                if (success) {
+                    let total = 0;
+                    orderState.cart.forEach(item => total += item.itemTotal);
+                    const reply = `✅ <b>Заказ успешно отправлен!</b><br>
+                                   Сумма к оплате: <b>${total} ₽</b><br>
+                                   Скоро позвоним! 📞`;
+                    orderState.step = 0;
+                    orderState.cart = [];
+                    return reply;
+                } else {
+                    return "Ой, ошибка соединения! 😢 Позвоните нам.";
+                }
+            }
+
             return new Promise((resolve) => {
                 setTimeout(() => {
                     const response = generateBotResponse(userMessage);
@@ -1628,28 +1828,14 @@
         }
 
         function generateBotResponse(input) {
-            const lowerInput = input.toLowerCase();
-
-            if (orderState.step === 4) { // Address input
+            if (orderState.step === 4) { 
                 orderState.data.address = input;
                 orderState.step = 5;
-                return "Телефон для связи?";
+                return "Отлично! 🏠 Теперь напиши свой <b>номер телефона</b>:";
             }
-            if (orderState.step === 5) { // Phone input
-                orderState.data.phone = input;
-                orderState.step = 0; // Reset
-                
-                let summary = "Заказ принят! 🎉<br><b>Состав:</b><br>";
-                let total = 0;
-                orderState.cart.forEach(item => {
-                    summary += `- ${item.name} (${item.qty} шт) - ${item.itemTotal}₽<br>`;
-                    total += item.itemTotal;
-                });
-                summary += `<br><b>ИТОГО: ${total} ₽</b><br>Курьер уже бежит! 🏎️`;
-                orderState.cart = [];
-                return summary;
+            if (orderState.step === 0 && orderState.cart.length === 0) {
+                 return "Корзина пуста. Выбери что-нибудь вкусное в меню! 🍕";
             }
-            
             return "Я пока учусь, но если выберешь пиццу в меню, я мигом оформлю! 👇";
         }
 
@@ -1665,91 +1851,87 @@
         sendBtn.addEventListener('click', handleUserSend);
         chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleUserSend(); });
 
-        // --- HELPER TO GENERATE RECEIPT ---
+        // --- CART HELPER ---
         function generateCartMessage() {
-            if (orderState.cart.length === 0) {
-                return "Корзина пуста 🗑️. Выбери что-нибудь вкусненькое!";
-            }
-
+            if (orderState.cart.length === 0) return "Корзина пуста 🗑️.";
             let total = 0;
             let listHtml = "";
-            
             orderState.cart.forEach((item, index) => {
                 listHtml += `${index + 1}. ${item.name} x ${item.qty} = ${item.itemTotal}₽<br>`;
                 total += item.itemTotal;
             });
-
-            return `Корзина обновлена! 🛒<br>
-                    ----------------------<br>
-                    ${listHtml}
-                    ----------------------<br>
-                    <b>ИТОГО: ${total} ₽</b><br>
-                    👇 Напиши адрес, если готов заказать!`;
+            return `Корзина: 🛒<br>----------------------<br>${listHtml}----------------------<br><b>ИТОГО: ${total} ₽</b><br>👇 Напиши адрес доставки, если всё верно!`;
         }
 
-        // --- ADD TO CART FUNCTION (SYNC LOGIC) ---
+        // --- ADD TO CART FUNCTION (STRICT LOGIC) ---
         function addToCart(btn, name, size) {
-            const qtySpan = btn.parentElement.querySelector('.qty-val');
-            const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
+            const container = btn.closest('.details-content');
+            const qtySpan = container.querySelector('.qty-val');
+            const qty = parseInt(qtySpan.innerText);
 
-            if (!chatWindow.classList.contains('active')) {
-                toggleChat();
+            // 1. Формируем ПОЛНОЕ имя с учетом опций
+            const cheeseCheck = container.querySelector('.extra-cheese-check');
+            const hasCheese = cheeseCheck && cheeseCheck.checked;
+            
+            let finalName = name;
+            let extraCost = 0;
+            
+            if (hasCheese) {
+                finalName += " (🧀 бортик)";
+                extraCost = 150;
             }
 
-            // --- REMOVE LOGIC ---
+            // 2. Считаем цену
+            const card = btn.closest('.pizza-item'); 
+            const priceText = card.querySelector('.price-tag').innerText; 
+            const basePrice = parseInt(priceText.replace(/\D/g, ''));
+            const finalPrice = basePrice + extraCost;
+            const itemTotal = finalPrice * qty;
+
+            if (!chatWindow.classList.contains('active')) toggleChat();
+
+            // --- УДАЛЕНИЕ (Строгое соответствие имени) ---
             if (qty === 0) {
-                // Find and remove item
-                const index = orderState.cart.findIndex(item => item.name === name);
+                // Ищем ТОЧНОЕ совпадение имени (с бортиком или без)
+                const index = orderState.cart.findIndex(item => item.name === finalName);
+                
                 if (index > -1) {
-                    orderState.cart.splice(index, 1); // Remove item from array
-                    addMessage(`Убрал <b>${name}</b> из заказа.`, 'user');
-                    
+                    orderState.cart.splice(index, 1);
+                    addMessage(`Убрал <b>${finalName}</b>.`, 'user');
                     showTyping(true);
-                    setTimeout(() => {
-                        showTyping(false);
-                        addMessage(generateCartMessage(), 'bot');
-                    }, 600);
+                    setTimeout(() => { showTyping(false); addMessage(generateCartMessage(), 'bot'); }, 600);
                 } else {
-                    addMessage("Этого и так нет в корзине! 😅", 'bot');
+                    addMessage(`В корзине нет "<b>${finalName}</b>" 🤷‍♂️`, 'bot');
                 }
                 return;
             }
 
-            // --- ADD/UPDATE LOGIC ---
-            // 1. Get Price
-            const card = btn.closest('.pizza-item'); 
-            const priceText = card.querySelector('.price-tag').innerText; 
-            const price = parseInt(priceText.replace(/\D/g, ''));
-            const itemTotal = price * qty;
+            // --- ДОБАВЛЕНИЕ / ОБНОВЛЕНИЕ ---
+            // Ищем товар с ТАКИМ ЖЕ полным именем
+            let existingItemIndex = orderState.cart.findIndex(item => item.name === finalName);
 
-            // 2. SYNC LOGIC: Check if item exists
-            let existingItem = orderState.cart.find(item => item.name === name);
-
-            if (existingItem) {
-                // UPDATE existing item (Sync)
-                existingItem.qty = qty; // Set to new qty from card
-                existingItem.itemTotal = itemTotal;
+            if (existingItemIndex > -1) {
+                // Если такой же товар уже есть — обновляем количество
+                orderState.cart[existingItemIndex].qty = qty;
+                orderState.cart[existingItemIndex].itemTotal = itemTotal;
+                addMessage(`Обновил: <b>${finalName}</b> -> ${qty} шт.`, 'user');
             } else {
-                // ADD new item
-                orderState.cart.push({
-                    name: name,
-                    size: size,
-                    price: price,
-                    qty: qty,
-                    itemTotal: itemTotal
+                // Если такого сочетания нет — добавляем новой строкой
+                orderState.cart.push({ 
+                    name: finalName, 
+                    size: size, 
+                    price: finalPrice, 
+                    qty: qty, 
+                    itemTotal: itemTotal 
                 });
+                addMessage(`Хочу <b>${finalName}</b>, ${qty} шт.`, 'user');
             }
-
-            // User message logic
-            const userAction = existingItem ? `Обновил: ${name} -> ${qty} шт.` : `Хочу ${name}, ${qty} шт.`;
-            addMessage(userAction, 'user');
             
-            orderState.step = 4; // Ready for address
+            orderState.step = 4; 
 
             showTyping(true);
             setTimeout(() => {
                 showTyping(false);
-                // 3. Show full receipt
                 addMessage(generateCartMessage(), 'bot');
             }, 600);
         }
