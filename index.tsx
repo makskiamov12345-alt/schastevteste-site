@@ -137,9 +137,15 @@
         }
 
         .menu-container {
-            max-width: 1200px; margin: 0 auto; padding: 0 20px 60px;
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; alignItems: start;
-        }
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px 60px;
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 35px; 
+    align-items: start;  /* ← Исправлен дефис */
+    grid-auto-rows: min-content;  /* ⭐ ДОБАВЬТЕ */
+}
 
         /* --- CARD STYLE --- */
         .pizza-item {
@@ -1508,4 +1514,5 @@
     </script>
 </body>
 </html>
+
 
