@@ -1555,15 +1555,25 @@
             let qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
             if (isNaN(qty) || qty < 1) qty = 1;
 
-            const checkbox = container.querySelector('.extra-cheese-check');
+            // Собираем все выбранные допы
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]:checked');
+            const extras = [];
             
-            let finalName  = name;
-            let finalPrice = basePrice;
-
-            if (checkbox && checkbox.checked) {
-                finalName  += " (🧀 борт)";
-                finalPrice += 150;
-            }
+            checkboxes.forEach(cb => {
+                const label = cb.closest('label');
+                if (label) {
+                    const text = label.textContent.trim();
+                    // Извлекаем название и цену из текста типа "🧀 Сырный бортик (+150₽)"
+                    const match = text.match(/([^(]+)\s*\(\+(\d+)/);
+                    if (match) {
+                        const extraName = match[1].trim();
+                        const extraPrice = parseInt(match[2]);
+                        extras.push({ name: extraName, price: extraPrice });
+                        finalName += " (" + extraName.split(' ')[0] + ")";
+                        finalPrice += extraPrice;
+                    }
+                }
+            });
 
             const existing = cart.find(i => i.name === finalName);
             if (existing) {
