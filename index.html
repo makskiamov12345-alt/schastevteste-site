@@ -1175,29 +1175,175 @@
 
             <div id="cat-sets" class="menu-category-title"><span>🎁 Выгодные Сеты</span></div>
 
-            <article class="pizza-item">
-                <details>
-                    <summary class="card-header">
-                        <img src="images/set1.jpg" class="card-img" alt="Семейный сет">
-                        <div class="card-body-preview">
-                            <div class="card-title"><span>Семейный</span><span class="price-tag">1290 ₽</span></div>
-                            <span class="expand-hint">Узнать состав ✨</span>
-                        </div>
-                    </summary>
-                    <div class="details-content">
-                        <p class="ingredients">3 пиццы на выбор по супер цене!</p>
-                        <div class="price-row">
-                            <span class="card-weight">~2кг</span>
-                            <div class="qty-control">
-                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
-                                <span class="qty-val">1</span>
-                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
-                            </div>
-                            <button class="btn-order-item" onclick="addToCart(this, 'Семейный сет', 1290)">Буду!</button>
-                        </div>
-                    </div>
-                </details>
-            </article>     
+            <!-- Замените существующий блок с одним сетом на эти 7 карточек -->
+
+<article class="pizza-item">
+    <details>
+        <summary class="card-header">
+            <img src="images/set1.jpg" class="card-img" alt="Пивной сет">
+            <div class="card-body-preview">
+                <div class="card-title"><span>Пивной сет</span><span class="price-tag">1 100 ₽</span></div>
+                <span class="expand-hint">👇 Подробнее</span>
+            </div>
+        </summary>
+        <div class="details-content">
+            <p class="ingredients">Идеальный набор для вечеринки с друзьями! Картофель фри, наггетсы, луковые кольца, Хот-Чиз, крылья BBQ.</p>
+            <div class="price-row">
+                <span class="card-weight">920 г</span>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">−</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="updateQty(this, +1)">+</button>
+                </div>
+                <button class="btn-order-item" onclick="addToCart(this, 'Пивной сет', 1100)">Буду!</button>
+            </div>
+        </div>
+    </details>
+</article>
+
+<article class="pizza-item">
+    <details>
+        <summary class="card-header">
+            <img src="images/set2.jpg" class="card-img" alt="Комбо №1">
+            <div class="card-body-preview">
+                <div class="card-title"><span>Комбо №1</span><span class="price-tag">1 250 ₽</span></div>
+                <span class="expand-hint">👇 Подробнее</span>
+            </div>
+        </summary>
+        <div class="details-content">
+            <p class="ingredients">Классика с пиццей и прохладным напитком. Пицца "Фрай-чикен", пицца "Ветчина Грибы", лимонад 1 л (на выбор).</p>
+            <div class="price-row">
+                <span class="card-weight">1.5 кг</span>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">−</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="updateQty(this, +1)">+</button>
+                </div>
+                <button class="btn-order-item" onclick="addToCart(this, 'Комбо №1', 1250)">Буду!</button>
+            </div>
+        </div>
+    </details>
+</article>
+
+<article class="pizza-item">
+    <details>
+        <summary class="card-header">
+            <img src="images/set3.jpg" class="card-img" alt="Комбо №2">
+            <div class="card-body-preview">
+                <div class="card-title"><span>Комбо №2</span><span class="price-tag">1 600 ₽</span></div>
+                <span class="expand-hint">👇 Подробнее</span>
+            </div>
+        </summary>
+        <div class="details-content">
+            <p class="ingredients">Мясное удовольствие с гарниром для всей семьи. Пицца "Биф мясо", пицца "Мясная капелла", наггетсы, картофель фри.</p>
+            <div class="price-row">
+                <span class="card-weight">1.9 кг</span>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">−</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="updateQty(this, +1)">+</button>
+                </div>
+                <button class="btn-order-item" onclick="addToCart(this, 'Комбо №2', 1600)">Буду!</button>
+            </div>
+        </div>
+    </details>
+</article>
+
+<article class="pizza-item">
+    <details>
+        <summary class="card-header">
+            <img src="images/set4.jpg" class="card-img" alt="Комбо №3">
+            <div class="card-body-preview">
+                <div class="card-title"><span>Комбо №3</span><span class="price-tag">1 590 ₽</span></div>
+                <span class="expand-hint">👇 Подробнее</span>
+            </div>
+        </summary>
+        <div class="details-content">
+            <p class="ingredients">Ассорти из пицц для любителей разнообразия. Пицца "BBQ", пицца "ВитаМин", пицца "Кравц".</p>
+            <div class="price-row">
+                <span class="card-weight">2.2 кг</span>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">−</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="updateQty(this, +1)">+</button>
+                </div>
+                <button class="btn-order-item" onclick="addToCart(this, 'Комбо №3', 1590)">Буду!</button>
+            </div>
+        </div>
+    </details>
+</article>
+
+<article class="pizza-item">
+    <details>
+        <summary class="card-header">
+            <img src="images/set5.jpg" class="card-img" alt="Комбо №4">
+            <div class="card-body-preview">
+                <div class="card-title"><span>Комбо №4</span><span class="price-tag">1 690 ₽</span></div>
+                <span class="expand-hint">👇 Подробнее</span>
+            </div>
+        </summary>
+        <div class="details-content">
+            <p class="ingredients">Сытное комбо с пиццами и напитком для компании. Пицца "Карбонара", пицца "Цезарь", картошка фри 2 шт, лимонад 1 л (на выбор).</p>
+            <div class="price-row">
+                <span class="card-weight">1.8 кг</span>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">−</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="updateQty(this, +1)">+</button>
+                </div>
+                <button class="btn-order-item" onclick="addToCart(this, 'Комбо №4', 1690)">Буду!</button>
+            </div>
+        </div>
+    </details>
+</article>
+
+<article class="pizza-item">
+    <details>
+        <summary class="card-header">
+            <img src="images/set6.jpg" class="card-img" alt="Детский бокс №1">
+            <div class="card-body-preview">
+                <div class="card-title"><span>Детский бокс №1</span><span class="price-tag">550 ₽</span></div>
+                <span class="expand-hint">👇 Подробнее</span>
+            </div>
+        </summary>
+        <div class="details-content">
+            <p class="ingredients">Легкий и вкусный перекус для детей. Картофель фри, наггетсы, соус (на выбор), сок 0.2 л.</p>
+            <div class="price-row">
+                <span class="card-weight">360 г</span>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">−</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="updateQty(this, +1)">+</button>
+                </div>
+                <button class="btn-order-item" onclick="addToCart(this, 'Детский бокс №1', 550)">Буду!</button>
+            </div>
+        </div>
+    </details>
+</article>
+
+<article class="pizza-item">
+    <details>
+        <summary class="card-header">
+            <img src="images/set7.jpg" class="card-img" alt="Детский бокс №2">
+            <div class="card-body-preview">
+                <div class="card-title"><span>Детский бокс №2</span><span class="price-tag">800 ₽</span></div>
+                <span class="expand-hint">👇 Подробнее</span>
+            </div>
+        </summary>
+        <div class="details-content">
+            <p class="ingredients">Набор для маленьких гурманов. Хот-Чиз, картошка фри, наггетсы, соус (на выбор), сок 0.2 л.</p>
+            <div class="price-row">
+                <span class="card-weight">520 г</span>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">−</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="updateQty(this, +1)">+</button>
+                </div>
+                <button class="btn-order-item" onclick="addToCart(this, 'Детский бокс №2', 800)">Буду!</button>
+            </div>
+        </div>
+    </details>
+</article>
 
         </div>
     </section>
