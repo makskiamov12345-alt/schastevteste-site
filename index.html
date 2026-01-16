@@ -9,150 +9,222 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
     
     <style>
-        /* --- VARIABLES --- */
+        /* --- WARM & COZY VARIABLES --- */
         :root {
             --primary: #FF5252;
-            --primary-hover: #ff3b3b;
+            --primary-hover: #FF7675;     
             --accent: #FFD166;
             --bg-color: #FFFDF5;
+            --card-bg: #FFFFFF;
             --text-main: #4A4A4A;
+            --text-light: #8D8D8D;
+            --font-main: 'Nunito', sans-serif;
+            --font-hand: 'Pacifico', cursive;
+            
+            --shadow-cozy: 0 8px 20px rgba(255, 82, 82, 0.08);
+            --shadow-float: 0 15px 30px rgba(255, 165, 2, 0.15);
             --radius: 24px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Nunito', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.5; }
-        button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(#FFD166 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
         img { max-width: 100%; display: block; object-fit: cover; }
+        button { font-family: var(--font-main); cursor: pointer; border: none; outline: none; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* --- HEADER --- */
         header {
-            background: rgba(255,255,255,0.98); padding: 15px 5%; position: sticky; top: 0; z-index: 100;
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-bottom: 3px solid var(--accent);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(219, 186, 142, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--accent);
+            border-radius: 0 0 20px 20px;
         }
-        .logo-text { font-family: 'Pacifico', cursive; font-size: 1.5rem; line-height: 1; }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img { height: 60px; width: auto; }
+        .logo-text { font-family: var(--font-hand); font-size: 1.5rem; color: var(--text-main); line-height: 1; }
+
         .btn-chat-small {
-            background: var(--accent); color: var(--text-main); padding: 8px 20px;
-            border-radius: 50px; font-weight: 800; font-size: 0.9rem; border: 2px solid white;
-            box-shadow: 0 4px 10px rgba(255, 209, 102, 0.4); transition: 0.3s;
+            background: var(--accent); color: var(--text-main); padding: 10px 24px;
+            border-radius: 50px; font-weight: 800; font-size: 0.95rem; border: 2px solid white;
+            box-shadow: 0 4px 10px rgba(255, 209, 102, 0.4); transition: all 0.3s;
         }
-        .btn-chat-small:hover { background: #ffe08a; transform: scale(1.05); }
+        .btn-chat-small:hover { transform: scale(1.05); background: #FFDD85; }
 
         /* --- HERO --- */
         .hero {
-            text-align: center; padding: 100px 20px;
-            background: linear-gradient(rgba(255,126,95,0.6), rgba(254,180,123,0.6)), url('images/zastavka.jpg') center/cover;
+            text-align: center; padding: 120px 20px 80px;
+            background: linear-gradient(rgba(255, 126, 95, 0.6), rgba(254, 180, 123, 0.6)), url('images/zastavka.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
             color: white; border-radius: 0 0 50px 50px; margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        .hero h1 { font-family: 'Pacifico', cursive; font-size: 2.5rem; text-shadow: 2px 2px 0 rgba(0,0,0,0.2); margin-bottom: 15px; }
-        .btn-hero {
-            background: var(--primary); color: white; padding: 15px 40px; border-radius: 50px;
-            font-size: 1.1rem; font-weight: 800; border: 4px solid rgba(255,255,255,0.3); transition: 0.3s;
-        }
-        .btn-hero:hover { transform: translateY(-3px); background: var(--primary-hover); }
-
-        /* --- MENU LAYOUT --- */
-        .menu-container {
-            max-width: 1200px; margin: 0 auto; padding: 0 20px 60px;
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;
-            align-items: start; /* Fixes layout shifts */
-        }
-        .section-title { 
-            grid-column: 1 / -1; text-align: center; font-family: 'Pacifico', cursive; 
-            font-size: 2.2rem; margin: 40px 0 20px; position: relative; z-index: 1;
-        }
-        .category-separator {
-            grid-column: 1 / -1; font-weight: 800; font-size: 1.5rem; color: var(--primary);
-            margin: 30px 0 10px; display: flex; align-items: center; gap: 10px;
-        }
-        .category-separator::after { content: ''; flex: 1; height: 3px; background: #eee; border-radius: 5px; }
-
-        /* --- CARD STYLE --- */
-        .pizza-item {
-            background: white; border-radius: var(--radius); overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05); transition: 0.3s;
-            display: flex; flex-direction: column; height: 100%;
-        }
-        .pizza-item:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border: 1px solid var(--accent); }
+        .hero h1 { font-family: var(--font-hand); font-size: 3rem; margin-bottom: 15px; text-shadow: 2px 4px 0px rgba(0,0,0,0.2); animation: float 6s ease-in-out infinite; line-height: 1.2; }
         
-        .card-img { 
-            height: 180px; width: 100%; object-fit: cover; 
+        .btn-main {
+            display: inline-block; background: var(--primary); color: white; padding: 15px 40px;
+            border-radius: 50px; font-size: 1.1rem; font-weight: 800; border: 4px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 20px rgba(255, 82, 82, 0.4); transition: all 0.3s;
+        }
+        .btn-main:hover { transform: translateY(-5px) scale(1.05); background: var(--primary-hover); }
+
+        /* --- MENU --- */
+        .section-title {
+            text-align: center; color: var(--text-main); font-family: var(--font-hand);
+            font-weight: 400; font-size: 2.8rem; margin: 60px 0 20px; text-shadow: 2px 2px 0px #fff;
+        }
+        
+        .menu-category-title {
+            grid-column: 1 / -1; font-family: var(--font-main); font-weight: 800; color: var(--primary);
+            font-size: 1.8rem; margin: 50px 0 30px; text-align: center;
+            display: flex; align-items: center; justify-content: center; gap: 15px;
+        }
+        .menu-category-title::before, .menu-category-title::after {
+            content: ''; display: block; width: 50px; height: 4px; background: var(--accent); border-radius: 10px;
+        }
+
+        .menu-container {
+            max-width: 1200px; margin: 0 auto; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; alignItems: start;
+        }
+
+        /* --- ORIGINAL CARD STYLE --- */
+        .pizza-item {
+            background: var(--card-bg); border-radius: var(--radius);
+            box-shadow: var(--shadow-cozy); overflow: hidden; transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+        .pizza-item:hover { transform: translateY(-8px); box-shadow: var(--shadow-float); border-color: var(--accent); }
+
+        details > summary { list-style: none; cursor: pointer; outline: none; }
+        details > summary::-webkit-details-marker { display: none; }
+
+        .card-img {
+            width: 100%; height: 220px; object-fit: cover;
+            border-radius: 0 0 20px 20px; margin-bottom: -20px; position: relative; z-index: 1;
             transition: transform 0.5s ease;
         }
-        /* Zoom effect on desktop */
         @media(min-width: 992px) { .pizza-item:hover .card-img { transform: scale(1.05); } }
 
-        .card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; position: relative; z-index: 2; background: white; }
-        .card-title { font-weight: 800; font-size: 1.1rem; display: flex; justify-content: space-between; margin-bottom: 5px; line-height: 1.2; }
-        .price-badge { background: #eee; padding: 2px 10px; border-radius: 20px; font-size: 0.9rem; white-space: nowrap; }
-        .ingredients { font-size: 0.85rem; color: #666; margin-bottom: 15px; flex: 1; }
-        
-        .extra-option {
-            background: #fafafa; padding: 8px 12px; border-radius: 10px; margin-bottom: 15px;
-            display: flex; align-items: center; gap: 8px; font-size: 0.85rem; cursor: pointer; border: 1px solid #eee;
+        .card-body-preview {
+            padding: 30px 20px 10px; position: relative; z-index: 2;
+            background: var(--card-bg); border-radius: 20px 20px 0 0;
         }
-        .extra-option:hover { background: #FFF9E5; border-color: var(--accent); }
-        .extra-option input { width: 16px; height: 16px; accent-color: var(--primary); }
 
-        .btn-add {
-            background: var(--text-main); color: white; width: 100%; padding: 12px;
-            border-radius: 15px; font-weight: 700; transition: 0.2s; font-size: 0.95rem;
+        .card-title {
+            font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main);
+            display: flex; justify-content: space-between; align-items: flex-start; line-height: 1.2;
         }
-        .btn-add:hover { background: var(--primary); }
-        .btn-add:active { transform: scale(0.98); }
 
-        /* --- FLOATING WIDGET --- */
-        .chat-widget {
-            position: fixed; bottom: 30px; right: 30px; z-index: 2000;
-            display: flex; flex-direction: column; align-items: flex-end;
+        .price-tag {
+            font-size: 0.9rem; color: white; background: var(--text-light);
+            padding: 4px 10px; border-radius: 20px; white-space: nowrap; margin-left: 10px;
         }
-        
+
+        .expand-hint {
+            font-size: 0.9rem; color: var(--primary); font-weight: 700;
+            margin-top: 10px; display: inline-block; border-bottom: 2px dotted var(--primary);
+        }
+
+        .details-content { padding: 0 20px 25px; animation: slideDown 0.4s ease; }
+
+        .ingredients { font-size: 0.9rem; margin-bottom: 15px; line-height: 1.4; color: #666; font-style: italic; }
+
+        /* Controls inside Details */
+        .price-row {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #FFF9E5; margin: 0 -20px -25px; padding: 15px 20px;
+            border-top: 2px dashed #FFE082; gap: 10px;
+        }
+
+        .card-weight { font-size: 1.1rem; color: var(--primary); font-weight: 700; }
+
+        .btn-order-item {
+            background: var(--text-main); color: white; padding: 10px 20px; border-radius: 50px;
+            font-weight: 700; font-size: 0.95rem; transition: 0.3s;
+        }
+        .btn-order-item:hover { background: var(--primary); transform: scale(1.05); }
+
+        /* Checkbox Style */
+        .extra-option-label {
+            display: flex; align-items: center; gap: 8px; font-size: 0.9rem; 
+            margin-bottom: 15px; padding: 8px; border: 1px solid #eee; border-radius: 10px; cursor: pointer;
+        }
+        .extra-option-label:hover { background: #fafafa; }
+        .extra-option-label input { width: 16px; height: 16px; accent-color: var(--primary); }
+
+        /* --- WIDGET STYLES --- */
+        .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; }
         .chat-btn {
             width: 65px; height: 65px; background: var(--primary); color: white;
-            border-radius: 50%; font-size: 28px; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 25px rgba(255,82,82,0.4); transition: 0.3s; border: 4px solid white; cursor: pointer;
+            border-radius: 50%; font-size: 30px; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 25px rgba(255,82,82,0.4); border: 4px solid white; transition: 0.3s;
         }
         .chat-btn:hover { transform: scale(1.1) rotate(10deg); }
-        
+
         .chat-window {
-            width: 340px; height: 500px; background: white; border-radius: 25px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25); margin-bottom: 20px;
-            display: none; flex-direction: column; overflow: hidden; border: 4px solid var(--accent);
-            animation: slideInUp 0.3s ease;
+            width: 350px; height: 500px; background: white; border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2); margin-bottom: 20px; display: none;
+            flex-direction: column; overflow: hidden; border: 4px solid var(--accent);
         }
         .chat-window.active { display: flex; }
-        @keyframes slideInUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        /* CHAT SCREENS */
+        /* VIEW: CHAT */
+        #viewChat { display: flex; flex-direction: column; height: 100%; }
         .chat-header { background: var(--accent); padding: 15px; display: flex; align-items: center; gap: 10px; }
         .chat-messages { flex: 1; padding: 15px; overflow-y: auto; background: #fafafa; }
-        
-        .message { 
-            background: white; padding: 10px 15px; border-radius: 15px; margin-bottom: 10px; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); font-size: 0.9rem; max-width: 85%;
-        }
-        .msg-bot { border-bottom-left-radius: 2px; border: 1px solid #eee; }
-        .msg-user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 2px; margin-left: auto; }
+        .message { background: white; padding: 10px 15px; border-radius: 15px; margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); max-width: 85%; font-size: 0.9rem; }
+        .msg-bot { border-bottom-left-radius: 2px; }
+        .msg-user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .chat-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; }
+        #chatInput { flex: 1; padding: 10px; border-radius: 20px; border: 1px solid #ddd; }
 
-        .chat-input-area { padding: 12px; border-top: 1px solid #eee; display: flex; gap: 8px; background: white; }
-        .chat-input-area button { background: var(--accent); width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
-        #chatInput { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 0 15px; font-size: 0.9rem; }
-
-        /* CART SCREEN INSIDE WIDGET */
-        .cart-view { display: none; flex-direction: column; height: 100%; background: white; }
-        .cart-view.active { display: flex; }
-        
+        /* VIEW: CART */
+        #viewCart { display: none; flex-direction: column; height: 100%; }
         .cart-items-list { flex: 1; overflow-y: auto; padding: 15px; }
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
         .cart-controls { display: flex; align-items: center; gap: 8px; }
-        .btn-mini { width: 24px; height: 24px; background: #eee; border-radius: 50%; font-weight: 700; display: flex; justify-content: center; align-items: center; }
-        
-        .cart-footer { padding: 15px; border-top: 1px solid #eee; background: #fffcf5; }
+        .btn-mini { width: 24px; height: 24px; background: #eee; border-radius: 50%; font-weight: bold; display: flex; align-items: center; justify-content: center; }
+        .cart-footer { padding: 15px; background: #fdfdfd; border-top: 1px solid #eee; }
         .btn-checkout { width: 100%; background: var(--primary); color: white; padding: 12px; border-radius: 15px; font-weight: 700; }
 
-        @media(max-width:480px) {
-            .chat-window { width: 90vw; height: 65vh; position: fixed; bottom: 100px; right: 5vw; }
-        }
+        @media(max-width:480px) { .chat-window { width: 90vw; height: 70vh; right: 5vw; } }
     </style>
 </head>
 <body>
@@ -165,7 +237,7 @@
     <section class="hero">
         <div style="position: relative; z-index: 2;">
             <h1>Как у итальянской мамы,<br>только никуда не надо ехать!</h1>
-            <button class="btn-hero" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Хочу кушать!</button>
+            <button class="btn-main" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Хочу кушать!</button>
         </div>
     </section>
 
@@ -173,137 +245,229 @@
         <h2 class="section-title">Наши вкусняшки</h2>
         <div class="menu-container">
 
-            <div class="category-separator">🍕 Горячая Пицца</div>
+            <div class="menu-category-title"><span>🍕 Горячая Пицца</span></div>
 
             <article class="pizza-item">
-                <img src="images/margarita.jpg" class="card-img" alt="Маргарита">
-                <div class="card-body">
-                    <div class="card-title">Маргарита <span class="price-badge">490 ₽</span></div>
-                    <p class="ingredients">Классика! Сочный томатный соус, много моцареллы и щепотка любви.</p>
-                    <label class="extra-option"><input type="checkbox"> 🧀 Сырный бортик (+150₽)</label>
-                    <button class="btn-add" onclick="addToCart(this, 'Маргарита', 490)">В корзину</button>
-                </div>
+                <details>
+                    <summary class="card-header">
+                       <img src="images/margarita.jpg" class="card-img" alt="Маргарита">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Маргарита</span>
+                                <span class="price-tag">490 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Классика! Сочный томатный соус, много моцареллы и щепотка любви (базилик).</p>
+                        
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                        </label>
+
+                        <div class="price-row">
+                            <span class="card-weight">600г</span>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Маргарита', 490)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
             </article>
 
             <article class="pizza-item">
-                <img src="images/vitamin.jpg" class="card-img" alt="Витамин">
-                <div class="card-body">
-                    <div class="card-title">Витамин <span class="price-badge">560 ₽</span></div>
-                    <p class="ingredients">Овощной взрыв: томаты, грибочки, перчик, лук и маслины.</p>
-                    <label class="extra-option"><input type="checkbox"> 🧀 Сырный бортик (+150₽)</label>
-                    <button class="btn-add" onclick="addToCart(this, 'Витамин', 560)">В корзину</button>
-                </div>
+                <details>
+                    <summary class="card-header">
+                       <img src="images/vitamin.jpg" class="card-img" alt="Витамин">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Витамин</span>
+                                <span class="price-tag">560 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Овощной взрыв: томаты, грибочки, перчик, лук и маслины.</p>
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                        </label>
+                        <div class="price-row">
+                            <span class="card-weight">720г</span>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Витамин', 560)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
             </article>
 
             <article class="pizza-item">
-                <img src="images/vetchina grib.jpg" class="card-img" alt="Грибная">
-                <div class="card-body">
-                    <div class="card-title">Грибная <span class="price-badge">620 ₽</span></div>
-                    <p class="ingredients">Свежие шампиньоны, домашний соус и много сыра.</p>
-                    <label class="extra-option"><input type="checkbox"> 🧀 Сырный бортик (+150₽)</label>
-                    <button class="btn-add" onclick="addToCart(this, 'Грибная', 620)">В корзину</button>
-                </div>
+                <details>
+                    <summary class="card-header">
+                       <img src="images/vetchina grib.jpg" class="card-img" alt="Грибная">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Грибная</span>
+                                <span class="price-tag">620 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Для любителей "тихой охоты". Свежие шампиньоны, домашний соус и сыр.</p>
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                        </label>
+                        <div class="price-row">
+                            <span class="card-weight">700г</span>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Грибная', 620)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
             </article>
 
             <article class="pizza-item">
-                <img src="images/i3pizz.jpg" class="card-img" alt="i3Пицц">
-                <div class="card-body">
-                    <div class="card-title">i3Пицц <span class="price-badge">650 ₽</span></div>
-                    <p class="ingredients">Фарш, охотничьи колбаски и соленые огурчики.</p>
-                    <label class="extra-option"><input type="checkbox"> 🧀 Сырный бортик (+150₽)</label>
-                    <button class="btn-add" onclick="addToCart(this, 'i3Пицц', 650)">В корзину</button>
-                </div>
+                <details>
+                    <summary class="card-header">
+                       <img src="images/i3pizz.jpg" class="card-img" alt="i3Пицц">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>i3Пицц</span>
+                                <span class="price-tag">650 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Сытно! Фарш, охотничьи колбаски и соленые огурчики.</p>
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                        </label>
+                        <div class="price-row">
+                            <span class="card-weight">700г</span>
+                            <button class="btn-order-item" onclick="addToCart(this, 'i3Пицц', 650)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
             </article>
 
             <article class="pizza-item">
-                <img src="images/fray chiken.jpg" class="card-img" alt="Фрай-чикен">
-                <div class="card-body">
-                    <div class="card-title">Фрай-чикен <span class="price-badge">670 ₽</span></div>
-                    <p class="ingredients">Копченая курочка, грибы и томаты.</p>
-                    <label class="extra-option"><input type="checkbox"> 🧀 Сырный бортик (+150₽)</label>
-                    <button class="btn-add" onclick="addToCart(this, 'Фрай-чикен', 670)">В корзину</button>
-                </div>
+                <details>
+                    <summary class="card-header">
+                       <img src="images/fray chiken.jpg" class="card-img" alt="Фрай-чикен">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Фрай-чикен</span>
+                                <span class="price-tag">670 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Копченая курочка, грибы и томаты.</p>
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                        </label>
+                        <div class="price-row">
+                            <span class="card-weight">720г</span>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Фрай-чикен', 670)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
             </article>
 
             <article class="pizza-item">
-                <img src="images/peperony.jpg" class="card-img" alt="Пеперони">
-                <div class="card-body">
-                    <div class="card-title">Пеперони <span class="price-badge">690 ₽</span></div>
-                    <p class="ingredients">Остренько! Пеперони и халапеньо.</p>
-                    <label class="extra-option"><input type="checkbox"> 🧀 Сырный бортик (+150₽)</label>
-                    <button class="btn-add" onclick="addToCart(this, 'Пеперони', 690)">В корзину</button>
-                </div>
+                <details>
+                    <summary class="card-header">
+                       <img src="images/peperony.jpg" class="card-img" alt="Пеперони">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Пеперони</span>
+                                <span class="price-tag">690 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Остренько! Пеперони и халапеньо согреют в любую погоду.</p>
+                        <label class="extra-option-label">
+                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                        </label>
+                        <div class="price-row">
+                            <span class="card-weight">730г</span>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Пеперони', 690)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
             </article>
 
-            <div class="category-separator">🥗 Салаты</div>
+            <div class="menu-category-title"><span>🥗 Салаты</span></div>
 
             <article class="pizza-item">
-                <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?q=80&w=500" class="card-img" alt="Цезарь">
-                <div class="card-body">
-                    <div class="card-title">Цезарь с курицей <span class="price-badge">450 ₽</span></div>
-                    <p class="ingredients">Листья, курочка, пармезан, сухарики.</p>
-                    <button class="btn-add" onclick="addToCart(this, 'Цезарь с курицей', 450)">В корзину</button>
-                </div>
+                <details>
+                    <summary class="card-header">
+                       <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?q=80&w=500" class="card-img" alt="Цезарь">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Цезарь с курицей</span>
+                                <span class="price-tag">450 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Листья салата, нежная курочка, пармезан и сухарики.</p>
+                        <div class="price-row">
+                            <span class="card-weight">250г</span>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Цезарь с курицей', 450)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
             </article>
 
+            <div class="menu-category-title"><span>🍟 Закуски</span></div>
+
             <article class="pizza-item">
-                <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=500" class="card-img" alt="Цезарь с креветками">
-                <div class="card-body">
-                    <div class="card-title">Цезарь с креветкой <span class="price-badge">550 ₽</span></div>
-                    <p class="ingredients">Морская версия классического салата.</p>
-                    <button class="btn-add" onclick="addToCart(this, 'Цезарь с креветкой', 550)">В корзину</button>
-                </div>
+                <details>
+                    <summary class="card-header">
+                       <img src="images/fri.jpg" class="card-img" alt="Фри">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Картофель Фри</span>
+                                <span class="price-tag">240 ₽</span>
+                            </div>
+                            <span class="expand-hint">Вкусненько ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">150г</span>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Картофель Фри', 240)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
             </article>
 
-            <div class="category-separator">🍵 Супы</div>
+            <div class="menu-category-title"><span>🎁 Сеты</span></div>
 
             <article class="pizza-item">
-                <img src="images/grib.jpg" class="card-img" alt="Грибной">
-                <div class="card-body">
-                    <div class="card-title">Грибной крем-суп <span class="price-badge">310 ₽</span></div>
-                    <p class="ingredients">Нежный сливочный суп из шампиньонов.</p>
-                    <button class="btn-add" onclick="addToCart(this, 'Грибной суп', 310)">В корзину</button>
-                </div>
-            </article>
-
-            <article class="pizza-item">
-                <img src="images/tikva.jpg" class="card-img" alt="Тыквенный">
-                <div class="card-body">
-                    <div class="card-title">Тыквенный суп <span class="price-badge">310 ₽</span></div>
-                    <p class="ingredients">Сладкая тыква, сливки и семечки.</p>
-                    <button class="btn-add" onclick="addToCart(this, 'Тыквенный суп', 310)">В корзину</button>
-                </div>
-            </article>
-
-            <div class="category-separator">🍟 Закуски</div>
-
-            <article class="pizza-item">
-                <img src="images/fri.jpg" class="card-img" alt="Фри">
-                <div class="card-body">
-                    <div class="card-title">Картофель Фри <span class="price-badge">240 ₽</span></div>
-                    <p class="ingredients">Хрустящий и горячий.</p>
-                    <button class="btn-add" onclick="addToCart(this, 'Картофель Фри', 240)">В корзину</button>
-                </div>
-            </article>
-
-            <article class="pizza-item">
-                <img src="images/naggetsy.jpg" class="card-img" alt="Наггетсы">
-                <div class="card-body">
-                    <div class="card-title">Наггетсы <span class="price-badge">290 ₽</span></div>
-                    <p class="ingredients">6 кусочков сочной курочки.</p>
-                    <button class="btn-add" onclick="addToCart(this, 'Наггетсы', 290)">В корзину</button>
-                </div>
-            </article>
-
-            <div class="category-separator">🎁 Сеты</div>
-
-            <article class="pizza-item">
-                <img src="images/set1.jpg" class="card-img" alt="Сет">
-                <div class="card-body">
-                    <div class="card-title">Семейный сет <span class="price-badge">1290 ₽</span></div>
-                    <p class="ingredients">3 пиццы по супер цене!</p>
-                    <button class="btn-add" onclick="addToCart(this, 'Семейный сет', 1290)">В корзину</button>
-                </div>
+                <details>
+                    <summary class="card-header">
+                       <img src="images/set1.jpg" class="card-img" alt="Сет">
+                        <div class="card-body-preview">
+                            <div class="card-title">
+                                <span>Семейный сет</span>
+                                <span class="price-tag">1290 ₽</span>
+                            </div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">3 пиццы на выбор по супер цене! Выгодно для большой компании.</p>
+                        <div class="price-row">
+                            <span class="card-weight">~2кг</span>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Семейный сет', 1290)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
             </article>
 
         </div>
@@ -312,11 +476,11 @@
     <div class="chat-widget">
         <div class="chat-window" id="chatWindow">
             
-            <div id="viewChat" style="display: flex; flex-direction: column; height: 100%;">
+            <div id="viewChat">
                 <div class="chat-header">
                     <div style="background:white; border-radius:50%; width:35px; height:35px; display:flex; align-items:center; justify-content:center;">👨‍🍳</div>
-                    <div style="flex:1;"><b>Тестяшка</b><br><small>Онлайн</small></div>
-                    <button onclick="switchView('cart')" style="background: white; padding: 5px 12px; border-radius: 15px; font-size:0.85rem; font-weight:700;">🛒 Корзина</button>
+                    <div style="flex:1"><b>Тестяшка</b><br><small>Онлайн</small></div>
+                    <button onclick="switchView('cart')" style="background:white; padding:5px 12px; border-radius:15px; font-weight:700; font-size:0.8rem;">🛒 Корзина</button>
                 </div>
                 <div class="chat-messages" id="chatBody"></div>
                 <div class="chat-input-area">
@@ -325,13 +489,12 @@
                 </div>
             </div>
 
-            <div id="viewCart" class="cart-view">
+            <div id="viewCart">
                 <div class="chat-header" style="background: #fff; border-bottom:1px solid #eee;">
                     <div style="font-weight:800; font-size:1.1rem;">Ваш заказ</div>
                     <button onclick="switchView('chat')" style="margin-left:auto; font-size:1.5rem; color:#999;">×</button>
                 </div>
-                <div class="cart-items-list" id="cartList">
-                    </div>
+                <div class="cart-items-list" id="cartList"></div>
                 <div class="cart-footer">
                     <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-weight:800; font-size:1.1rem;">
                         <span>Итого:</span>
@@ -346,14 +509,12 @@
     </div>
 
     <script>
-        // --- DATA ---
+        // DATA
         let cart = [];
-        let orderStep = 0; // 0=Idle, 1=Address, 2=Phone
-        
-        // ВСТАВЬТЕ СЮДА ВАШ WEBHOOK ОТ MAKE:
+        let orderStep = 0;
         const MAKE_WEBHOOK = 'https://hook.make.com/YOUR_WEBHOOK_CODE_HERE';
 
-        // --- DOM ELEMENTS ---
+        // DOM
         const chatWindow = document.getElementById('chatWindow');
         const viewChat = document.getElementById('viewChat');
         const viewCart = document.getElementById('viewCart');
@@ -362,11 +523,11 @@
         const cartTotalSpan = document.getElementById('cartTotal');
         const headerCount = document.getElementById('headerCartCount');
 
-        // --- INIT ---
+        // FUNCTIONS
         function toggleWidget() {
             chatWindow.classList.toggle('active');
             if(chatWindow.classList.contains('active') && chatBody.children.length === 0) {
-                botSay("Привет! 👋 Я Тестяшка. Добавляй вкусняшки в меню, а здесь мы оформим заказ.");
+                botSay("Привет! 👋 Я Тестяшка. Добавляй вкусняшки в меню (кнопка 'Буду!'), а здесь мы оформим заказ.");
             }
         }
 
@@ -391,22 +552,20 @@
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        // --- CORE CART LOGIC ---
-        function addToCart(btn, name, price) {
-            // Check checkbox for extra cheese
-            const card = btn.closest('.card-body');
-            const checkbox = card.querySelector('input[type="checkbox"]');
+        function addToCart(btn, name, basePrice) {
+            // Find checkbox context (inside details)
+            const content = btn.closest('.details-content');
+            const checkbox = content.querySelector('.extra-cheese-check');
             
             let finalName = name;
-            let finalPrice = price;
+            let finalPrice = basePrice;
 
             if(checkbox && checkbox.checked) {
-                finalName += " (🧀 бортик)";
+                finalName += " (🧀 борт)";
                 finalPrice += 150;
             }
 
-            // Add logic
-            const existing = cart.find(item => item.name === finalName);
+            const existing = cart.find(i => i.name === finalName);
             if(existing) {
                 existing.qty++;
             } else {
@@ -416,20 +575,18 @@
             // Visual feedback
             const originalText = btn.innerText;
             btn.innerText = "Добавлено! ✔";
-            btn.style.background = "#4CAF50";
+            btn.style.backgroundColor = "#4CAF50";
+            updateHeaderCount();
+
             setTimeout(() => {
                 btn.innerText = originalText;
-                btn.style.background = "";
+                btn.style.backgroundColor = "";
             }, 1000);
-
-            updateHeaderCount();
-            
-            // If chat is open, show notification bubble? No, simpler to just update cart badge.
         }
 
         function updateHeaderCount() {
-            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-            headerCount.innerText = `(${totalQty})`;
+            const total = cart.reduce((a,b) => a + b.qty, 0);
+            headerCount.innerText = `(${total})`;
         }
 
         function renderCart() {
@@ -437,7 +594,7 @@
             let total = 0;
 
             if(cart.length === 0) {
-                cartList.innerHTML = "<div style='text-align:center; color:#ccc; margin-top:50px;'>Корзина пуста 🕸️<br>Добавьте что-нибудь из меню!</div>";
+                cartList.innerHTML = "<div style='text-align:center; color:#ccc; margin-top:50px;'>Корзина пуста 🕸️</div>";
                 cartTotalSpan.innerText = "0 ₽";
                 return;
             }
@@ -467,12 +624,8 @@
             updateHeaderCount();
         }
 
-        // --- CHECKOUT PROCESS ---
         function startCheckout() {
-            if(cart.length === 0) {
-                alert("Корзина пуста!");
-                return;
-            }
+            if(cart.length === 0) { alert("Корзина пуста!"); return; }
             switchView('chat');
             orderStep = 1;
             botSay("Отлично! 😋 Сформировал заказ. <br><b>Напишите адрес доставки:</b>");
@@ -493,39 +646,23 @@
             } 
             else if (orderStep === 2) {
                 window.phone = text;
-                orderStep = 0; // Reset state
-                botSay("⏳ Секунду, передаю заказ на кухню...");
+                orderStep = 0;
+                botSay("⏳ Отправляю заказ...");
 
-                // Prepare Data
                 const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-                const payload = {
-                    cart: cart,
-                    address: window.address,
-                    phone: window.phone,
-                    total: total
-                };
+                const payload = { cart, address: window.address, phone: window.phone, total };
 
-                // SEND TO MAKE (Uncomment when ready)
                 try {
-                    // await fetch(MAKE_WEBHOOK, {
-                    //    method: 'POST',
-                    //    headers: {'Content-Type': 'application/json'},
-                    //    body: JSON.stringify(payload)
-                    // });
-                    
+                    // await fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
                     setTimeout(() => {
                         botSay(`✅ <b>Заказ принят!</b><br>Сумма: ${total} ₽<br>Менеджер скоро позвонит.`);
-                        // Clear cart
                         cart = [];
                         updateHeaderCount();
-                    }, 1500);
-                } catch(e) {
-                    botSay("Ошибка соединения. Позвоните нам!");
-                }
+                    }, 1000);
+                } catch(e) { botSay("Ошибка сети"); }
             } 
             else {
-                // General chat
-                setTimeout(() => botSay("Я пока понимаю только заказы через корзину 🛒"), 600);
+                setTimeout(() => botSay("Я понимаю только заказы через корзину 🛒"), 500);
             }
         }
     </script>
