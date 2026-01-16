@@ -241,6 +241,24 @@
 
         @media(max-width:480px) { .chat-window { width: 90vw; height: 70vh; right: 5vw; } }
 
+        /* --- EXTRA OPTIONS --- */
+        .extra-options-block {
+            background: #FFF9E5;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #FFE082;
+        }
+        .extra-options-title {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         /* --- FOOTER --- */
         footer {
             background: rgba(255, 255, 255, 0.95);
@@ -297,9 +315,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Классика! Сочный томатный соус, много моцареллы и щепотка любви.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">600г</span>
                             <div class="qty-control">
@@ -327,9 +354,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Овощной взрыв: томаты, грибочки, перчик, лук и маслины.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">720г</span>
                             <div class="qty-control">
@@ -357,9 +393,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Свежие шампиньоны, домашний соус и сыр.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">700г</span>
                             <div class="qty-control">
@@ -387,9 +432,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Сытно! Фарш, охотничьи колбаски и соленые огурчики.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">700г</span>
                             <div class="qty-control">
@@ -417,9 +471,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Копченая курочка, грибы и томаты.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">720г</span>
                             <div class="qty-control">
@@ -447,9 +510,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Изысканно: секретный соус, прошутто и благородный пармезан.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">650г</span>
                             <div class="qty-control">
@@ -477,9 +549,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Старая добрая классика. Ветчина, грибы и маслинки.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">700г</span>
                             <div class="qty-control">
@@ -507,9 +588,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">С дымком! Копченая курица, грудинка и много соуса барбекю.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">720г</span>
                             <div class="qty-control">
@@ -537,9 +627,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Остренько! Пеперони и халапеньо согреют в любую погоду.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">730г</span>
                             <div class="qty-control">
@@ -567,9 +666,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Много мяса не бывает! Ветчина, сервелат, грудинка. Ух!</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">790г</span>
                             <div class="qty-control">
@@ -597,9 +705,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Для большого аппетита. Грудинка, грибы и острый соус.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">750г</span>
                             <div class="qty-control">
@@ -627,9 +744,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Нежный сливочный соус и пряные охотничьи колбаски.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">710г</span>
                             <div class="qty-control">
@@ -657,9 +783,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Как паста, только пицца! Грудинка, яйцо и пармезан.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">680г</span>
                             <div class="qty-control">
@@ -687,9 +822,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Богатый состав: сервелат, курица, грибы и овощи.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">800г</span>
                             <div class="qty-control">
@@ -717,9 +861,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Вкус Италии. Курица, ветчина и соленые огурчики.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">800г</span>
                             <div class="qty-control">
@@ -747,9 +900,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">4 сыра: моцарелла, фета, чеддер и дор блю.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">700г</span>
                             <div class="qty-control">
@@ -777,9 +939,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Любимый салат теперь на тесте. Соус цезарь в комплекте.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">770г</span>
                             <div class="qty-control">
@@ -807,9 +978,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Роскошно. Креветки, лосось и устричный соус.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">740г</span>
                             <div class="qty-control">
@@ -837,9 +1017,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Спорно? Нет, вкусно! Креветки и сладкий ананас.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">650г</span>
                             <div class="qty-control">
@@ -867,9 +1056,18 @@
                     </summary>
                     <div class="details-content">
                         <p class="ingredients">Гурманам посвящается: сладкая груша и терпкая горгонзола.</p>
-                        <label class="extra-option-label">
-                            <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
-                        </label>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)
+                            </label>
+                            <label class="extra-option-label">
+                                <input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)
+                            </label>
+                        </div>
                         <div class="price-row">
                             <span class="card-weight">680г</span>
                             <div class="qty-control">
