@@ -121,43 +121,49 @@
         }
         .btn-main:hover { transform: translateY(-5px) scale(1.05); background: var(--primary-hover); }
 
-        /* --- MENU --- */
-        .section-title {
-            text-align: center; color: var(--text-main); font-family: var(--font-hand);
-            font-weight: 400; font-size: 2.8rem; margin: 40px 0 20px; text-shadow: 2px 2px 0px #fff;
-        }
-        
-        .menu-category-title {
-            grid-column: 1 / -1; font-family: var(--font-main); font-weight: 800; color: var(--primary);
-            font-size: 1.8rem; margin: 40px 0 20px; text-align: center;
-            display: flex; align-items: center; justify-content: center; gap: 15px; scroll-margin-top: 150px;
-        }
-        .menu-category-title::before, .menu-category-title::after {
-            content: ''; display: block; width: 50px; height: 4px; background: var(--accent); border-radius: 10px;
-        }
-
-        .menu-container {
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px 60px;
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-    gap: 35px; 
-    align-items: start;  /* ← Исправлен дефис */
-    grid-auto-rows: min-content;  /* ⭐ ДОБАВЬТЕ */
+       /* --- MENU --- */
+.section-title {
+    text-align: center; color: var(--text-main); font-family: var(--font-hand);
+    font-weight: 400; font-size: 2.8rem; margin: 40px 0 20px; text-shadow: 2px 2px 0px #fff;
 }
 
-        /* --- CARD STYLE --- */
-        .pizza-item {
-            background: var(--card-bg); border-radius: var(--radius);
-            box-shadow: var(--shadow-cozy); overflow: hidden; transition: all 0.4s ease;
-            border: 2px solid transparent;
-            align-self: start;
-        }
-        .pizza-item:hover { transform: translateY(-8px); box-shadow: var(--shadow-float); border-color: var(--accent); }
+.menu-category-title {
+    grid-column: 1 / -1; font-family: var(--font-main); font-weight: 800; color: var(--primary);
+    font-size: 1.8rem; margin: 40px 0 20px; text-align: center;
+    display: flex; align-items: center; justify-content: center; gap: 15px; scroll-margin-top: 150px;
+}
+.menu-category-title::before, .menu-category-title::after {
+    content: ''; display: block; width: 50px; height: 4px; background: var(--accent); border-radius: 10px;
+}
 
-        details > summary { list-style: none; cursor: pointer; outline: none; }
-        details > summary::-webkit-details-marker { display: none; }
+.menu-container {
+    max-width: 1200px; margin: 0 auto; padding: 0 20px 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 35px;
+    align-items: start;          /* фикс: было alignItems */
+    grid-auto-rows: min-content; /* чтобы строка подстраивалась под контент */
+}
+
+/* --- CARD STYLE --- */
+.pizza-item {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-cozy);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    align-self: start;  /* чтобы каждая карточка не тянулась за соседями */
+}
+
+.pizza-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-float);
+    border-color: var(--accent);
+}
+
+details > summary { list-style: none; cursor: pointer; outline: none; }
+details > summary::-webkit-details-marker { display: none; }
 
         .card-img {
             width: 100%; height: 220px; object-fit: cover;
@@ -1514,5 +1520,6 @@
     </script>
 </body>
 </html>
+
 
 
