@@ -69,6 +69,7 @@
             align-items: center;
             gap: 15px;
             text-decoration: none;
+            max-width: 60%; /* Ограничиваем ширину логотипа, чтобы не давил на кнопку */
         }
 
         .logo-img { height: 60px; width: auto; }
@@ -78,6 +79,7 @@
             background: var(--accent); color: var(--text-main); padding: 8px 20px;
             border-radius: 50px; font-weight: 800; font-size: 0.9rem; border: 2px solid white;
             box-shadow: 0 4px 10px rgba(255, 209, 102, 0.4); transition: all 0.3s;
+            white-space: nowrap; /* Чтобы текст в кнопке не переносился */
         }
         .btn-chat-small:hover { transform: scale(1.05); background: #FFDD85; }
 
@@ -266,7 +268,25 @@
         .btn-checkout { width: 100%; background: var(--primary); color: white; padding: 12px; border-radius: 15px; font-weight: 700; }
         .btn-clear { display: block; width: 100%; text-align: center; margin-top: 10px; color: #999; font-size: 0.85rem; text-decoration: underline; background: none; border: none; }
 
-        @media(max-width:480px) { .chat-window { width: 90vw; height: 70vh; right: 5vw; } }
+        /* --- MOBILE FIXES --- */
+        @media(max-width:480px) {
+            header {
+                padding: 10px 15px; /* Уменьшенные отступы в шапке */
+            }
+            .logo-text {
+                font-size: 1.2rem; /* Чуть меньше текст логотипа */
+            }
+            .logo-img {
+                height: 40px; /* Логотип поменьше */
+            }
+            .btn-chat-small {
+                padding: 6px 12px; /* Компактная кнопка */
+                font-size: 0.8rem;
+            }
+            .chat-window {
+                width: 90vw; height: 70vh; right: 5vw;
+            }
+        }
 
         /* --- FOOTER --- */
         footer {
@@ -1484,6 +1504,7 @@
             const qtySpan = container.querySelector('.qty-val');
             const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
 
+            // Find checkbox context (inside details)
             let finalName = name;
             let finalPrice = basePrice;
             
@@ -1519,11 +1540,10 @@
                 renderCart();
             }
 
-            // Reset checkboxes
+            // Reset UI
             const checkboxes = container.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(cb => cb.checked = false);
 
-            // Visual feedback
             const originalText = btn.innerText;
             btn.innerText = "Готово! ✔";
             btn.style.backgroundColor = "#4CAF50";
