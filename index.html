@@ -163,7 +163,6 @@
         }
 
         .details-content { padding: 0 20px 25px; animation: slideDown 0.4s ease; }
-
         .ingredients { font-size: 0.9rem; margin-bottom: 15px; line-height: 1.4; color: #666; font-style: italic; }
 
         /* Controls inside Details */
@@ -288,13 +287,14 @@
         <button class="btn-chat-small" onclick="toggleWidget()">🛒 Корзина <span id="headerCartCount">(0)</span></button>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
         <div style="position: relative; z-index: 2;">
             <h1>Как у итальянской мамы,<br>только никуда не надо ехать!</h1>
             <button class="btn-main" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Хочу кушать!</button>
         </div>
     </section>
-
+    
     <section id="menu">
         <h2 class="section-title">Наши вкусняшки</h2>
         <div class="menu-container">
@@ -1429,8 +1429,7 @@
                     <div style="font-weight:800; font-size:1.1rem;">Ваш заказ</div>
                     <button onclick="switchView('chat')" style="margin-left:auto; font-size:1.5rem; color:#999;">×</button>
                 </div>
-                <div class="cart-items-list" id="cartList">
-                    </div>
+                <div class="cart-items-list" id="cartList"></div>
                 <div class="cart-footer">
                     <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-weight:800; font-size:1.1rem;">
                         <span>Итого:</span>
@@ -1464,23 +1463,23 @@
 
         // DOM
         const chatWindow = document.getElementById('chatWindow');
-        const viewChat = document.getElementById('viewChat');
-        const viewCart = document.getElementById('viewCart');
-        const chatBody = document.getElementById('chatBody');
-        const cartList = document.getElementById('cartList');
+        const viewChat   = document.getElementById('viewChat');
+        const viewCart   = document.getElementById('viewCart');
+        const chatBody   = document.getElementById('chatBody');
+        const cartList   = document.getElementById('cartList');
         const cartTotalSpan = document.getElementById('cartTotal');
-        const headerCount = document.getElementById('headerCartCount');
+        const headerCount   = document.getElementById('headerCartCount');
 
         // FUNCTIONS
         function toggleWidget() {
             chatWindow.classList.toggle('active');
-            if(chatWindow.classList.contains('active') && chatBody.children.length === 0) {
+            if (chatWindow.classList.contains('active') && chatBody.children.length === 0) {
                 botSay("Привет! 👋 Я Тестяшка. Добавляй вкусняшки в меню (кнопка 'Буду!'), а здесь мы оформим заказ.");
             }
         }
 
         function switchView(viewName) {
-            if(viewName === 'cart') {
+            if (viewName === 'cart') {
                 viewChat.style.display = 'none';
                 viewCart.style.display = 'flex';
                 renderCart();
@@ -1504,40 +1503,47 @@
             const wrapper = btn.closest('.qty-control');
             const valSpan = wrapper.querySelector('.qty-val');
             let val = parseInt(valSpan.innerText);
+            if (isNaN(val)) val = 1;
             val += change;
             if (val < 1) val = 1;
             valSpan.innerText = val;
         }
 
         function addToCart(btn, name, basePrice) {
-            // Find qty context
             const container = btn.closest('.details-content');
-            const qtySpan = container.querySelector('.qty-val');
-            const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
+            if (!container) return;
 
-            // Find checkbox context (inside details)
+            const qtySpan = container.querySelector('.qty-val');
+            let qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
+            if (isNaN(qty) || qty < 1) qty = 1;
+
             const checkbox = container.querySelector('.extra-cheese-check');
             
-            let finalName = name;
+            let finalName  = name;
             let finalPrice = basePrice;
 
-            if(checkbox && checkbox.checked) {
-                finalName += " (🧀 борт)";
+            if (checkbox && checkbox.checked) {
+                finalName  += " (🧀 борт)";
                 finalPrice += 150;
             }
 
             const existing = cart.find(i => i.name === finalName);
-            if(existing) {
+            if (existing) {
                 existing.qty += qty;
             } else {
                 cart.push({ name: finalName, price: finalPrice, qty: qty });
             }
 
-            // Visual feedback
+            updateHeaderCount();
+
+            // если корзина открыта — сразу перерисовываем
+            if (viewCart.style.display === 'flex') {
+                renderCart();
+            }
+
             const originalText = btn.innerText;
             btn.innerText = "Готово! ✔";
             btn.style.backgroundColor = "#4CAF50";
-            updateHeaderCount();
 
             setTimeout(() => {
                 btn.innerText = originalText;
@@ -1546,47 +1552,47 @@
         }
 
         function updateHeaderCount() {
-            const total = cart.reduce((a,b) => a + b.qty, 0);
+            const total = cart.reduce((a, b) => a + b.qty, 0);
             headerCount.innerText = `(${total})`;
         }
 
         function renderCart() {
-            cartList.innerHTML = "";
-            let total = 0;
-
-            if(cart.length === 0) {
+            if (cart.length === 0) {
                 cartList.innerHTML = "<div style='text-align:center; color:#ccc; margin-top:50px;'>Корзина пуста 🕸️</div>";
                 cartTotalSpan.innerText = "0 ₽";
                 return;
             }
 
-            cart.forEach((item, index) => {
+            let total = 0;
+            const rows = cart.map((item, index) => {
                 total += item.price * item.qty;
-                cartList.innerHTML += `
-                <div class="cart-item-row">
-                    <div style="flex:1;">
-                        <div style="font-weight:700; font-size:0.9rem;">${item.name}</div>
-                        <div style="color:#888; font-size:0.8rem;">${item.price} ₽</div>
-                    </div>
-                    <div class="cart-controls">
-                        <button class="btn-mini" onclick="changeQty(${index}, -1)">-</button>
-                        <span style="font-weight:700; min-width:20px; text-align:center;">${item.qty}</span>
-                        <button class="btn-mini" onclick="changeQty(${index}, 1)">+</button>
-                    </div>
-                </div>`;
+                return `
+                    <div class="cart-item-row">
+                        <div style="flex:1;">
+                            <div style="font-weight:700; font-size:0.9rem;">${item.name}</div>
+                            <div style="color:#888; font-size:0.8rem;">${item.price} ₽</div>
+                        </div>
+                        <div class="cart-controls">
+                            <button class="btn-mini" onclick="changeQty(${index}, -1)">-</button>
+                            <span style="font-weight:700; min-width:20px; text-align:center;">${item.qty}</span>
+                            <button class="btn-mini" onclick="changeQty(${index}, 1)">+</button>
+                        </div>
+                    </div>`;
             });
+
+            cartList.innerHTML = rows.join('');
             cartTotalSpan.innerText = total + " ₽";
         }
 
         function changeQty(index, delta) {
             cart[index].qty += delta;
-            if(cart[index].qty <= 0) cart.splice(index, 1);
+            if (cart[index].qty <= 0) cart.splice(index, 1);
             renderCart();
             updateHeaderCount();
         }
 
         function startCheckout() {
-            if(cart.length === 0) { alert("Корзина пуста!"); return; }
+            if (cart.length === 0) { alert("Корзина пуста!"); return; }
             switchView('chat');
             orderStep = 1;
             botSay("Отлично! 😋 Сформировал заказ. <br><b>Напишите адрес доставки:</b>");
@@ -1595,12 +1601,12 @@
         async function handleUserSend() {
             const input = document.getElementById('chatInput');
             const text = input.value.trim();
-            if(!text) return;
+            if (!text) return;
 
             userSay(text);
             input.value = '';
 
-            if(orderStep === 1) {
+            if (orderStep === 1) {
                 window.address = text;
                 orderStep = 2;
                 setTimeout(() => botSay("Принято. Теперь <b>номер телефона</b> для связи:"), 500);
@@ -1620,7 +1626,9 @@
                         cart = [];
                         updateHeaderCount();
                     }, 1000);
-                } catch(e) { botSay("Ошибка сети"); }
+                } catch(e) { 
+                    botSay("Ошибка сети"); 
+                }
             } 
             else {
                 setTimeout(() => botSay("Я понимаю только заказы через корзину 🛒"), 500);
