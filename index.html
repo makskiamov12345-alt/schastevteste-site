@@ -69,7 +69,6 @@
             align-items: center;
             gap: 15px;
             text-decoration: none;
-            max-width: 60%; /* Ограничиваем ширину логотипа, чтобы не давил на кнопку */
         }
 
         .logo-img { height: 60px; width: auto; }
@@ -79,7 +78,6 @@
             background: var(--accent); color: var(--text-main); padding: 8px 20px;
             border-radius: 50px; font-weight: 800; font-size: 0.9rem; border: 2px solid white;
             box-shadow: 0 4px 10px rgba(255, 209, 102, 0.4); transition: all 0.3s;
-            white-space: nowrap; /* Чтобы текст в кнопке не переносился */
         }
         .btn-chat-small:hover { transform: scale(1.05); background: #FFDD85; }
 
@@ -158,11 +156,18 @@
         details > summary { list-style: none; cursor: pointer; outline: none; }
         details > summary::-webkit-details-marker { display: none; }
 
+        /* --- YOUR CUSTOM IMAGE STYLE RESTORED --- */
         .card-img {
-            width: 100%; height: 220px; object-fit: cover;
-            border-radius: 0 0 20px 20px; margin-bottom: -20px; position: relative; z-index: 1;
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            object-fit: cover;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: -20px;
+            position: relative;
+            z-index: 1;
             transition: transform 0.5s ease;
         }
+
         @media(min-width: 992px) { .pizza-item:hover .card-img { transform: scale(1.05); } }
 
         .card-body-preview {
