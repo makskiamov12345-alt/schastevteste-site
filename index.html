@@ -44,11 +44,6 @@
         button { font-family: var(--font-main); cursor: pointer; border: none; outline: none; }
 
         /* --- ANIMATIONS --- */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -97,7 +92,7 @@
             padding: 10px 0; overflow-x: auto; white-space: nowrap;
             display: flex; gap: 10px; justify-content: center;
             border-bottom: 1px solid rgba(0,0,0,0.05);
-            -ms-overflow-style: none; scrollbar-width: none; /* Hide scrollbar */
+            -ms-overflow-style: none; scrollbar-width: none;
         }
         .sticky-nav::-webkit-scrollbar { display: none; }
         
@@ -116,7 +111,7 @@
             color: white; border-radius: 0 0 50px 50px; margin-bottom: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        .hero h1 { font-family: var(--font-hand); font-size: 3rem; margin-bottom: 15px; text-shadow: 2px 4px 0px rgba(0,0,0,0.2); animation: float 6s ease-in-out infinite; line-height: 1.2; }
+        .hero h1 { font-family: var(--font-hand); font-size: 3rem; margin-bottom: 15px; text-shadow: 2px 4px 0px rgba(0,0,0,0.2); line-height: 1.2; }
         .subtitle { background: white; color: #FF5252; padding: 12px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: 700; display: inline-block; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); margin-bottom: 25px; }
         
         .btn-main {
@@ -143,7 +138,10 @@
 
         .menu-container {
             max-width: 1200px; margin: 0 auto; padding: 0 20px 60px;
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; alignItems: start;
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 35px; 
+            align-items: start; /* !!! ВАЖНО: Фиксит выпадание всей строки !!! */
         }
 
         /* --- CARD STYLE --- */
@@ -151,6 +149,7 @@
             background: var(--card-bg); border-radius: var(--radius);
             box-shadow: var(--shadow-cozy); overflow: hidden; transition: all 0.4s ease;
             border: 2px solid transparent;
+            height: fit-content; /* Чтобы карточка не растягивалась на всю высоту ряда */
         }
         .pizza-item:hover { transform: translateY(-8px); box-shadow: var(--shadow-float); border-color: var(--accent); }
 
@@ -196,6 +195,7 @@
 
         .card-weight { font-size: 1.1rem; color: var(--primary); font-weight: 700; }
 
+        /* QTY CONTROL */
         .qty-control {
             display: flex; align-items: center; background: white; border-radius: 50px;
             padding: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-right: 5px;
@@ -212,6 +212,7 @@
             font-weight: 700; font-size: 0.95rem; transition: 0.3s;
         }
         .btn-order-item:hover { background: var(--primary); transform: scale(1.05); }
+        .btn-order-item:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         
         .btn-order-item.is-remove { background: #e0e0e0; color: #666; }
         .btn-order-item.is-remove:hover { background: #d4d4d4; color: #333; }
@@ -320,10 +321,7 @@
                     <summary class="card-header">
                        <img src="images/margarita.jpg" class="card-img" alt="Маргарита">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Маргарита</span>
-                                <span class="price-tag">490 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Маргарита</span><span class="price-tag">490 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -332,6 +330,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">600г</span>
@@ -351,10 +351,7 @@
                     <summary class="card-header">
                        <img src="images/vitamin.jpg" class="card-img" alt="Витамин">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Витамин</span>
-                                <span class="price-tag">560 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Витамин</span><span class="price-tag">560 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -363,6 +360,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">720г</span>
@@ -382,10 +381,7 @@
                     <summary class="card-header">
                        <img src="images/vetchina grib.jpg" class="card-img" alt="Грибная">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Грибная</span>
-                                <span class="price-tag">620 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Грибная</span><span class="price-tag">620 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -394,6 +390,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">700г</span>
@@ -413,10 +411,7 @@
                     <summary class="card-header">
                        <img src="images/i3pizz.jpg" class="card-img" alt="i3Пицц">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>i3Пицц</span>
-                                <span class="price-tag">650 ₽</span>
-                            </div>
+                            <div class="card-title"><span>i3Пицц</span><span class="price-tag">650 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -425,6 +420,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">700г</span>
@@ -444,10 +441,7 @@
                     <summary class="card-header">
                        <img src="images/fray chiken.jpg" class="card-img" alt="Фрай-чикен">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Фрай-чикен</span>
-                                <span class="price-tag">670 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Фрай-чикен</span><span class="price-tag">670 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -456,6 +450,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">720г</span>
@@ -475,10 +471,7 @@
                     <summary class="card-header">
                        <img src="images/ogma.jpg" class="card-img" alt="Огма">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Огма</span>
-                                <span class="price-tag">690 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Огма</span><span class="price-tag">690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -487,6 +480,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">650г</span>
@@ -506,10 +501,7 @@
                     <summary class="card-header">
                        <img src="images/vetchina grib.jpg" class="card-img" alt="Ветчина-грибы">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Ветчина-грибы</span>
-                                <span class="price-tag">650 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Ветчина-грибы</span><span class="price-tag">650 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -518,6 +510,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">700г</span>
@@ -537,10 +531,7 @@
                     <summary class="card-header">
                        <img src="images/bbq.jpg" class="card-img" alt="BBQ">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>BBQ</span>
-                                <span class="price-tag">650 ₽</span>
-                            </div>
+                            <div class="card-title"><span>BBQ</span><span class="price-tag">650 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -549,6 +540,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">720г</span>
@@ -568,10 +561,7 @@
                     <summary class="card-header">
                        <img src="images/peperony.jpg" class="card-img" alt="Пеперони">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Пеперони</span>
-                                <span class="price-tag">690 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Пеперони</span><span class="price-tag">690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -580,6 +570,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">730г</span>
@@ -599,10 +591,7 @@
                     <summary class="card-header">
                        <img src="images/mysnay kapella.jpg" class="card-img" alt="Мясная капелла">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Мясная капелла</span>
-                                <span class="price-tag">690 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Мясная капелла</span><span class="price-tag">690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -611,6 +600,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">790г</span>
@@ -630,10 +621,7 @@
                     <summary class="card-header">
                        <img src="images/big pig.jpg" class="card-img" alt="Big-Pig">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Big-Pig</span>
-                                <span class="price-tag">690 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Big-Pig</span><span class="price-tag">690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -642,6 +630,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">750г</span>
@@ -661,10 +651,7 @@
                     <summary class="card-header">
                        <img src="images/aliot.jpg" class="card-img" alt="Алиот">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Алиот</span>
-                                <span class="price-tag">680 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Алиот</span><span class="price-tag">680 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -673,6 +660,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">710г</span>
@@ -692,10 +681,7 @@
                     <summary class="card-header">
                        <img src="images/karbonara.jpg" class="card-img" alt="Карбонара">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Карбонара</span>
-                                <span class="price-tag">680 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Карбонара</span><span class="price-tag">680 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -704,6 +690,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">680г</span>
@@ -723,10 +711,7 @@
                     <summary class="card-header">
                        <img src="images/kravc.jpg" class="card-img" alt="Кравц">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Кравц</span>
-                                <span class="price-tag">720 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Кравц</span><span class="price-tag">720 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -735,6 +720,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">800г</span>
@@ -754,10 +741,7 @@
                     <summary class="card-header">
                        <img src="images/neapolitanskay.jpg" class="card-img" alt="Неаполитанская">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Неаполитанская</span>
-                                <span class="price-tag">720 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Неаполитанская</span><span class="price-tag">720 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -766,6 +750,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">800г</span>
@@ -785,10 +771,7 @@
                     <summary class="card-header">
                        <img src="images/syrny rae.jpg" class="card-img" alt="Сырный рай">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Сырный рай</span>
-                                <span class="price-tag">750 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Сырный рай</span><span class="price-tag">750 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -797,6 +780,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">700г</span>
@@ -816,10 +801,7 @@
                     <summary class="card-header">
                        <img src="images/cezar.jpg" class="card-img" alt="Пицца Цезарь">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Пицца Цезарь</span>
-                                <span class="price-tag">750 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Пицца Цезарь</span><span class="price-tag">750 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -828,6 +810,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">770г</span>
@@ -847,10 +831,7 @@
                     <summary class="card-header">
                        <img src="images/dary mora.jpg" class="card-img" alt="Дары моря">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Дары моря</span>
-                                <span class="price-tag">850 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Дары моря</span><span class="price-tag">850 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -859,6 +840,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">740г</span>
@@ -878,10 +861,7 @@
                     <summary class="card-header">
                        <img src="images/c ananacom.jpg" class="card-img" alt="С ананасами">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>С ананасами</span>
-                                <span class="price-tag">850 ₽</span>
-                            </div>
+                            <div class="card-title"><span>С ананасами</span><span class="price-tag">850 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -890,6 +870,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">650г</span>
@@ -909,10 +891,7 @@
                     <summary class="card-header">
                        <img src="https://images.unsplash.com/photo-1555072956-7758afb20e8f?q=80&w=500" class="card-img" alt="Синяя груша">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Синяя груша</span>
-                                <span class="price-tag">800 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Синяя груша</span><span class="price-tag">800 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -921,6 +900,8 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+150₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🍕 Двойная начинка (+200₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">680г</span>
@@ -942,10 +923,7 @@
                     <summary class="card-header">
                         <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?q=80&w=500" class="card-img" alt="Цезарь с курицей">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Цезарь с курицей</span>
-                                <span class="price-tag">450 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Цезарь с курицей</span><span class="price-tag">450 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -969,10 +947,7 @@
                     <summary class="card-header">
                         <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=500" class="card-img" alt="Цезарь с креветками">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Цезарь с креветкой</span>
-                                <span class="price-tag">550 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Цезарь с креветкой</span><span class="price-tag">550 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -996,10 +971,7 @@
                     <summary class="card-header">
                         <img src="https://images.unsplash.com/photo-1543826173-70651703c5a4?q=80&w=500" class="card-img" alt="Дикая утка">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Дикая утка</span>
-                                <span class="price-tag">600 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Дикая утка</span><span class="price-tag">600 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -1025,10 +997,7 @@
                     <summary class="card-header">
                         <img src="images/grib.jpg" class="card-img" alt="Грибной суп">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Грибной крем-суп</span>
-                                <span class="price-tag">310 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Грибной крем-суп</span><span class="price-tag">310 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
                         </div>
                     </summary>
@@ -1051,10 +1020,7 @@
                     <summary class="card-header">
                         <img src="images/tikva.jpg" class="card-img" alt="Тыквенный суп">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Тыквенный крем-суп</span>
-                                <span class="price-tag">310 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Тыквенный крем-суп</span><span class="price-tag">310 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
                         </div>
                     </summary>
@@ -1077,10 +1043,7 @@
                     <summary class="card-header">
                         <img src="images/brokkoli.jpg" class="card-img" alt="Брокколи суп">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Крем-суп из брокколи</span>
-                                <span class="price-tag">310 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Крем-суп из брокколи</span><span class="price-tag">310 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
                         </div>
                     </summary>
@@ -1105,10 +1068,7 @@
                     <summary class="card-header">
                         <img src="images/fri.jpg" class="card-img" alt="Картофель Фри">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Картофель Фри</span>
-                                <span class="price-tag">240 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Картофель Фри</span><span class="price-tag">240 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
                         </div>
                     </summary>
@@ -1131,10 +1091,7 @@
                     <summary class="card-header">
                         <img src="images/adaxo.jpg" class="card-img" alt="Дольки Айдахо">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Дольки Айдахо</span>
-                                <span class="price-tag">250 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Дольки Айдахо</span><span class="price-tag">250 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
                         </div>
                     </summary>
@@ -1157,10 +1114,7 @@
                     <summary class="card-header">
                         <img src="images/krily bbq.jpg" class="card-img" alt="Крылья BBQ">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Крылья BBQ</span>
-                                <span class="price-tag">320 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Крылья BBQ</span><span class="price-tag">320 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
                         </div>
                     </summary>
@@ -1183,10 +1137,7 @@
                     <summary class="card-header">
                         <img src="images/naggetsy.jpg" class="card-img" alt="Наггетсы">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Наггетсы</span>
-                                <span class="price-tag">290 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Наггетсы</span><span class="price-tag">290 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
                         </div>
                     </summary>
@@ -1209,10 +1160,7 @@
                     <summary class="card-header">
                         <img src="images/cheese.jpg" class="card-img" alt="Хот-чиз">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Хот-чиз</span>
-                                <span class="price-tag">290 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Хот-чиз</span><span class="price-tag">290 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
                         </div>
                     </summary>
@@ -1237,10 +1185,7 @@
                     <summary class="card-header">
                         <img src="images/set1.jpg" class="card-img" alt="Семейный сет">
                         <div class="card-body-preview">
-                            <div class="card-title">
-                                <span>Семейный</span>
-                                <span class="price-tag">1290 ₽</span>
-                            </div>
+                            <div class="card-title"><span>Семейный</span><span class="price-tag">1290 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
                         </div>
                     </summary>
@@ -1315,6 +1260,7 @@
         // DATA
         let cart = [];
         let orderStep = 0;
+        // !!! ЗАМЕНИТЕ ЭТОТ URL НА ВАШ ИЗ MAKE.COM !!!
         const MAKE_WEBHOOK = 'https://hook.make.com/YOUR_WEBHOOK_CODE_HERE';
 
         // DOM
@@ -1325,9 +1271,15 @@
         const cartList = document.getElementById('cartList');
         const cartTotalSpan = document.getElementById('cartTotal');
         const headerCount = document.getElementById('headerCartCount');
+        const chatInput = document.getElementById('chatInput');
 
         // INIT
         window.addEventListener('DOMContentLoaded', loadCart);
+        
+        // Enter key listener
+        chatInput.addEventListener('keypress', (e) => { 
+            if (e.key === 'Enter') handleUserSend(); 
+        });
 
         // FUNCTIONS
         function toggleWidget() {
@@ -1368,20 +1320,39 @@
         }
 
         function addToCart(btn, name, basePrice) {
+            // Disable button temporarily to prevent double clicks
+            btn.disabled = true;
+            
             // Find context
             const container = btn.closest('.details-content');
+            if(!container) return; // safety
+
             const qtySpan = container.querySelector('.qty-val');
             const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
 
             // Find checkbox context (inside details)
-            const checkbox = container.querySelector('.extra-cheese-check');
-            
             let finalName = name;
             let finalPrice = basePrice;
-
-            if(checkbox && checkbox.checked) {
+            
+            // Check cheese
+            const cheeseCheck = container.querySelector('.extra-cheese-check');
+            if(cheeseCheck && cheeseCheck.checked) {
                 finalName += " (🧀 борт)";
                 finalPrice += 150;
+            }
+            
+            // Check double
+            const doubleCheck = container.querySelector('.extra-double-check');
+            if(doubleCheck && doubleCheck.checked) {
+                finalName += " (🍕 двойная)";
+                finalPrice += 200;
+            }
+
+            // Check spicy
+            const spicyCheck = container.querySelector('.extra-spicy-check');
+            if(spicyCheck && spicyCheck.checked) {
+                finalName += " (🌶️ острый)";
+                finalPrice += 50;
             }
 
             const existing = cart.find(i => i.name === finalName);
@@ -1392,16 +1363,26 @@
             }
 
             saveCart();
+            updateHeaderCount();
             
+            // Force redraw if cart is open
+            if(viewCart.style.display === 'flex') {
+                renderCart();
+            }
+
+            // Reset checkboxes
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = false);
+
             // Visual feedback
             const originalText = btn.innerText;
             btn.innerText = "Готово! ✔";
             btn.style.backgroundColor = "#4CAF50";
-            updateHeaderCount();
 
             setTimeout(() => {
                 btn.innerText = originalText;
                 btn.style.backgroundColor = "";
+                btn.disabled = false; // Re-enable button
             }, 1000);
         }
 
@@ -1456,14 +1437,22 @@
         }
 
         function saveCart() {
-            localStorage.setItem('pizzaCart', JSON.stringify(cart));
+            try {
+                localStorage.setItem('pizzaCart', JSON.stringify(cart));
+            } catch(e) {
+                console.warn('LocalStorage not available');
+            }
         }
 
         function loadCart() {
-            const saved = localStorage.getItem('pizzaCart');
-            if (saved) {
-                cart = JSON.parse(saved);
-                updateHeaderCount();
+            try {
+                const saved = localStorage.getItem('pizzaCart');
+                if (saved) {
+                    cart = JSON.parse(saved);
+                    updateHeaderCount();
+                }
+            } catch(e) {
+                console.warn('LocalStorage error');
             }
         }
 
@@ -1475,12 +1464,11 @@
         }
 
         async function handleUserSend() {
-            const input = document.getElementById('chatInput');
-            const text = input.value.trim();
+            const text = chatInput.value.trim();
             if(!text) return;
 
             userSay(text);
-            input.value = '';
+            chatInput.value = '';
 
             if(orderStep === 1) {
                 window.address = text;
@@ -1488,7 +1476,7 @@
                 setTimeout(() => botSay("Принято. Теперь <b>номер телефона</b> для связи:"), 500);
             } 
             else if (orderStep === 2) {
-                // Phone validation
+                // Stronger Phone validation
                 const cleanPhone = text.replace(/\D/g, '');
                 if(cleanPhone.length < 10) {
                     botSay("Номер слишком короткий! Попробуйте еще раз 📱");
@@ -1503,14 +1491,19 @@
                 const payload = { cart, address: window.address, phone: window.phone, total };
 
                 try {
-                    // await fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+                    // Uncomment this to enable real sending!
+                    await fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+                    
                     setTimeout(() => {
                         botSay(`✅ <b>Заказ принят!</b><br>Сумма: ${total} ₽<br>Менеджер скоро позвонит.`);
                         cart = [];
                         saveCart();
                         updateHeaderCount();
                     }, 1000);
-                } catch(e) { botSay("Ошибка сети"); }
+                } catch(e) { 
+                    console.error(e);
+                    botSay("Ошибка сети. Позвоните нам!"); 
+                }
             } 
             else {
                 setTimeout(() => botSay("Я понимаю только заказы через корзину 🛒"), 500);
