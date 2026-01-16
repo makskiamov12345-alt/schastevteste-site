@@ -138,10 +138,7 @@
 
         .menu-container {
             max-width: 1200px; margin: 0 auto; padding: 0 20px 60px;
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 35px; 
-            align-items: start; /* !!! ВАЖНО: Фиксит выпадание всей строки !!! */
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; alignItems: start;
         }
 
         /* --- CARD STYLE --- */
@@ -149,7 +146,6 @@
             background: var(--card-bg); border-radius: var(--radius);
             box-shadow: var(--shadow-cozy); overflow: hidden; transition: all 0.4s ease;
             border: 2px solid transparent;
-            height: fit-content; /* Чтобы карточка не растягивалась на всю высоту ряда */
         }
         .pizza-item:hover { transform: translateY(-8px); box-shadow: var(--shadow-float); border-color: var(--accent); }
 
@@ -195,7 +191,6 @@
 
         .card-weight { font-size: 1.1rem; color: var(--primary); font-weight: 700; }
 
-        /* QTY CONTROL */
         .qty-control {
             display: flex; align-items: center; background: white; border-radius: 50px;
             padding: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-right: 5px;
@@ -287,7 +282,7 @@
         </a>
         <div class="header-right">
             <a href="tel:+79990000000" class="phone-link">📞 +7 (999) 000-00-00</a>
-            <button class="btn-chat-small" onclick="toggleWidget()">🛒 Корзина <span id="headerCartCount">(0)</span></button>
+            <button class="btn-chat-small" onclick="openCartDirectly()">🛒 Корзина <span id="headerCartCount">(0)</span></button>
         </div>
     </header>
 
@@ -1241,7 +1236,7 @@
             </div>
 
         </div>
-        <button class="chat-btn" onclick="toggleWidget()">💬</button>
+        <button class="chat-btn" onclick="toggleChatWidget()">💬</button>
     </div>
 
     <footer>
@@ -1260,7 +1255,6 @@
         // DATA
         let cart = [];
         let orderStep = 0;
-        // !!! ЗАМЕНИТЕ ЭТОТ URL НА ВАШ ИЗ MAKE.COM !!!
         const MAKE_WEBHOOK = 'https://hook.make.com/YOUR_WEBHOOK_CODE_HERE';
 
         // DOM
@@ -1276,17 +1270,26 @@
         // INIT
         window.addEventListener('DOMContentLoaded', loadCart);
         
-        // Enter key listener
         chatInput.addEventListener('keypress', (e) => { 
             if (e.key === 'Enter') handleUserSend(); 
         });
 
         // FUNCTIONS
-        function toggleWidget() {
-            chatWindow.classList.toggle('active');
-            if(chatWindow.classList.contains('active') && chatBody.children.length === 0) {
-                botSay("Привет! 👋 Я Тестяшка. Добавляй вкусняшки в меню (кнопка 'Буду!'), а здесь мы оформим заказ.");
+        function toggleChatWidget() {
+            if(chatWindow.classList.contains('active')) {
+                chatWindow.classList.remove('active');
+            } else {
+                chatWindow.classList.add('active');
+                switchView('chat'); // Always open chat tab by default from bubble
+                if(chatBody.children.length === 0) {
+                    botSay("Привет! 👋 Я Тестяшка. Добавляй вкусняшки в меню (кнопка 'Буду!'), а здесь мы оформим заказ.");
+                }
             }
+        }
+
+        function openCartDirectly() {
+            chatWindow.classList.add('active');
+            switchView('cart');
         }
 
         function switchView(viewName) {
@@ -1320,38 +1323,31 @@
         }
 
         function addToCart(btn, name, basePrice) {
-            // Disable button temporarily to prevent double clicks
             btn.disabled = true;
             
-            // Find context
             const container = btn.closest('.details-content');
-            if(!container) return; // safety
+            if(!container) return; 
 
             const qtySpan = container.querySelector('.qty-val');
             const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
 
-            // Find checkbox context (inside details)
             let finalName = name;
             let finalPrice = basePrice;
             
-            // Check cheese
+            // OPTIONS LOGIC
             const cheeseCheck = container.querySelector('.extra-cheese-check');
             if(cheeseCheck && cheeseCheck.checked) {
-                finalName += " (🧀 борт)";
+                finalName += " (🧀)";
                 finalPrice += 150;
             }
-            
-            // Check double
             const doubleCheck = container.querySelector('.extra-double-check');
             if(doubleCheck && doubleCheck.checked) {
-                finalName += " (🍕 двойная)";
+                finalName += " (🍕)";
                 finalPrice += 200;
             }
-
-            // Check spicy
             const spicyCheck = container.querySelector('.extra-spicy-check');
             if(spicyCheck && spicyCheck.checked) {
-                finalName += " (🌶️ острый)";
+                finalName += " (🌶️)";
                 finalPrice += 50;
             }
 
@@ -1365,16 +1361,15 @@
             saveCart();
             updateHeaderCount();
             
-            // Force redraw if cart is open
+            // Force redraw if cart is visible
             if(viewCart.style.display === 'flex') {
                 renderCart();
             }
 
-            // Reset checkboxes
+            // Reset UI
             const checkboxes = container.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(cb => cb.checked = false);
 
-            // Visual feedback
             const originalText = btn.innerText;
             btn.innerText = "Готово! ✔";
             btn.style.backgroundColor = "#4CAF50";
@@ -1382,7 +1377,7 @@
             setTimeout(() => {
                 btn.innerText = originalText;
                 btn.style.backgroundColor = "";
-                btn.disabled = false; // Re-enable button
+                btn.disabled = false; 
             }, 1000);
         }
 
@@ -1476,7 +1471,7 @@
                 setTimeout(() => botSay("Принято. Теперь <b>номер телефона</b> для связи:"), 500);
             } 
             else if (orderStep === 2) {
-                // Stronger Phone validation
+                // Phone validation
                 const cleanPhone = text.replace(/\D/g, '');
                 if(cleanPhone.length < 10) {
                     botSay("Номер слишком короткий! Попробуйте еще раз 📱");
@@ -1491,8 +1486,8 @@
                 const payload = { cart, address: window.address, phone: window.phone, total };
 
                 try {
-                    // Uncomment this to enable real sending!
-                    await fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+                    // Uncomment to enable real sending!
+                    // await fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
                     
                     setTimeout(() => {
                         botSay(`✅ <b>Заказ принят!</b><br>Сумма: ${total} ₽<br>Менеджер скоро позвонит.`);
