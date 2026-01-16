@@ -1407,7 +1407,8 @@
         // DATA
         let cart = [];
         let orderStep = 0;
-        const MAKE_WEBHOOK = 'https://hook.make.com/YOUR_WEBHOOK_CODE_HERE';
+        const MAKE_WEBHOOK = 'https://hook.eu1.make.com/3mm9gusf6xm96gta6hjng9arkaq9s7vq
+';
 
         // DOM
         const chatWindow = document.getElementById('chatWindow');
@@ -1637,9 +1638,12 @@
                 const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
                 const payload = { cart, address: window.address, phone: window.phone, total };
 
-                try {
-                    // Uncomment to enable real sending!
-                    // await fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+               try {
+    await fetch(MAKE_WEBHOOK, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+    });
                     
                     setTimeout(() => {
                         botSay(`✅ <b>Заказ принят!</b><br>Сумма: ${total} ₽<br>Менеджер скоро позвонит.`);
