@@ -146,6 +146,7 @@
             background: var(--card-bg); border-radius: var(--radius);
             box-shadow: var(--shadow-cozy); overflow: hidden; transition: all 0.4s ease;
             border: 2px solid transparent;
+            align-self: start;
         }
         .pizza-item:hover { transform: translateY(-8px); box-shadow: var(--shadow-float); border-color: var(--accent); }
 
@@ -1507,3 +1508,4 @@
     </script>
 </body>
 </html>
+
