@@ -1555,22 +1555,26 @@
             let qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
             if (isNaN(qty) || qty < 1) qty = 1;
 
+
+            // Объявляем переменные
+            let finalName = name;
+            let finalPrice = basePrice;
             // Проверяем сырный бортик
-            const cheeseCheck = container.querySelector('input[type="checkbox"]');
-            if (cheeseCheck && cheeseCheck.checked && cheeseCheck.nextSibling && cheeseCheck.nextSibling.textContent.includes('Сырный')) {
+            const cheeseCheck = container.querySelector('.extra-cheese-check');
+            if (cheeseCheck && cheeseCheck.checked ) {
                 finalName += " (🧀)";
                 finalPrice += 150;
             }
             
             // Проверяем двойную начинку
-            const doubleCheck = container.querySelectorAll('input[type="checkbox"]')[1];
+            const doubleCheck = container.querySelector('.extra-double-check');
             if (doubleCheck && doubleCheck.checked) {
                 finalName += " (🍕)";
                 finalPrice += 200;
             }
             
             // Проверяем острый соус
-            const spicyCheck = container.querySelectorAll('input[type="checkbox"]')[2];
+            const spicyCheck = container.querySelector('.extra-spicy-check');
             if (spicyCheck && spicyCheck.checked) {
                 finalName += " (🌶️)";
                 finalPrice += 50;
