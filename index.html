@@ -1479,7 +1479,7 @@
         <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.6; text-align:center;">© 2026 Made with Love ❤️</p>
     </footer>
 
-    <script>
+<script>
         // DATA
         let cart = [];
         let orderStep = 0;
@@ -1768,5 +1768,17 @@
                         botSay(`✅ <b>Заказ принят!</b><br>Сумма: ${total} ₽<br>Тип: ${deliveryType === 'pickup' ? 'Самовывоз' : 'Доставка'}<br>Менеджер скоро позвонит.`);
                         cart = [];
                         saveCart();
+                        updateHeaderCount();
+                    }, 1000);
+                } catch(e) { 
+                    console.error(e);
+                    botSay("Ошибка сети. Позвоните нам!"); 
+                }
+            } 
+            else {
+                setTimeout(() => botSay("Я понимаю только заказы через корзину 🛒"), 500);
+            }
+        }
+    </script>
 </body>
 </html>
