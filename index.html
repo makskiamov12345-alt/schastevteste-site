@@ -93,6 +93,23 @@
 
         .logo-img { height: 60px; width: auto; }
         .logo-text { font-family: var(--font-hand); font-size: 1.5rem; color: var(--text-main); line-height: 1; }
+        /* Стили для фразы в центре */
+.header-tagline {
+    font-family: var(--font-hand); /* Используем красивый рукописный шрифт */
+    font-size: 1.4rem;
+    color: var(--text-main);
+    opacity: 0.8;
+    flex: 1;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Скрываем фразу на планшетах и мобильных (меньше 992px, чтобы не теснила кнопки) */
+@media (max-width: 992px) {
+    .header-tagline {
+        display: none;
+    }
+}
 
         .btn-chat-small {
             background: var(--accent); color: var(--text-main); padding: 8px 20px;
@@ -358,17 +375,20 @@
 </head>
 <body>
 
-    <header>
-        <a href="#" class="logo-container">
-            <img src="logo.png" alt="СчастьеВТесте" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
-            <span style="display:none; font-size: 2rem;">🍕</span>
-            <div class="logo-text">Счастье<br><span style="color:var(--primary); font-size:1.3rem;">ВТесте</span></div>
-        </a>
-        <div class="header-right">
-            <a href="tel:+79819794269" class="phone-link">📞 +7 (981) 979-42-69</a>
-            <button class="btn-chat-small" onclick="openCartDirectly()">🛒 Корзина <span id="headerCartCount">(0)</span></button>
-        </div>
-    </header>
+<header>
+    <a href="#" class="logo-container">
+        <img src="logo.png" alt="СчастьеВТесте" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span style="display:none; font-size: 2rem;">🍕</span>
+        <div class="logo-text">Счастье<br><span style="color:var(--primary); font-size:1.3rem;">ВТесте</span></div>
+    </a>
+
+    <div class="header-tagline">Семейная пиццерия в Буграх</div>
+
+    <div class="header-right">
+        <a href="tel:+79819794269" class="phone-link">📞 +7 (981) 979-42-69</a>
+        <button class="btn-chat-small" onclick="openCartDirectly()">🛒 Корзина <span id="headerCartCount">(0)</span></button>
+    </div>
+</header>
 
     <section class="hero">
         <div style="position: relative; z-index: 2;">
