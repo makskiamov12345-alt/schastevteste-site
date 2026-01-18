@@ -293,6 +293,24 @@
         .msg-bot { border-bottom-left-radius: 2px; border: 1px solid #eee; }
         .msg-user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
         .chat-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; background: white;}
+        .chat-input-area button {
+    width: 50px;           /* Ширина кнопки */
+    height: 50px;          /* Высота кнопки */
+    border-radius: 50%;    /* Делает кнопку круглой */
+    background: var(--primary); /* Красный цвет (как у бренда) */
+    color: white;          /* Белая стрелочка */
+    font-size: 1.5rem;     /* Размер самой стрелочки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    box-shadow: 0 4px 10px rgba(255, 82, 82, 0.3); /* Тень для красоты */
+}
+
+.chat-input-area button:hover {
+    background: var(--primary-hover);
+    transform: scale(1.1); /* Легкое увеличение при наведении */
+}
         #chatInput { flex: 1; padding: 10px; border-radius: 20px; border: 1px solid #ddd; }
 
         /* VIEW: CART */
@@ -1463,7 +1481,7 @@
         let orderStep = 0;
         
         // !!! ЗАМЕНИТЕ ЭТОТ URL НА ВАШ ИЗ MAKE.COM !!!
-        const MAKE_WEBHOOK = 'https://hook.make.com/YOUR_WEBHOOK_CODE_HERE';
+        const MAKE_WEBHOOK = 'https://hook.eu1.make.com/3mm9gusf6xm96gta6hjng9arkaq9s7vq';
 
         // DOM
         const chatWindow = document.getElementById('chatWindow');
@@ -1700,7 +1718,7 @@
 
                 try {
                     // Uncomment this to enable real sending!
-                    // await fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+                    await fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
                     
                     setTimeout(() => {
                         botSay(`✅ <b>Заказ принят!</b><br>Сумма: ${total} ₽<br>Менеджер скоро позвонит.`);
