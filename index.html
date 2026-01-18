@@ -37,15 +37,22 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-main);
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-image: radial-gradient(#FFD166 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-
+    font-family: var(--font-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Новый фон */
+    background-color: #FFFDF5;
+    background-image: 
+        radial-gradient(at 0% 0%, hsla(253,16%,7%,0) 0, hsla(253,16%,7%,0) 50%), 
+        radial-gradient(at 50% 0%, hsla(225,39%,30%,0) 0, hsla(225,39%,30%,0) 50%), 
+        radial-gradient(at 100% 0%, hsla(339,49%,30%,0) 0, hsla(339,49%,30%,0) 50%), 
+        radial-gradient(at 80% 50%, hsla(39,96%,75%,0.3) 0px, transparent 50%), 
+        radial-gradient(at 0% 50%, hsla(36,100%,74%,0.3) 0px, transparent 50%), 
+        radial-gradient(at 80% 100%, hsla(347,88%,68%,0.1) 0px, transparent 50%), 
+        radial-gradient(at 0% 100%, hsla(40,100%,74%,0.3) 0px, transparent 50%);
+    background-attachment: fixed; /* Фон стоит на месте при прокрутке */
+}
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
         img { max-width: 100%; display: block; object-fit: cover; }
