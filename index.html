@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>СчастьеВТесте — Семейная пиццерия</title>
+    <title>СчастьеВТесте — Семейная пиццерия в Буграх</title>
+    
+    <meta name="description" content="Самая вкусная пицца, супы и сеты в Буграх! Доставка на ул. Шекспира и по району. Заказывайте онлайн.">
+    <meta property="og:title" content="СчастьеВТесте — Семейная пиццерия">
+    <meta property="og:description" content="Пицца, роллы, воки и сеты. Работаем с 10 до 23. Закажи онлайн!">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
@@ -117,7 +124,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
-        /* RESTORED ANIMATION & ADDED STROKE */
         .hero h1 { 
             font-family: var(--font-hand); 
             font-size: 3rem; 
@@ -125,13 +131,8 @@
             text-shadow: 2px 4px 0px rgba(0,0,0,0.2); 
             line-height: 1.2;
             animation: float 6s ease-in-out infinite; 
-            -webkit-text-stroke: 0.1px black; /* Black outline */
-            text-shadow: 
-               3px 3px 0 #000,
-              -1px -1px 0 #000,  
-               1px -1px 0 #000,
-              -1px 1px 0 #000,
-               1px 1px 0 #000;
+            -webkit-text-stroke: 1px black;
+            text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
         
         .subtitle { background: white; color: #FF5252; padding: 12px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: 700; display: inline-block; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); margin-bottom: 25px; }
@@ -178,7 +179,6 @@
         details > summary { list-style: none; cursor: pointer; outline: none; }
         details > summary::-webkit-details-marker { display: none; }
 
-        /* --- IMAGE STYLE --- */
         .card-img {
             width: 100%;
             aspect-ratio: 2 / 3;
@@ -293,21 +293,22 @@
         .btn-mini { width: 24px; height: 24px; background: #eee; border-radius: 50%; font-weight: bold; display: flex; align-items: center; justify-content: center; }
         .cart-footer { padding: 15px; background: #fdfdfd; border-top: 1px solid #eee; }
         .btn-checkout { width: 100%; background: var(--primary); color: white; padding: 12px; border-radius: 15px; font-weight: 700; }
+        .btn-checkout:disabled { background: #ccc; cursor: not-allowed; }
         .btn-clear { display: block; width: 100%; text-align: center; margin-top: 10px; color: #999; font-size: 0.85rem; text-decoration: underline; background: none; border: none; }
 
         /* --- MOBILE FIXES --- */
         @media(max-width:480px) {
             header {
-                padding: 10px 15px; /* Уменьшенные отступы в шапке */
+                padding: 10px 15px; 
             }
             .logo-text {
-                font-size: 1.2rem; /* Чуть меньше текст логотипа */
+                font-size: 1.2rem;
             }
             .logo-img {
-                height: 40px; /* Логотип поменьше */
+                height: 40px; 
             }
             .btn-chat-small {
-                padding: 6px 12px; /* Компактная кнопка */
+                padding: 6px 12px;
                 font-size: 0.8rem;
             }
             .chat-window {
@@ -332,7 +333,7 @@
             <div class="logo-text">Счастье<br><span style="color:var(--primary); font-size:1.3rem;">ВТесте</span></div>
         </a>
         <div class="header-right">
-            <a href="tel:+79990000000" class="phone-link">📞 +7 (999) 000-00-00</a>
+            <a href="tel:+79819794269" class="phone-link">📞 +7 (981) 979-42-69</a>
             <button class="btn-chat-small" onclick="openCartDirectly()">🛒 Корзина <span id="headerCartCount">(0)</span></button>
         </div>
     </header>
@@ -365,7 +366,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/margarita.jpg" class="card-img" alt="Маргарита">
+                       <img src="images/margarita.jpg" class="card-img" alt="Маргарита" loading="eager">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Маргарита</span><span class="price-tag">490 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -395,7 +396,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/vitamin.jpg" class="card-img" alt="Витамин">
+                       <img src="images/vitamin.jpg" class="card-img" alt="Витамин" loading="eager">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Витамин</span><span class="price-tag">560 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -425,7 +426,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/vetchina grib.jpg" class="card-img" alt="Грибная">
+                       <img src="images/vetchina grib.jpg" class="card-img" alt="Грибная" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Грибная</span><span class="price-tag">620 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -455,7 +456,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/i3pizz.jpg" class="card-img" alt="i3Пицц">
+                       <img src="images/i3pizz.jpg" class="card-img" alt="i3Пицц" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>i3Пицц</span><span class="price-tag">650 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -485,7 +486,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/fray chiken.jpg" class="card-img" alt="Фрай-чикен">
+                       <img src="images/fray chiken.jpg" class="card-img" alt="Фрай-чикен" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Фрай-чикен</span><span class="price-tag">670 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -515,7 +516,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/ogma.jpg" class="card-img" alt="Огма">
+                       <img src="images/ogma.jpg" class="card-img" alt="Огма" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Огма</span><span class="price-tag">690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -545,7 +546,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/vetchina grib.jpg" class="card-img" alt="Ветчина-грибы">
+                       <img src="images/vetchina grib.jpg" class="card-img" alt="Ветчина-грибы" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Ветчина-грибы</span><span class="price-tag">650 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -575,7 +576,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/bbq.jpg" class="card-img" alt="BBQ">
+                       <img src="images/bbq.jpg" class="card-img" alt="BBQ" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>BBQ</span><span class="price-tag">650 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -605,7 +606,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/peperony.jpg" class="card-img" alt="Пеперони">
+                       <img src="images/peperony.jpg" class="card-img" alt="Пеперони" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Пеперони</span><span class="price-tag">690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -635,7 +636,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/mysnay kapella.jpg" class="card-img" alt="Мясная капелла">
+                       <img src="images/mysnay kapella.jpg" class="card-img" alt="Мясная капелла" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Мясная капелла</span><span class="price-tag">690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -665,7 +666,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/big pig.jpg" class="card-img" alt="Big-Pig">
+                       <img src="images/big pig.jpg" class="card-img" alt="Big-Pig" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Big-Pig</span><span class="price-tag">690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -695,7 +696,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/aliot.jpg" class="card-img" alt="Алиот">
+                       <img src="images/aliot.jpg" class="card-img" alt="Алиот" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Алиот</span><span class="price-tag">680 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -725,7 +726,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/karbonara.jpg" class="card-img" alt="Карбонара">
+                       <img src="images/karbonara.jpg" class="card-img" alt="Карбонара" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Карбонара</span><span class="price-tag">680 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -755,7 +756,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/kravc.jpg" class="card-img" alt="Кравц">
+                       <img src="images/kravc.jpg" class="card-img" alt="Кравц" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Кравц</span><span class="price-tag">720 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -785,7 +786,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/neapolitanskay.jpg" class="card-img" alt="Неаполитанская">
+                       <img src="images/neapolitanskay.jpg" class="card-img" alt="Неаполитанская" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Неаполитанская</span><span class="price-tag">720 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -815,7 +816,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/syrny rae.jpg" class="card-img" alt="Сырный рай">
+                       <img src="images/syrny rae.jpg" class="card-img" alt="Сырный рай" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Сырный рай</span><span class="price-tag">750 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -845,7 +846,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/cezar.jpg" class="card-img" alt="Пицца Цезарь">
+                       <img src="images/cezar.jpg" class="card-img" alt="Пицца Цезарь" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Пицца Цезарь</span><span class="price-tag">750 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -875,7 +876,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/dary mora.jpg" class="card-img" alt="Дары моря">
+                       <img src="images/dary mora.jpg" class="card-img" alt="Дары моря" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Дары моря</span><span class="price-tag">850 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -905,7 +906,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/c ananacom.jpg" class="card-img" alt="С ананасами">
+                       <img src="images/c ananacom.jpg" class="card-img" alt="С ананасами" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>С ананасами</span><span class="price-tag">850 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -935,7 +936,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="https://images.unsplash.com/photo-1555072956-7758afb20e8f?q=80&w=500" class="card-img" alt="Синяя груша">
+                       <img src="https://images.unsplash.com/photo-1555072956-7758afb20e8f?q=80&w=500" class="card-img" alt="Синяя груша" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Синяя груша</span><span class="price-tag">800 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -967,7 +968,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?q=80&w=500" class="card-img" alt="Цезарь с курицей">
+                        <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?q=80&w=500" class="card-img" alt="Цезарь с курицей" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Цезарь с курицей</span><span class="price-tag">450 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -991,7 +992,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=500" class="card-img" alt="Цезарь с креветками">
+                        <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=500" class="card-img" alt="Цезарь с креветками" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Цезарь с креветкой</span><span class="price-tag">550 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1015,7 +1016,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="https://images.unsplash.com/photo-1543826173-70651703c5a4?q=80&w=500" class="card-img" alt="Дикая утка">
+                        <img src="https://images.unsplash.com/photo-1543826173-70651703c5a4?q=80&w=500" class="card-img" alt="Дикая утка" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Дикая утка</span><span class="price-tag">600 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1041,7 +1042,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/grib.jpg" class="card-img" alt="Грибной суп">
+                        <img src="images/grib.jpg" class="card-img" alt="Грибной суп" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Грибной крем-суп</span><span class="price-tag">310 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1064,7 +1065,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/tikva.jpg" class="card-img" alt="Тыквенный суп">
+                        <img src="images/tikva.jpg" class="card-img" alt="Тыквенный суп" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Тыквенный крем-суп</span><span class="price-tag">310 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1087,7 +1088,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/brokkoli.jpg" class="card-img" alt="Брокколи суп">
+                        <img src="images/brokkoli.jpg" class="card-img" alt="Брокколи суп" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Крем-суп из брокколи</span><span class="price-tag">310 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1112,7 +1113,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/fri.jpg" class="card-img" alt="Картофель Фри">
+                        <img src="images/fri.jpg" class="card-img" alt="Картофель Фри" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Картофель Фри</span><span class="price-tag">240 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1135,7 +1136,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/adaxo.jpg" class="card-img" alt="Дольки Айдахо">
+                        <img src="images/adaxo.jpg" class="card-img" alt="Дольки Айдахо" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Дольки Айдахо</span><span class="price-tag">250 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1158,7 +1159,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/krily bbq.jpg" class="card-img" alt="Крылья BBQ">
+                        <img src="images/krily bbq.jpg" class="card-img" alt="Крылья BBQ" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Крылья BBQ</span><span class="price-tag">320 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1181,7 +1182,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/naggetsy.jpg" class="card-img" alt="Наггетсы">
+                        <img src="images/naggetsy.jpg" class="card-img" alt="Наггетсы" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Наггетсы</span><span class="price-tag">290 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1204,7 +1205,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/cheese.jpg" class="card-img" alt="Хот-чиз">
+                        <img src="images/cheese.jpg" class="card-img" alt="Хот-чиз" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Хот-чиз</span><span class="price-tag">290 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1229,7 +1230,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set1.jpg" class="card-img" alt="Пивной сет" onerror="this.src='https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500'">
+                       <img src="images/set1.jpg" class="card-img" alt="Пивной сет" onerror="this.src='https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500'" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Пивной сет</span><span class="price-tag">1 100 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1253,7 +1254,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set2.jpg" class="card-img" alt="Комбо №1" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'">
+                       <img src="images/set2.jpg" class="card-img" alt="Комбо №1" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Комбо №1</span><span class="price-tag">1 250 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1277,7 +1278,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set3.jpg" class="card-img" alt="Комбо №2" onerror="this.src='https://images.unsplash.com/photo-1593560708920-6316e4e6d0d9?w=500'">
+                       <img src="images/set3.jpg" class="card-img" alt="Комбо №2" onerror="this.src='https://images.unsplash.com/photo-1593560708920-6316e4e6d0d9?w=500'" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Комбо №2</span><span class="price-tag">1 600 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1301,7 +1302,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set4.jpg" class="card-img" alt="Комбо №3" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'">
+                       <img src="images/set4.jpg" class="card-img" alt="Комбо №3" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Комбо №3</span><span class="price-tag">1 590 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1325,7 +1326,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set5.jpg" class="card-img" alt="Комбо №4" onerror="this.src='https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500'">
+                       <img src="images/set5.jpg" class="card-img" alt="Комбо №4" onerror="this.src='https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500'" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Комбо №4</span><span class="price-tag">1 690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1349,7 +1350,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set6.jpg" class="card-img" alt="Детский бокс №1" onerror="this.src='https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=500'">
+                       <img src="images/set6.jpg" class="card-img" alt="Детский бокс №1" onerror="this.src='https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=500'" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Детский бокс №1</span><span class="price-tag">550 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1373,7 +1374,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set7.jpg" class="card-img" alt="Детский бокс №2" onerror="this.src='https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=500'">
+                       <img src="images/set7.jpg" class="card-img" alt="Детский бокс №2" onerror="this.src='https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=500'" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Детский бокс №2</span><span class="price-tag">800 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1440,10 +1441,10 @@
             <div class="logo-text">Счастье<br><span style="color:var(--primary); font-size:1.3rem;">ВТесте</span></div>
         </div>
         <div style="text-align:center; opacity:0.8;">
-            <p>📍 г. Москва, ул. Вкусная, д. 1</p>
-            <p>📞 +7 (999) 000-00-00</p>
+            <p>📍 г. Бугры, ул. Шекспира, дом 7</p>
+            <p>📞 <a href="tel:+79819794269" style="color:inherit;text-decoration:none;">+7 (981) 979-42-69</a></p>
         </div>
-        <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.6; text-align:center;">© 2023 Made with Love ❤️</p>
+        <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.6; text-align:center;">© 2026 Made with Love ❤️</p>
     </footer>
 
     <script>
@@ -1465,12 +1466,44 @@
         const chatInput = document.getElementById('chatInput');
 
         // INIT
-        window.addEventListener('DOMContentLoaded', loadCart);
+        window.addEventListener('DOMContentLoaded', () => {
+            loadCart();
+            checkWorkingHours(); // Check hours on load
+        });
         
         // Enter key listener
         chatInput.addEventListener('keypress', (e) => { 
             if (e.key === 'Enter') handleUserSend(); 
         });
+
+        // Phone Input Formatter (Bonus UX)
+        chatInput.addEventListener('input', function(e) {
+            if(orderStep === 2) { // Only format when asking for phone
+                let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+                if (!x[2]) { e.target.value = x[1] ? '+7' : ''; return; }
+                e.target.value = !x[3] ? `+7 (${x[2]}` : `+7 (${x[2]}) ${x[3]}` + (x[4] ? `-${x[4]}` : '') + (x[5] ? `-${x[5]}` : '');
+            }
+        });
+
+        // WORKING HOURS CHECK (Logic from Point 3)
+        function checkWorkingHours() {
+            const now = new Date();
+            const hours = now.getHours();
+            const btn = document.querySelector('.btn-checkout');
+            
+            // Open from 10:00 to 23:00 (10 <= hours < 23)
+            // If hours is 23 or more OR hours is less than 10 => CLOSED
+            if (hours >= 23 || hours < 10) {
+                if(btn) {
+                    btn.disabled = true;
+                    btn.innerText = "Мы закрыты (с 10 до 23)";
+                    btn.style.background = "#ccc";
+                    btn.style.cursor = "not-allowed";
+                }
+                return false;
+            }
+            return true;
+        }
 
         // FUNCTIONS
         function toggleChatWidget() {
@@ -1478,7 +1511,7 @@
                 chatWindow.classList.remove('active');
             } else {
                 chatWindow.classList.add('active');
-                switchView('chat'); // Always open chat tab by default from bubble
+                switchView('chat'); 
                 if(chatBody.children.length === 0) {
                     botSay("Привет! 👋 Я Тестяшка. Добавляй вкусняшки в меню (кнопка 'Буду!'), а здесь мы оформим заказ.");
                 }
@@ -1495,6 +1528,7 @@
                 viewChat.style.display = 'none';
                 viewCart.style.display = 'flex';
                 renderCart();
+                checkWorkingHours(); // Re-check when opening cart
             } else {
                 viewChat.style.display = 'flex';
                 viewCart.style.display = 'none';
@@ -1521,17 +1555,14 @@
         }
 
         function addToCart(btn, name, basePrice) {
-            // Disable button temporarily to prevent double clicks
             btn.disabled = true;
             
-            // Find context
             const container = btn.closest('.details-content');
             if(!container) return; 
 
             const qtySpan = container.querySelector('.qty-val');
             const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
 
-            // Find checkbox context (inside details)
             let finalName = name;
             let finalPrice = basePrice;
             
@@ -1562,12 +1593,10 @@
             saveCart();
             updateHeaderCount();
             
-            // Force redraw if cart is visible
             if(viewCart.style.display === 'flex') {
                 renderCart();
             }
 
-            // Reset UI
             const checkboxes = container.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(cb => cb.checked = false);
 
@@ -1653,6 +1682,12 @@
         }
 
         function startCheckout() {
+            // Check hours before starting checkout
+            if(!checkWorkingHours()) {
+                alert("Извините, мы уже закрыты! Работаем с 10:00 до 23:00.");
+                return;
+            }
+
             if(cart.length === 0) { alert("Корзина пуста!"); return; }
             switchView('chat');
             orderStep = 1;
@@ -1672,7 +1707,7 @@
                 setTimeout(() => botSay("Принято. Теперь <b>номер телефона</b> для связи:"), 500);
             } 
             else if (orderStep === 2) {
-                // Stronger Phone validation
+                // Phone validation
                 const cleanPhone = text.replace(/\D/g, '');
                 if(cleanPhone.length < 10) {
                     botSay("Номер слишком короткий! Попробуйте еще раз 📱");
