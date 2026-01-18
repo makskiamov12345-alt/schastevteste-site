@@ -1483,8 +1483,9 @@
         // DATA
         let cart = [];
         let orderStep = 0;
+        let deliveryType = ''; // 'delivery' или 'pickup'
         
-        // !!! ЗАМЕНИТЕ ЭТОТ URL НА ВАШ ИЗ MAKE.COM !!!
+        // !!! ВАШ URL ВЕБХУКА !!!
         const MAKE_WEBHOOK = 'https://hook.eu1.make.com/3mm9gusf6xm96gta6hjng9arkaq9s7vq';
 
         // DOM
@@ -1498,20 +1499,47 @@
         const chatInput = document.getElementById('chatInput');
 
         // INIT
-        window.addEventListener('DOMContentLoaded', loadCart);
+        window.addEventListener('DOMContentLoaded', () => {
+            loadCart();
+            checkWorkingHours();
+        });
         
-        // Enter key listener
         chatInput.addEventListener('keypress', (e) => { 
             if (e.key === 'Enter') handleUserSend(); 
         });
 
-        // FUNCTIONS
+        // Phone Formatter
+        chatInput.addEventListener('input', function(e) {
+            // Форматируем телефон только на шаге ввода телефона (шаг 3)
+            if(orderStep === 3) {
+                let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+                if (!x[2]) { e.target.value = x[1] ? '+7' : ''; return; }
+                e.target.value = !x[3] ? `+7 (${x[2]}` : `+7 (${x[2]}) ${x[3]}` + (x[4] ? `-${x[4]}` : '') + (x[5] ? `-${x[5]}` : '');
+            }
+        });
+
+        function checkWorkingHours() {
+            const now = new Date();
+            const hours = now.getHours();
+            const btn = document.querySelector('.btn-checkout');
+            if (hours >= 23 || hours < 10) {
+                if(btn) {
+                    btn.disabled = true;
+                    btn.innerText = "Мы закрыты (с 10 до 23)";
+                    btn.style.background = "#ccc";
+                    btn.style.cursor = "not-allowed";
+                }
+                return false;
+            }
+            return true;
+        }
+
         function toggleChatWidget() {
             if(chatWindow.classList.contains('active')) {
                 chatWindow.classList.remove('active');
             } else {
                 chatWindow.classList.add('active');
-                switchView('chat'); // Always open chat tab by default from bubble
+                switchView('chat'); 
                 if(chatBody.children.length === 0) {
                     botSay("Привет! 👋 Я Тестяшка. Добавляй вкусняшки в меню (кнопка 'Буду!'), а здесь мы оформим заказ.");
                 }
@@ -1528,6 +1556,7 @@
                 viewChat.style.display = 'none';
                 viewCart.style.display = 'flex';
                 renderCart();
+                checkWorkingHours();
             } else {
                 viewChat.style.display = 'flex';
                 viewCart.style.display = 'none';
@@ -1554,57 +1583,36 @@
         }
 
         function addToCart(btn, name, basePrice) {
-            // Disable button temporarily to prevent double clicks
             btn.disabled = true;
-            
-            // Find context
             const container = btn.closest('.details-content');
-            if(!container) return; // safety
+            if(!container) return; 
 
             const qtySpan = container.querySelector('.qty-val');
             const qty = qtySpan ? parseInt(qtySpan.innerText) : 1;
 
-            // Find checkbox context (inside details)
             let finalName = name;
             let finalPrice = basePrice;
             
-            // OPTIONS LOGIC
             const cheeseCheck = container.querySelector('.extra-cheese-check');
-            if(cheeseCheck && cheeseCheck.checked) {
-                finalName += " (🧀 борт)";
-                finalPrice += 150;
-            }
+            if(cheeseCheck && cheeseCheck.checked) { finalName += " (🧀)"; finalPrice += 150; }
+            
             const doubleCheck = container.querySelector('.extra-double-check');
-            if(doubleCheck && doubleCheck.checked) {
-                finalName += " (🍕 двойная)";
-                finalPrice += 200;
-            }
+            if(doubleCheck && doubleCheck.checked) { finalName += " (🍕)"; finalPrice += 200; }
+            
             const spicyCheck = container.querySelector('.extra-spicy-check');
-            if(spicyCheck && spicyCheck.checked) {
-                finalName += " (🌶️ острый)";
-                finalPrice += 50;
-            }
+            if(spicyCheck && spicyCheck.checked) { finalName += " (🌶️)"; finalPrice += 50; }
 
             const existing = cart.find(i => i.name === finalName);
-            if(existing) {
-                existing.qty += qty;
-            } else {
-                cart.push({ name: finalName, price: finalPrice, qty: qty });
-            }
+            if(existing) { existing.qty += qty; } 
+            else { cart.push({ name: finalName, price: finalPrice, qty: qty }); }
 
             saveCart();
             updateHeaderCount();
-            
-            // Force redraw if cart is visible
-            if(viewCart.style.display === 'flex') {
-                renderCart();
-            }
+            if(viewCart.style.display === 'flex') renderCart();
 
-            // Reset checkboxes
             const checkboxes = container.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(cb => cb.checked = false);
 
-            // Visual feedback
             const originalText = btn.innerText;
             btn.innerText = "Готово! ✔";
             btn.style.backgroundColor = "#4CAF50";
@@ -1612,7 +1620,7 @@
             setTimeout(() => {
                 btn.innerText = originalText;
                 btn.style.backgroundColor = "";
-                btn.disabled = false; // Re-enable button
+                btn.disabled = false; 
             }, 1000);
         }
 
@@ -1624,13 +1632,11 @@
         function renderCart() {
             cartList.innerHTML = "";
             let total = 0;
-
             if(cart.length === 0) {
                 cartList.innerHTML = "<div style='text-align:center; color:#ccc; margin-top:50px;'>Корзина пуста 🕸️</div>";
                 cartTotalSpan.innerText = "0 ₽";
                 return;
             }
-
             cart.forEach((item, index) => {
                 total += item.price * item.qty;
                 cartList.innerHTML += `
@@ -1667,11 +1673,7 @@
         }
 
         function saveCart() {
-            try {
-                localStorage.setItem('pizzaCart', JSON.stringify(cart));
-            } catch(e) {
-                console.warn('LocalStorage not available');
-            }
+            try { localStorage.setItem('pizzaCart', JSON.stringify(cart)); } catch(e) {}
         }
 
         function loadCart() {
@@ -1681,64 +1683,90 @@
                     cart = JSON.parse(saved);
                     updateHeaderCount();
                 }
-            } catch(e) {
-                console.warn('LocalStorage error');
-            }
+            } catch(e) {}
         }
 
+        // --- ЛОГИКА ОФОРМЛЕНИЯ ЗАКАЗА ---
+
         function startCheckout() {
+            if(!checkWorkingHours()) {
+                alert("Извините, мы уже закрыты! Работаем с 10:00 до 23:00.");
+                return;
+            }
             if(cart.length === 0) { alert("Корзина пуста!"); return; }
+            
             switchView('chat');
-            orderStep = 1;
-            botSay("Отлично! 😋 Сформировал заказ. <br><b>Напишите адрес доставки:</b>");
+            
+            // ШАГ 1: Спрашиваем способ получения
+            orderStep = 1; 
+            botSay(`
+                Отлично! 😋 Как хотите получить заказ?<br><br>
+                <button onclick="setDeliveryType('delivery')" style="background:#FF5252; color:white; border:none; padding:8px 15px; border-radius:15px; margin-right:5px; cursor:pointer;">🚚 Доставка</button>
+                <button onclick="setDeliveryType('pickup')" style="background:#FFD166; color:#4A4A4A; border:none; padding:8px 15px; border-radius:15px; cursor:pointer;">🏃 Самовывоз</button>
+            `);
+        }
+
+        // Обработка выбора (Доставка / Самовывоз)
+        function setDeliveryType(type) {
+            deliveryType = type;
+            
+            if (type === 'pickup') {
+                userSay("🏃 Самовывоз");
+                window.address = "Самовывоз (из ресторана)";
+                orderStep = 3; // Пропускаем шаг адреса, идем к телефону
+                setTimeout(() => botSay("Хорошо. Самовывоз с ул. Шекспира д.7.<br>Напишите ваш <b>номер телефона</b> для связи:"), 500);
+            } else {
+                userSay("🚚 Доставка");
+                orderStep = 2; // Идем к вводу адреса
+                setTimeout(() => botSay("Напишите <b>адрес доставки</b> (Улица, дом, квартира):"), 500);
+            }
         }
 
         async function handleUserSend() {
             const text = chatInput.value.trim();
             if(!text) return;
 
+            // Если мы на шаге 1 (выбор кнопками), игнорируем текстовый ввод или просим нажать кнопку
+            if(orderStep === 1) {
+                botSay("Пожалуйста, выберите вариант кнопкой выше ⬆️");
+                return;
+            }
+
             userSay(text);
             chatInput.value = '';
 
-            if(orderStep === 1) {
+            // ШАГ 2: Ввод адреса (только для доставки)
+            if(orderStep === 2) {
                 window.address = text;
-                orderStep = 2;
+                orderStep = 3;
                 setTimeout(() => botSay("Принято. Теперь <b>номер телефона</b> для связи:"), 500);
             } 
-            else if (orderStep === 2) {
-                // Stronger Phone validation
+            // ШАГ 3: Ввод телефона (общий для всех)
+            else if (orderStep === 3) {
                 const cleanPhone = text.replace(/\D/g, '');
                 if(cleanPhone.length < 10) {
                     botSay("Номер слишком короткий! Попробуйте еще раз 📱");
                     return;
                 }
-
                 window.phone = text;
-                orderStep = 0;
+                orderStep = 0; // Завершаем
+                
                 botSay("⏳ Отправляю заказ...");
 
                 const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-                const payload = { cart, address: window.address, phone: window.phone, total };
+                const payload = { 
+                    cart, 
+                    address: window.address, 
+                    phone: window.phone, 
+                    total,
+                    type: deliveryType // Передаем тип заказа (доставка/самовывоз)
+                };
 
                 try {
-                    // Uncomment this to enable real sending!
                     await fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
-                    
                     setTimeout(() => {
-                        botSay(`✅ <b>Заказ принят!</b><br>Сумма: ${total} ₽<br>Менеджер скоро позвонит.`);
+                        botSay(`✅ <b>Заказ принят!</b><br>Сумма: ${total} ₽<br>Тип: ${deliveryType === 'pickup' ? 'Самовывоз' : 'Доставка'}<br>Менеджер скоро позвонит.`);
                         cart = [];
                         saveCart();
-                        updateHeaderCount();
-                    }, 1000);
-                } catch(e) { 
-                    console.error(e);
-                    botSay("Ошибка сети. Позвоните нам!"); 
-                }
-            } 
-            else {
-                setTimeout(() => botSay("Я понимаю только заказы через корзину 🛒"), 500);
-            }
-        }
-    </script>
 </body>
 </html>
