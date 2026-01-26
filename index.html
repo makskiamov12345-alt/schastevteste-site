@@ -462,7 +462,37 @@
                     </div>
                 </details>
             </article>
-
+ 
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                       <img src="images/salami.jpg" class="card-img" alt="Салями" loading="eager">
+                        <div class="card-body-preview">
+                            <div class="card-title"><span>Салями</span><span class="price-tag">750 ₽</span></div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Щедрая порция пряной салями, много тягучей моцареллы и насыщенный томатный соус. Сочная классика на хрустящем тесте.</p>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной сыр (+100₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
+                        </div>
+                        <div class="price-row">
+                            <span class="card-weight">720г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Салями', 750)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+           
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
@@ -537,7 +567,7 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+120₽)</label>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойная начинка (+100₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной сыр (+100₽)</label>
                             <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
@@ -567,7 +597,7 @@
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
                             <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+120₽)</label>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойная начинка (+100₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной сыр (+100₽)</label>
                             <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
                         </div>
                         <div class="price-row">
