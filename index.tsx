@@ -1553,7 +1553,32 @@
                     </div>
                 </details>
             </article>
+ <div id="cat-pizza" class="menu-category-title"><span>Ролл в тортилье</span></div>
+                 </article>
 
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                       <img src="images/cesar roll.jpg" class="card-img" alt="Цезарь ролл" onerror="this.src='https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=500'" loading="lazy">
+                        <div class="card-body-preview">
+                            <div class="card-title"><span>Цезарь ролл</span><span class="price-tag">199 ₽</span></div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Салат айсберг, томат, куриное филе в панировке, соус цезарь.</p>
+                        <div class="price-row">
+                            <span class="card-weight">200 г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">−</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, +1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Цезарь ролл', 199)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
         </div>
     </section>
 
