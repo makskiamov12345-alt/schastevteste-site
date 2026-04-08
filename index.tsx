@@ -1383,7 +1383,28 @@
                     </div>
                 </details>
             </article>
-
+  <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                        <img src="images/rene palochki.jpg" class="card-img" alt="Рыбные палочки" loading="lazy">
+                        <div class="card-body-preview">
+                            <div class="card-title"><span>Рыбные палочки</span><span class="price-tag">330 ₽</span></div>
+                            <span class="expand-hint">Вкусненько ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <div class="price-row">
+                            <span class="card-weight">6 шт</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Рыбные палочки', 330)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
             <div id="cat-sets" class="menu-category-title"><span>🎁 Выгодные Сеты</span></div>
 
             <article class="pizza-item">
