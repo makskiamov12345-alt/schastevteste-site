@@ -7,7 +7,7 @@
     
 <meta name="description" content="Самая вкусная пицца, супы, салаты и выгодные сеты в Буграх! Доставка на ул. Шекспира, дом 7 и по району.">
 <meta property="og:title" content="СчастьеВТесте — Семейная пиццерия">
-<meta property="og:description" content="Горячая пицца, домашние супы и закуски. Работаем с 11 до 23. Заказывайте онлайн!">
+<meta property="og:description" content="Горячая пицца, домашние супы и закуски. Работаем с 11:30  до 22. Заказывайте онлайн!">
 <meta property="og:type" content="website">
 
 <meta property="og:image" content="https://makskiamov12345-alt.github.io/schastevteste-site/images/preview.jpg">
