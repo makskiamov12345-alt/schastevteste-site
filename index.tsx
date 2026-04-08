@@ -424,6 +424,7 @@
         <button class="nav-btn" onclick="document.getElementById('cat-salad').scrollIntoView({behavior: 'smooth'})">🥗 Салаты</button>
         <button class="nav-btn" onclick="document.getElementById('cat-soup').scrollIntoView({behavior: 'smooth'})">🍵 Супы</button>
         <button class="nav-btn" onclick="document.getElementById('cat-snacks').scrollIntoView({behavior: 'smooth'})">🍟 Закуски</button>
+       <button class="nav-btn" onclick="document.getElementById('cat-sets').scrollIntoView({behavior: 'smooth'})"> Ролл в тортилье</button>
         <button class="nav-btn" onclick="document.getElementById('cat-sets').scrollIntoView({behavior: 'smooth'})">🎁 Сеты</button>
     </div>
     
