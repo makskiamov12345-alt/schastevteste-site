@@ -1865,7 +1865,7 @@
 
         function startCheckout() {
             if(!checkWorkingHours()) {
-                alert("Извините, мы уже закрыты! Работаем с 11:00 до 22:30.");
+                alert("Извините, мы уже закрыты! Работаем с 11:30 до 22:30.");
                 return;
             }
             if(cart.length === 0) { alert("Корзина пуста!"); return; }
@@ -1926,7 +1926,7 @@
                 window.phone = text;
                 orderStep = 0; // Завершаем
                 
-                botSay("⏳ Отправляю заказ...");
+                botSay("⏳Отправляю ваш заказ🍕 С любовью, "Ваша Счастье в тесте"");
 
                 const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
                 const payload = { 
