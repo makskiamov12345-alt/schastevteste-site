@@ -1940,7 +1940,7 @@
                 try {
                     await fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
                     setTimeout(() => {
-                        botSay(`✅ <b>Заказ принят!</b><br>Сумма: ${total} ₽<br>Тип: ${deliveryType === 'pickup' ? 'Самовывоз' : 'Доставка'}<br>Менеджер скоро позвонит.`);
+                        botSay(`✅ <b>Спасибо за заказ ❤️</b><br>Сумма: ${total} ₽<br>Тип: ${deliveryType === 'pickup' ? 'Самовывоз' : 'Доставка'}<br>Менеджер скоро позвонит.`);
                         cart = [];
                         saveCart();
                         updateHeaderCount();
