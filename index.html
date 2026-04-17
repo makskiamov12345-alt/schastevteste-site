@@ -421,6 +421,7 @@
 
     <div class="sticky-nav">
         <button class="nav-btn" onclick="document.getElementById('cat-pizza').scrollIntoView({behavior: 'smooth'})">🍕 Пицца</button>
+        <button class="nav-btn" onclick="document.getElementById('cat-sets').scrollIntoView({behavior: 'smooth'})">Римская пицца</button>
         <button class="nav-btn" onclick="document.getElementById('cat-salad').scrollIntoView({behavior: 'smooth'})">🥗 Салаты</button>
         <button class="nav-btn" onclick="document.getElementById('cat-soup').scrollIntoView({behavior: 'smooth'})">🌯 Стрит-фуд</button>
         <button class="nav-btn" onclick="document.getElementById('cat-snacks').scrollIntoView({behavior: 'smooth'})">🍟 Закуски</button>
@@ -1122,7 +1123,127 @@
                     </div>
                 </details>
             </article>
-
+            <div id="cat-pizza" class="menu-category-title"><span> Римская пицца</span></div>
+            <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                       <img src="images/vetchina.jpeg" class="card-img" alt="Прошутто" loading="lazy">
+                        <div class="card-body-preview">
+                            <div class="card-title"><span>Прошутто</span><span class="price-tag">700 ₽</span></div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Нежный сливочный соус, салат Романо, нежная ветчина, моцарелла и пармезан.</p>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп.моцарелла (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной пармезан (+100₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️  Доп.соус соус (+50₽)</label>
+                        </div>
+                        <div class="price-row">
+                            <span class="card-weight">20*30</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Прошутто', 700)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article> 
+             <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                       <img src="images/rukolla.jpg" class="card-img" alt="Руккола" loading="lazy">
+                        <div class="card-body-preview">
+                            <div class="card-title"><span>Руккола</span><span class="price-tag">750 ₽</span></div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Римская пицца с креветками, рукколой, черри на нежном сливочном соусе.</p>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп.моцарелла (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной пармезан (+100₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп.соус (+50₽)</label>
+                        </div>
+                        <div class="price-row">
+                            <span class="card-weight">20*30</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Руккола', 750)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+             </article> 
+             <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                       <img src="images/peperoni.jpg" class="card-img" alt="Пепперони" loading="lazy">
+                        <div class="card-body-preview">
+                            <div class="card-title"><span>Пепперони</span><span class="price-tag">690 ₽</span></div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Классика в римском исполнении.</p>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп.моцарелла (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной пармезан (+100₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп.соус (+50₽)</label>
+                        </div>
+                        <div class="price-row">
+                            <span class="card-weight">20*30</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Пепперони', 690)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
+             </article> 
+             <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                       <img src="images/sir.jpg" class="card-img" alt="Сырная" loading="lazy">
+                        <div class="card-body-preview">
+                            <div class="card-title"><span>Сырная</span><span class="price-tag">680 ₽</span></div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">4 вида сыра на хрустящей подушке, в сочетании томатного соуса )
+(моцарелла, чеддер, пармезан, дор блю)
+</p>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп.моцарелла (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной пармезан (+100₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп.соус (+50₽)</label>
+                        </div>
+                        <div class="price-row">
+                            <span class="card-weight">20*30</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Сырная', 680)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
             <div id="cat-salad" class="menu-category-title"><span>🥗 Свежие Салаты</span></div>
 
             <article class="pizza-item">
