@@ -97,23 +97,22 @@
 
         .logo-img { height: 60px; width: auto; }
         .logo-text { font-family: var(--font-hand); font-size: 1.5rem; color: var(--text-main); line-height: 1; }
+        
         /* Стили для фразы в центре */
-.header-tagline {
-    font-family: var(--font-hand); /* Используем красивый рукописный шрифт */
-    font-size: 1.4rem;
-    color: var(--text-main);
-    opacity: 0.8;
-    flex: 1;
-    text-align: center;
-    padding: 0 20px;
-}
+        .header-tagline {
+            font-family: var(--font-hand);
+            font-size: 1.4rem;
+            color: var(--text-main);
+            opacity: 0.8;
+            flex: 1;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-/* Скрываем фразу на планшетах и мобильных (меньше 992px, чтобы не теснила кнопки) */
-@media (max-width: 992px) {
-    .header-tagline {
-        display: none;
-    }
-}
+        /* Скрываем фразу на планшетах и мобильных */
+        @media (max-width: 992px) {
+            .header-tagline { display: none; }
+        }
 
         .btn-chat-small {
             background: var(--accent); color: var(--text-main); padding: 8px 20px;
@@ -126,14 +125,14 @@
         .phone-link { font-weight: 700; color: var(--text-main); font-size: 0.95rem; display: none; }
         @media(min-width: 768px) { .phone-link { display: block; } }
 
-/* --- STICKY NAV --- */
+        /* --- STICKY NAV --- */
         .sticky-nav {
             position: sticky; top: 92px; z-index: 900;
             background: rgba(255, 253, 245, 0.95); backdrop-filter: blur(5px);
-            padding: 10px 15px; /* <- вот тут мы добавили отступы */
+            padding: 10px 15px;
             overflow-x: auto; white-space: nowrap;
             display: flex; gap: 10px; 
-            justify-content: flex-start; /* <- и поменяли это значение */
+            justify-content: flex-start;
             border-bottom: 1px solid rgba(0,0,0,0.05);
             -ms-overflow-style: none; scrollbar-width: none;
         }
@@ -146,7 +145,6 @@
         }
         .nav-btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
 
-        /* Вставляем наше правило для больших экранов вот сюда: */
         @media(min-width: 768px) { 
             .sticky-nav { justify-content: center; } 
         }
@@ -168,7 +166,6 @@
             line-height: 1.2;
             animation: float 6s ease-in-out infinite; 
             
-            /* --- ИЗМЕНЕНИЯ ЗДЕСЬ (0.1px) --- */
             -webkit-text-stroke: 0.1px black;
             text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
@@ -322,23 +319,23 @@
         .msg-user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
         .chat-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; background: white;}
         .chat-input-area button {
-    width: 50px;           /* Ширина кнопки */
-    height: 50px;          /* Высота кнопки */
-    border-radius: 50%;    /* Делает кнопку круглой */
-    background: var(--primary); /* Красный цвет (как у бренда) */
-    color: white;          /* Белая стрелочка */
-    font-size: 1.5rem;     /* Размер самой стрелочки */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.2s;
-    box-shadow: 0 4px 10px rgba(255, 82, 82, 0.3); /* Тень для красоты */
-}
+            width: 50px;           /* Ширина кнопки */
+            height: 50px;          /* Высота кнопки */
+            border-radius: 50%;    /* Делает кнопку круглой */
+            background: var(--primary); /* Красный цвет (как у бренда) */
+            color: white;          /* Белая стрелочка */
+            font-size: 1.5rem;     /* Размер самой стрелочки */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(255, 82, 82, 0.3); /* Тень для красоты */
+        }
 
-.chat-input-area button:hover {
-    background: var(--primary-hover);
-    transform: scale(1.1); /* Легкое увеличение при наведении */
-}
+        .chat-input-area button:hover {
+            background: var(--primary-hover);
+            transform: scale(1.1); /* Легкое увеличение при наведении */
+        }
         #chatInput { flex: 1; padding: 10px; border-radius: 20px; border: 1px solid #ddd; }
 
         /* VIEW: CART */
@@ -354,46 +351,63 @@
 
         /* --- MOBILE FIXES --- */
         @media(max-width:480px) {
-            header {
-                padding: 10px 15px; 
-            }
-            .logo-text {
-                font-size: 1.2rem;
-            }
-            .logo-img {
-                height: 40px; 
-            }
-            .btn-chat-small {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-            .chat-window {
-                width: 90vw; height: 70vh; right: 5vw;
-            }
-            .hero h1 {
-                font-size: 1.8rem; 
-                line-height: 1.3;
-            }
+            header { padding: 10px 15px; }
+            .logo-text { font-size: 1.2rem; }
+            .logo-img { height: 40px; }
+            .btn-chat-small { padding: 6px 12px; font-size: 0.8rem; }
+            .chat-window { width: 90vw; height: 70vh; right: 5vw; }
+            .hero h1 { font-size: 1.8rem; line-height: 1.3; }
         }
 
-/* --- FOOTER --- */
+        /* --- КНОПКА НАВЕРХ (Только для мобильных) --- */
+        #scrollTopBtn {
+            display: none; 
+            position: fixed;
+            bottom: 30px;
+            left: 5vw; 
+            z-index: 1500;
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        #scrollTopBtn:active { transform: scale(0.9); }
+
+        @media (max-width: 768px) {
+            #scrollTopBtn.visible { display: flex; animation: popIn 0.3s ease; }
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.8); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* --- FOOTER --- */
         footer {
             background: rgba(255, 255, 255, 0.95); padding: 30px 5%; text-align: center;
             border-top: 3px solid var(--accent); margin-top: 60px; color: var(--text-main);
         }
         footer p { margin: 8px 0; font-size: 0.95rem; }
 
-        /* Добавляем стили для вашей ссылки */
         .footer-link {
-            color: inherit; /* Цвет как у текста вокруг */
-            text-decoration: none; /* Убираем стандартное подчеркивание */
-            border-bottom: 1px dashed rgba(74, 74, 74, 0.3); /* Делаем аккуратный пунктир снизу */
+            color: inherit; 
+            text-decoration: none; 
+            border-bottom: 1px dashed rgba(74, 74, 74, 0.3); 
             transition: 0.3s;
         }
 
         .footer-link:hover {
-            color: var(--primary); /* При наведении ссылка станет красной */
-            border-bottom-color: var(--primary); /* Пунктир тоже покраснеет */
+            color: var(--primary); 
+            border-bottom-color: var(--primary); 
             opacity: 1;
         }
     </style>
@@ -534,7 +548,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/vetchina grib.jpg" class="card-img" alt="Грибная" loading="lazy">
+                       <img src="images/vetchina-grib.jpg" class="card-img" alt="Грибная" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Грибная</span><span class="price-tag">650 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -555,7 +569,7 @@
                                 <span class="qty-val">1</span>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-order-item" onclick="addToCart(this, 'Грибная', 620)">Буду!</button>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Грибная', 650)">Буду!</button>
                         </div>
                     </div>
                 </details>
@@ -594,7 +608,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/fray chiken.jpg" class="card-img" alt="Фрай-чикен" loading="lazy">
+                       <img src="images/fray-chiken.jpg" class="card-img" alt="Фрай-чикен" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Фрай-чикен</span><span class="price-tag">690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -654,7 +668,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/vetchina grib.jpg" class="card-img" alt="Ветчина-грибы" loading="lazy">
+                       <img src="images/vetchina-grib.jpg" class="card-img" alt="Ветчина-грибы" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Ветчина-грибы</span><span class="price-tag">670 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -744,7 +758,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/mysnay kapella.jpg" class="card-img" alt="Мясная капелла" loading="lazy">
+                       <img src="images/mysnay-kapella.jpg" class="card-img" alt="Мясная капелла" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Мясная капелла</span><span class="price-tag">710 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -774,7 +788,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/big pig.jpg" class="card-img" alt="Big-Pig" loading="lazy">
+                       <img src="images/big-pig.jpg" class="card-img" alt="Big-Pig" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Big-Pig</span><span class="price-tag">710 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -860,6 +874,7 @@
                     </div>
                 </details>
             </article>
+            
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
@@ -954,7 +969,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/syrny rae.jpg" class="card-img" alt="Сырный рай" loading="lazy">
+                       <img src="images/syrny-rae.jpg" class="card-img" alt="Сырный рай" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Сырный рай</span><span class="price-tag">860 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1014,7 +1029,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/dary mora.jpg" class="card-img" alt="Дары моря" loading="lazy">
+                       <img src="images/dary-mora.jpg" class="card-img" alt="Дары моря" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Дары моря</span><span class="price-tag">870 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1040,7 +1055,8 @@
                     </div>
                 </details>
             </article>
-               <article class="pizza-item">
+            
+            <article class="pizza-item">
                 <details>
                     <summary class="card-header">
                        <img src="images/miso.jpg" class="card-img" alt="Мясная🆕" loading="lazy">
@@ -1073,7 +1089,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/c ananacom.jpg" class="card-img" alt="С ананасами" loading="lazy">
+                       <img src="images/c-ananacom.jpg" class="card-img" alt="С ананасами" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>С ананасами</span><span class="price-tag">850 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1159,7 +1175,9 @@
                     </div>
                 </details>
             </article>
+
             <div id="cat-roman" class="menu-category-title"><span>🥖 Римская пицца</span></div>
+
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
@@ -1173,9 +1191,9 @@
                         <p class="ingredients">Нежный сливочный соус, салат Романо, мортаделла, моцарелла фисташки и пармезан.</p>
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп.моцарелла (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп. моцарелла (+120₽)</label>
                             <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной пармезан (+100₽)</label>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️  Доп.соус соус (+50₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп. соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">20*30</span>
@@ -1189,6 +1207,7 @@
                     </div>
                 </details>
             </article> 
+
              <article class="pizza-item">
                 <details>
                     <summary class="card-header">
@@ -1202,9 +1221,9 @@
                         <p class="ingredients">Римская пицца с креветками, рукколой, черри на нежном сливочном соусе.</p>
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп.моцарелла (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп. моцарелла (+120₽)</label>
                             <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной пармезан (+100₽)</label>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп.соус (+50₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп. соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">20*30</span>
@@ -1218,7 +1237,7 @@
                     </div>
                 </details>
             </article>
-             </article> 
+
              <article class="pizza-item">
                 <details>
                     <summary class="card-header">
@@ -1232,9 +1251,9 @@
                         <p class="ingredients">Классика в римском исполнении.</p>
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп.моцарелла (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп. моцарелла (+120₽)</label>
                             <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной пармезан (+100₽)</label>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп.соус (+50₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп. соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">20*30</span>
@@ -1248,7 +1267,7 @@
                     </div>
                 </details>
             </article>
-            </article> 
+
              <article class="pizza-item">
                 <details>
                     <summary class="card-header">
@@ -1262,9 +1281,9 @@
                         <p class="ingredients">Сливочный соус, каперсы, красный лук, оливки, филе тунца.</p>
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп.моцарелла (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп. моцарелла (+120₽)</label>
                             <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной пармезан (+100₽)</label>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп.соус (+50₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп. соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">20*30</span>
@@ -1278,7 +1297,7 @@
                     </div>
                 </details>
             </article>
-             </article> 
+
              <article class="pizza-item">
                 <details>
                     <summary class="card-header">
@@ -1289,14 +1308,12 @@
                         </div>
                     </summary>
                     <div class="details-content">
-                        <p class="ingredients">4 вида сыра на хрустящей подушке, в сочетании томатного соуса )
-(моцарелла, чеддер, пармезан, дор блю)
-</p>
+                        <p class="ingredients">4 вида сыра на хрустящей подушке, в сочетании томатного соуса. <br>(моцарелла, чеддер, пармезан, дор блю)</p>
                         <div class="extra-options-block">
                             <div class="extra-options-title">🎯 Дополнительно:</div>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп.моцарелла (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Доп. моцарелла (+120₽)</label>
                             <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной пармезан (+100₽)</label>
-                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп.соус (+50₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Доп. соус (+50₽)</label>
                         </div>
                         <div class="price-row">
                             <span class="card-weight">20*30</span>
@@ -1310,6 +1327,7 @@
                     </div>
                 </details>
             </article>
+
             <div id="cat-salad" class="menu-category-title"><span>🥗 Свежие Салаты</span></div>
 
             <article class="pizza-item">
@@ -1378,7 +1396,7 @@
                                 <span class="qty-val">1</span>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-order-item" onclick="addToCart(this, 'Дикая утка', 600)">Буду!</button>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Дикая утка', 490)">Буду!</button>
                         </div>
                     </div>
                 </details>
@@ -1389,7 +1407,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/cesar roll.jpeg" class="card-img" alt="Цезарь-ролл" loading="lazy">
+                        <img src="images/cesar-roll.jpeg" class="card-img" alt="Цезарь-ролл" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Цезарь-ролл</span><span class="price-tag">199 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1412,7 +1430,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/giros roll.jpeg" class="card-img" alt="Гирос-ролл" loading="lazy">
+                        <img src="images/giros-roll.jpeg" class="card-img" alt="Гирос-ролл" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Гирос-ролл</span><span class="price-tag">229 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1435,7 +1453,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/shrim roll.jpeg" class="card-img" alt="Шримп-ролл" loading="lazy">
+                        <img src="images/shrim-roll.jpeg" class="card-img" alt="Шримп-ролл" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Шримп-ролл</span><span class="price-tag">259 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1482,7 +1500,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/ribnie palochki.jpg" class="card-img" alt="Рыбные палочки" loading="lazy">
+                        <img src="images/ribnie-palochki.jpg" class="card-img" alt="Рыбные палочки" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Рыбные палочки</span><span class="price-tag">330 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1528,7 +1546,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/krily bbq.jpg" class="card-img" alt="Крылья BBQ" loading="lazy">
+                        <img src="images/krily-bbq.jpg" class="card-img" alt="Крылья BBQ" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Крылья BBQ</span><span class="price-tag">320 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1804,6 +1822,8 @@
         <button class="chat-btn" onclick="toggleChatWidget()">💬</button>
     </div>
 
+    <button id="scrollTopBtn" onclick="scrollToTop()" title="Вернуться наверх">⬆️</button>
+
     <footer>
         <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
             <img src="logo.png" alt="СчастьеВТесте" class="logo-img" style="height: 50px;">
@@ -1849,7 +1869,6 @@
 
         // Phone Formatter
         chatInput.addEventListener('input', function(e) {
-            // Форматируем телефон только на шаге ввода телефона (шаг 3)
             if(orderStep === 3) {
                 let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
                 if (!x[2]) { e.target.value = x[1] ? '+7' : ''; return; }
@@ -1861,10 +1880,10 @@
             const now = new Date();
             const hours = now.getHours();
             const btn = document.querySelector('.btn-checkout');
-            if (hours >= 23 || hours < 10) {
+            if (hours >= 23 || hours < 11) {
                 if(btn) {
                     btn.disabled = true;
-                    btn.innerText = "Мы закрыты (с 10 до 23)";
+                    btn.innerText = "Мы закрыты (с 11 до 23)";
                     btn.style.background = "#ccc";
                     btn.style.cursor = "not-allowed";
                 }
@@ -1933,10 +1952,10 @@
             let finalPrice = basePrice;
             
             const cheeseCheck = container.querySelector('.extra-cheese-check');
-            if(cheeseCheck && cheeseCheck.checked) { finalName += " (🧀)"; finalPrice += 150; }
+            if(cheeseCheck && cheeseCheck.checked) { finalName += " (🧀)"; finalPrice += 120; }
             
             const doubleCheck = container.querySelector('.extra-double-check');
-            if(doubleCheck && doubleCheck.checked) { finalName += " (🍕)"; finalPrice += 200; }
+            if(doubleCheck && doubleCheck.checked) { finalName += " (🍕)"; finalPrice += 100; }
             
             const spicyCheck = container.querySelector('.extra-spicy-check');
             if(spicyCheck && spicyCheck.checked) { finalName += " (🌶️)"; finalPrice += 50; }
@@ -2025,11 +2044,29 @@
             } catch(e) {}
         }
 
+        // --- ЛОГИКА КНОПКИ "НАВЕРХ" ---
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
         // --- ЛОГИКА ОФОРМЛЕНИЯ ЗАКАЗА ---
 
         function startCheckout() {
             if(!checkWorkingHours()) {
-                alert("Извините, мы уже закрыты! Работаем с 11:00 до 22:30.");
+                alert("Извините, мы уже закрыты! Работаем с 11:00 до 23:00.");
                 return;
             }
             if(cart.length === 0) { alert("Корзина пуста!"); return; }
@@ -2083,7 +2120,7 @@
             // ШАГ 3: Ввод телефона (общий для всех)
             else if (orderStep === 3) {
                 const cleanPhone = text.replace(/\D/g, '');
-                if(cleanPhone.length < 10) {
+                if(cleanPhone.length < 11) {
                     botSay("Номер слишком короткий! Попробуйте еще раз 📱");
                     return;
                 }
