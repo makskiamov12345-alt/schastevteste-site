@@ -366,21 +366,26 @@
             bottom: 30px;
             left: 5vw; 
             z-index: 1500;
-            width: 50px;
-            height: 50px;
-            background: var(--card-bg);
-            color: var(--primary);
-            border: 2px solid var(--primary);
+            width: 40px; /* Сделали поменьше */
+            height: 40px;
+            background: rgba(255, 255, 255, 0.7); /* Полупрозрачный фон */
+            backdrop-filter: blur(4px); /* Легкое размытие под кнопкой */
+            color: var(--text-main); /* Не такая яркая */
+            border: 1px solid rgba(0,0,0,0.1); /* Тонкая рамка */
             border-radius: 50%;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 1.2rem; /* Чуть меньше иконка */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             cursor: pointer;
             align-items: center;
             justify-content: center;
             transition: 0.3s;
+            opacity: 0.6; /* Общая полупрозрачность */
         }
 
-        #scrollTopBtn:active { transform: scale(0.9); }
+        #scrollTopBtn:hover, #scrollTopBtn:active { 
+            transform: scale(0.95); 
+            opacity: 1; /* При касании становится четкой */
+        }
 
         @media (max-width: 768px) {
             #scrollTopBtn.visible { display: flex; animation: popIn 0.3s ease; }
@@ -548,7 +553,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/vetchina-grib.jpg" class="card-img" alt="Грибная" loading="lazy">
+                       <img src="images/vetchina grib.jpg" class="card-img" alt="Грибная" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Грибная</span><span class="price-tag">650 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -608,7 +613,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/fray-chiken.jpg" class="card-img" alt="Фрай-чикен" loading="lazy">
+                       <img src="images/fray chiken.jpg" class="card-img" alt="Фрай-чикен" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Фрай-чикен</span><span class="price-tag">690 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -668,7 +673,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/vetchina-grib.jpg" class="card-img" alt="Ветчина-грибы" loading="lazy">
+                       <img src="images/vetchina grib.jpg" class="card-img" alt="Ветчина-грибы" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Ветчина-грибы</span><span class="price-tag">670 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -758,7 +763,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/mysnay-kapella.jpg" class="card-img" alt="Мясная капелла" loading="lazy">
+                       <img src="images/mysnay kapella.jpg" class="card-img" alt="Мясная капелла" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Мясная капелла</span><span class="price-tag">710 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -788,7 +793,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/big-pig.jpg" class="card-img" alt="Big-Pig" loading="lazy">
+                       <img src="images/big pig.jpg" class="card-img" alt="Big-Pig" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Big-Pig</span><span class="price-tag">710 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -969,7 +974,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/syrny-rae.jpg" class="card-img" alt="Сырный рай" loading="lazy">
+                       <img src="images/syrny rae.jpg" class="card-img" alt="Сырный рай" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Сырный рай</span><span class="price-tag">860 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1029,7 +1034,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/dary-mora.jpg" class="card-img" alt="Дары моря" loading="lazy">
+                       <img src="images/dary mora.jpg" class="card-img" alt="Дары моря" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Дары моря</span><span class="price-tag">870 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1055,8 +1060,7 @@
                     </div>
                 </details>
             </article>
-            
-            <article class="pizza-item">
+               <article class="pizza-item">
                 <details>
                     <summary class="card-header">
                        <img src="images/miso.jpg" class="card-img" alt="Мясная🆕" loading="lazy">
@@ -1089,7 +1093,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/c-ananacom.jpg" class="card-img" alt="С ананасами" loading="lazy">
+                       <img src="images/c ananacom.jpg" class="card-img" alt="С ананасами" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>С ананасами</span><span class="price-tag">850 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1407,7 +1411,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/cesar-roll.jpeg" class="card-img" alt="Цезарь-ролл" loading="lazy">
+                        <img src="images/cesar roll.jpeg" class="card-img" alt="Цезарь-ролл" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Цезарь-ролл</span><span class="price-tag">199 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1430,7 +1434,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/giros-roll.jpeg" class="card-img" alt="Гирос-ролл" loading="lazy">
+                        <img src="images/giros roll.jpeg" class="card-img" alt="Гирос-ролл" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Гирос-ролл</span><span class="price-tag">229 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1453,7 +1457,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/shrim-roll.jpeg" class="card-img" alt="Шримп-ролл" loading="lazy">
+                        <img src="images/shrim roll.jpeg" class="card-img" alt="Шримп-ролл" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Шримп-ролл</span><span class="price-tag">259 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1500,7 +1504,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/ribnie-palochki.jpg" class="card-img" alt="Рыбные палочки" loading="lazy">
+                        <img src="images/ribnie palochki.jpg" class="card-img" alt="Рыбные палочки" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Рыбные палочки</span><span class="price-tag">330 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
@@ -1546,7 +1550,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                        <img src="images/krily-bbq.jpg" class="card-img" alt="Крылья BBQ" loading="lazy">
+                        <img src="images/krily bbq.jpg" class="card-img" alt="Крылья BBQ" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Крылья BBQ</span><span class="price-tag">320 ₽</span></div>
                             <span class="expand-hint">Вкусненько ✨</span>
