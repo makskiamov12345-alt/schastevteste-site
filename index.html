@@ -489,6 +489,35 @@
                     </div>
                 </details>
             </article>
+  <article class="pizza-item">
+                <details>
+                    <summary class="card-header">
+                       <img src="images/becon.jpg" class="card-img" alt="Огненный бекон🆕" loading="eager">
+                        <div class="card-body-preview">
+                            <div class="card-title"><span>Огненныйбекон🆕 </span><span class="price-tag">740 ₽</span></div>
+                            <span class="expand-hint">Узнать состав ✨</span>
+                        </div>
+                    </summary>
+                    <div class="details-content">
+                        <p class="ingredients">Бекон, охотничьи колбаски, пикантный красный лук, тянущаяся моцарелла и чеддер — всё это на насыщенном красном соусе и с фирменным спайси-соусом сверху.</p>
+                        <div class="extra-options-block">
+                            <div class="extra-options-title">🎯 Дополнительно:</div>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-cheese-check"> 🧀 Сырный бортик (+120₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-double-check"> 🧀 Двойной сыр (+100₽)</label>
+                            <label class="extra-option-label"><input type="checkbox" class="extra-spicy-check"> 🌶️ Острый соус (+50₽)</label>
+                        </div>
+                        <div class="price-row">
+                            <span class="card-weight">750г</span>
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-order-item" onclick="addToCart(this, 'Огненный бекон', 740)">Буду!</button>
+                        </div>
+                    </div>
+                </details>
+            </article>
  
             <article class="pizza-item">
                 <details>
