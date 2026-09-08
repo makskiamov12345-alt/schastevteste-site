@@ -1755,31 +1755,7 @@
                         </div>
                     </div>
                 </details>
-            </article>
-
-            <article class="pizza-item">
-                <details>
-                    <summary class="card-header">
-                       <img src="images/set2.jpg" class="card-img" alt="Комбо №1" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'" loading="lazy">
-                        <div class="card-body-preview">
-                            <div class="card-title"><span>Комбо №1</span><span class="price-tag">1 280 ₽</span></div>
-                            <span class="expand-hint">Узнать состав ✨</span>
-                        </div>
-                    </summary>
-                    <div class="details-content">
-                        <p class="ingredients">Классика с пиццей и прохладным напитком. Пицца "Фрай-чикен", пицца "Ветчина Грибы", лимонад 1 л (на выбор).</p>
-                        <div class="price-row">
-                            <span class="card-weight">1.5 кг</span>
-                            <div class="qty-control">
-                                <button class="qty-btn" onclick="updateQty(this, -1)">−</button>
-                                <span class="qty-val">1</span>
-                                <button class="qty-btn" onclick="updateQty(this, +1)">+</button>
-                            </div>
-                            <button class="btn-order-item" onclick="addToCart(this, 'Комбо №1', 1280)">Буду!</button>
-                        </div>
-                    </div>
-                </details>
-            </article>
+           
 
             <article class="pizza-item">
                 <details>
@@ -2185,7 +2161,7 @@
 
         function startCheckout() {
             if(!checkWorkingHours()) {
-                alert("Извините, мы уже закрыты! Работаем с 11:00 до 23:00.");
+                alert("Извините, мы уже закрыты! Работаем с 12:00 до 21:30.");
                 return;
             }
             if(cart.length === 0) { alert("Корзина пуста!"); return; }
