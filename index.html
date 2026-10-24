@@ -122,8 +122,11 @@
         .btn-chat-small:hover { transform: scale(1.05); background: #FFDD85; }
 
         .header-right { display: flex; align-items: center; gap: 15px; }
-        .phone-link { font-weight: 700; color: var(--text-main); font-size: 0.95rem; display: none; }
-        @media(min-width: 768px) { .phone-link { display: block; } }
+        .phone-link { font-weight: 700; color: var(--text-main); font-size: 0.95rem; display: flex; align-items: center; gap: 5px; }
+        .phone-link:hover { color: var(--primary); }
+        @media(max-width: 767px) {
+            .phone-link { font-size: 0.85rem; }
+        }
 
         /* --- STICKY NAV --- */
         .sticky-nav {
@@ -357,6 +360,7 @@
             .btn-chat-small { padding: 6px 12px; font-size: 0.8rem; }
             .chat-window { width: 90vw; height: 70vh; right: 5vw; }
             .hero h1 { font-size: 1.8rem; line-height: 1.3; }
+            .phone-link { font-size: 0.8rem; }
         }
 
         /* --- КНОПКА НАВЕРХ (Только для мобильных) --- */
@@ -419,8 +423,8 @@
 </head>
 <body>
 
-<header>
-    <a href="#" class="logo-container">
+<header id="top">
+    <a href="#top" class="logo-container">
         <img src="logo.png" alt="СчастьеВТесте" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
         <span style="display:none; font-size: 2rem;">🍕</span>
         <div class="logo-text">Счастье<br><span style="color:var(--primary); font-size:1.3rem;">ВТесте</span></div>
@@ -1736,7 +1740,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set1.jpg" class="card-img" alt="Пивной сет" onerror="this.src='https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500'" loading="lazy">
+                       <img src="images/set1.jpg" class="card-img" alt="Пивной сет" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Пивной сет</span><span class="price-tag">1 250 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1755,12 +1759,12 @@
                         </div>
                     </div>
                 </details>
-           
+            </article>
 
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set3.jpg" class="card-img" alt="Комбо №2" onerror="this.src='https://images.unsplash.com/photo-1593560708920-6316e4e6d0d9?w=500'" loading="lazy">
+                       <img src="images/set3.jpg" class="card-img" alt="Комбо №2" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Комбо №2</span><span class="price-tag">1 820 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1784,7 +1788,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set4.jpg" class="card-img" alt="Комбо №3" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500'" loading="lazy">
+                       <img src="images/set4.jpg" class="card-img" alt="Комбо №3" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Комбо №3</span><span class="price-tag">1 890 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1808,7 +1812,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set5.jpg" class="card-img" alt="Комбо №4" onerror="this.src='https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500'" loading="lazy">
+                       <img src="images/set5.jpg" class="card-img" alt="Комбо №4" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Комбо №4</span><span class="price-tag">1 999 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1832,7 +1836,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set6.jpg" class="card-img" alt="Детский бокс №1" onerror="this.src='https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=500'" loading="lazy">
+                       <img src="images/set6.jpg" class="card-img" alt="Детский бокс №1" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Детский бокс №1</span><span class="price-tag">550 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1856,7 +1860,7 @@
             <article class="pizza-item">
                 <details>
                     <summary class="card-header">
-                       <img src="images/set7.jpg" class="card-img" alt="Детский бокс №2" onerror="this.src='https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=500'" loading="lazy">
+                       <img src="images/set7.jpg" class="card-img" alt="Детский бокс №2" loading="lazy">
                         <div class="card-body-preview">
                             <div class="card-title"><span>Детский бокс №2</span><span class="price-tag">800 ₽</span></div>
                             <span class="expand-hint">Узнать состав ✨</span>
@@ -1885,7 +1889,7 @@
             
             <div id="viewChat">
                 <div class="chat-header">
-                    <div style="background:white; border-radius:50%; width:35px; height:35px; display:flex; align-items:center; justify-content:center;">👨‍🍳</div>
+                    <div style="background:white; border-radius:50%; width:35px; height:35px; display:flex; align-items:center; justify-content:center;">👨🍳</div>
                     <div style="flex:1"><b>Тестяшка</b><br><small>Онлайн</small></div>
                     <button onclick="switchView('cart')" style="background:white; padding:5px 12px; border-radius:15px; font-weight:700; font-size:0.8rem;">🛒 Корзина</button>
                 </div>
@@ -1926,7 +1930,7 @@
         </div>
         <div style="text-align:center; opacity:0.8;">
             <p>📍 г.Бугры, ул. Шекспира дом 7</p>
-            <p>📞 +7 (981) 979-42-69</p>
+            <p>📞 <a href="tel:+79819794269" class="footer-link">+7 (981) 979-42-69</a></p>
         </div>
         <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.6; text-align:center;">
     © 2026 <a href="https://rocket-landing.ru/" target="_blank" class="footer-link">Made with Love ❤️</a>
@@ -2117,12 +2121,10 @@
         }
 
         function clearCart() {
-            if(confirm('Очистить корзину?')) {
-                cart = [];
-                saveCart();
-                renderCart();
-                updateHeaderCount();
-            }
+            cart = [];
+            saveCart();
+            renderCart();
+            updateHeaderCount();
         }
 
         function saveCart() {
@@ -2161,10 +2163,15 @@
 
         function startCheckout() {
             if(!checkWorkingHours()) {
-                alert("Извините, мы уже закрыты! Работаем с 12:00 до 21:30.");
+                switchView('chat');
+                botSay("Извините, мы уже закрыты! Работаем с 11:00 до 23:00.");
                 return;
             }
-            if(cart.length === 0) { alert("Корзина пуста!"); return; }
+            if(cart.length === 0) {
+                switchView('chat');
+                botSay("Корзина пуста! Добавьте вкусняшки из меню 🍕");
+                return;
+            }
             
             switchView('chat');
             
@@ -2243,7 +2250,7 @@
                     }, 1000);
                 } catch(e) { 
                     console.error(e);
-                    botSay("Ошибка сети. Позвоните нам!"); 
+                    botSay('Ошибка сети. Позвоните нам по номеру <a href="tel:+79819794269" style="color:var(--primary); font-weight:700; text-decoration:underline;">+7 (981) 979-42-69</a>!'); 
                 }
             } 
             else {
